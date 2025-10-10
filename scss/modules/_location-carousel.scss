@@ -1,0 +1,131 @@
+/*---------- 2.33 location Carousel ----------*/
+
+.location-carousel{
+  margin-bottom: 30px;
+  [class^='col-']{
+    .location-item{
+      margin-bottom: 30px !important;
+    }  
+  }
+  .location-item{
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    $height: 50px;
+    &:before{
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0px;
+      opacity: 0;
+      background: rgba(0,0,0,.4);
+      z-index: 9;
+    }
+    &:after{
+      content: '\f119';
+      display: inline-block;
+      font-family: "iconfont";
+      font-size: 0px;
+      text-align: center;
+      width: 0;
+      height: 0;
+      line-height: 0;
+
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: calc( $height/2 * (-1));
+      margin-top: calc( $height/2 * (-1));
+    }
+    &:hover{
+     &:before{
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0px;
+      opacity: 1;
+      z-index: 9;
+    }
+    &:after{
+      font-size: 30px;
+      width: $height;
+      height: $height;
+      line-height: $height;
+      //.border-radius(@height);
+      //.rotate(0deg);  
+      //.transition(all .1s linear);
+    }
+  }
+
+  &.show-map{
+    .location-map{
+      display: block;
+    }
+    .location-term{
+      margin-top: 0px;
+    }
+  }
+
+}
+.location-map{
+  display: none;
+  $height: 60px;
+  $width: 80px;
+  height: $height;
+  width: $width;
+  margin: 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+.location-term{
+  width: 100%;
+  min-height: 60px;
+  line-height: 60px;
+  color: #fff;
+  font-size: 2em;
+  text-align: center;
+  position: absolute;
+  //font-family: @head-font;
+  top: 50%;
+  margin-top: -30px;
+  //.text-shadow(0 0 10px rgba(0,0,0,.6));
+}
+
+
+
+.owl-controls{
+  $height: 60px;
+  margin-top: -$height;
+  .owl-nav{
+    position: relative;
+    height: $height;
+  }
+  .owl-prev,
+  .owl-next{
+    height: $height;
+    line-height: $height;
+    width: $height;
+    text-align: center;
+    background: rgba(0,0,0,.4);
+    color: #fff;
+    position: absolute;
+  }
+  .owl-prev{
+    top: 0px;
+    left: 0px;
+  }
+  .owl-next{
+    top: 0px;
+    right: 0px;
+  }
+}
+}

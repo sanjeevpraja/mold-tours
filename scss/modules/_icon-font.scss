@@ -1,0 +1,170 @@
+@use 'variables/_color' as *;
+$baseurl: '../img/';
+$btn-color: #558B2F;
+
+.mold-popup{
+	height: 80% !important;
+	z-index: 999999 !important;
+	#TB_ajaxContent{
+		width: auto !important;
+		height: 80% !important;
+		padding-top: 0px !important;
+	}
+
+	#TB_title{
+		$height: 40px;
+		height: $height;
+		line-height: $height;
+		#TB_ajaxWindowTitle{
+			height: $height;
+			line-height: $height;
+			font-size: 16px;
+			padding-left: 35px;
+			position: relative;
+			&:before{
+				content: '';
+				height: $height;
+				line-height: $height;
+				width: $height;
+				background: url('$baseurl/image.png') no-repeat center;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		}
+		.tb-close-icon{
+			top: 5px;
+			right: 5px;
+		}
+	}
+	.icon-select{
+		margin-top: 15px;
+		margin-bottom: 10px;
+		border: 1px solid rgba(0,0,0,0.1);
+		#search{
+			display: table;
+			margin: 15px auto 0;
+			height:  30px;
+			line-height: 30px;
+			border:  1px solid #ddd;
+			background: #fff;
+			width:  200px;
+			border-radius:  5px;
+		}
+
+	}
+	.icon-list-wrap{
+		height: 150px;
+		overflow-y: auto;
+		margin-top: 10px;
+		border-top: 1px solid rgba(0,0,0,0.1);
+	}
+	#icon-list{
+		margin-top: 0px;
+		li{
+			display: inline-block;
+			font-size: 0;
+			padding: 5px 10px;
+			&:before{
+				font-size: 30px;
+			}
+			&.active{
+				background: #333;
+				color: #eee;
+			}
+		}
+	}
+	.iconfont{
+		font-size: 30px;
+		cursor: pointer;
+	}
+
+	.select-form-wrap{
+		margin:  0 -15px;
+		padding: 20px;
+		background: #f2f2f2;
+		border-bottom:  1px solid rgba(0,0,0,.1);
+		font-size: 14px;
+		height:  30px;
+		label{
+			float:  left;
+			font-weight: bold;
+			margin-top:  5px;
+		}
+		select{
+			float:  right;
+			height:  30px;
+			line-height: 30px;
+			border:  1px solid #ccc;
+			background: #dedede;
+			width:  300px;
+			border-radius:  0px;
+		}
+	}
+	.button-wrap{
+		clear: both;
+		padding: 10px 20px;
+		margin: 0px -15px 0px; 
+		overflow: hidden;
+		.insert-btn{
+			float: right;
+			padding: 8px 15px;
+			text-transform: uppercase;
+			background: $btn-color;
+			color: #fff;
+			border: 1px solid rgba(0,0,0,.2);
+			border-radius:  5px;
+			cursor: pointer;
+			&:hover{
+				background: $primary-700;
+			}
+		}
+	}
+	.form-wrap{
+		margin:  0 -15px;
+		padding: 0 20px 10px;
+		font-size: 14px;
+		overflow: hidden;
+		label{
+			float:  left;
+			font-weight: bold;
+			margin-top:  5px;
+		}
+		input[type="text"]{
+			float:  right;
+			height:  30px;
+			line-height: 30px;
+			border:  1px solid #ddd;
+			background: #fff;
+			width:  300px;
+			border-radius:  5px;
+		}
+		textarea{
+			float:  right;
+			height: 120px;
+			border:  1px solid #ddd;
+			background: #fff;
+			width:  300px;
+			border-radius:  5px;
+		}
+		select{
+			float:  right;
+			height:  30px;
+			line-height: 30px;
+			border:  1px solid #ddd;
+			background: #eee;
+			width:  300px;
+			border-radius:  0px;
+		}
+	}
+	
+}
+
+
+table.admin-table{
+	width: 100%;
+	td{
+		vertical-align: top;
+		padding: 15px;
+	}
+}

@@ -1,0 +1,229 @@
+.mold-popup {
+  height: 80% !important;
+  z-index: 999999 !important;
+
+  .icon-select {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .icon-select .search-input {
+    display: table;
+    margin: 15px auto 0;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    background: #fff;
+    width: 200px;
+    border-radius: 5px;
+  }
+  .icon-list-wrap {
+    height: 150px;
+    overflow-y: auto;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .iconlist {
+    margin-top: 0px;
+    li {
+      display: inline-block;
+      font-size: 0;
+      padding: 5px 10px;
+      &:before {
+        font-size: 30px;
+      }
+      &.active {
+        background: #333;
+        color: #eee;
+      }
+    }
+  }
+
+  .iconfont {
+    font-size: 30px;
+    cursor: pointer;
+  }
+  .select-form-wrap {
+    margin: 0 -15px;
+    padding: 20px;
+    background: #f2f2f2;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    height: 30px;
+  }
+  .select-form-wrap label {
+    float: left;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+  .select-form-wrap select {
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    background: #dedede;
+    width: 300px;
+    border-radius: 0px;
+  }
+  .button-wrap {
+    clear: both;
+    padding: 10px 20px;
+    margin: 0px -15px 0px;
+    overflow: hidden;
+    .insert-btn {
+      float: right;
+      padding: 8px 15px;
+      text-transform: uppercase;
+      background: #558B2F;
+      color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      cursor: pointer;
+      &:hover {
+        background: #3e6522;
+      }
+    }
+  }
+
+  .form-wrap {
+    margin: 0 -15px;
+    padding: 0 20px 10px;
+    font-size: 14px;
+    overflow: hidden;
+    label {
+      float: left;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+    input[type="text"] {
+      float: right;
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid #ddd;
+      background: #fff;
+      width: 300px;
+      border-radius: 5px;
+    }
+    textarea {
+      float: right;
+      height: 120px;
+      border: 1px solid #ddd;
+      background: #fff;
+      width: 300px;
+      border-radius: 5px;
+    }
+    select {
+      float: right;
+      height: 30px;
+      line-height: 30px;
+      border: 1px solid #ddd;
+      background: #eee;
+      width: 300px;
+      border-radius: 0px;
+    }
+  }
+
+}
+
+.overview-form, 
+.itinerary-form
+{
+  $height: 36px;
+  .form-field{
+    background: #f2f2f2;
+    border: 1px solid rgba(0,0,0,.1);
+    padding: 5px 5px 0;
+    margin-bottom: 15px;
+    position: relative;
+    input[type=text]{
+      height: 36px;
+      width: 200px;
+      margin-right: 10px;
+      margin-bottom: 5px !important;
+      float: none;
+    }
+  }
+  .formicon{
+    height: $height;
+    width: $height;
+    line-height: $height - 5px;
+    font-size: 26px;
+    background: #ddd;
+    text-align: center;
+    float: left;
+    cursor: pointer;
+    margin-right: 10px;
+    .icon 
+    {
+      margin-left: 0px;
+     height: $height;
+     width: $height;
+     line-height: $height;
+     text-align: center;
+     display: inline-block;
+     &.no-icon{
+      background: url('../img/add.png') no-repeat center;
+    }
+  }
+}
+.btn-delete{
+  display: inline-block;
+  $height: 24px;
+  height: $height;
+  width: $height;
+  line-height: $height;
+  background: url('../img/sub_light.png') no-repeat center #a00;
+  border: 1px solid #a00;
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  position: absolute;
+  top: -10px;
+  right: -6px;
+}
+}
+
+.overview-form{
+  input[type=text]{
+    width: 180px !important;
+  }
+}
+
+.itinerary-form{
+    .form-field{
+      padding-bottom: 5px;
+    }
+  input[type=text], textarea{
+    float: none !important;
+  }
+  .input-day{
+    margin-left: 40px;
+    width: 50% !important;
+  }
+  .input-title{
+    height: 30px !important;
+    width: 100% !important;
+    margin-bottom: 10px !important;
+  }
+  .mce-container-body{
+    border-top: 1px solid transparent;
+ }
+ .input-desc{
+  width: 100% !important;
+  margin-bottom: 5px !important;
+}
+.formicon{
+  position: absolute;
+  top: 5px; 
+  left: 5px;
+}
+}
+
+.btn-wrap{
+  clear: both;
+}
+
+.ui-dialog-titlebar-close:before{
+  display: none;
+}
+

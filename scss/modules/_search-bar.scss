@@ -1,0 +1,98 @@
+/*---------- 2.28 Search Bar ----------*/
+@use 'variables/_dimension' as *;
+$bar-height: 100px;
+.search-bar{
+	text-align: left;
+	min-height: $bar-height;
+	padding: 20px 30px 10px;
+	z-index: 9;
+	position: relative;
+	display: table;
+	width: 100%;
+
+	& > div{
+		display: table-cell;
+		padding-right: 20px;
+		vertical-align: top;
+		&:last-child{
+			padding-right: 0px;
+		}
+		.rtl &{
+			padding-right: 0px;
+			padding-left: 20px;
+		}
+	}
+	&.container{
+		margin-top: -$bar-height - 30px;
+	}
+	.text-wrap{
+		text-align: right;
+		margin-top: 22px;
+		h1,h2,h3,h4,h5,h6{
+			margin: 0;
+		}
+	}
+	.form-group{
+		margin-top: 10px;
+	}
+	.price-range{
+		min-width: 200px;
+		.slider-bar{
+			margin-top: 25px;
+		}
+	}
+	label{
+		font-weight: normal;
+		font-size: .9rem;
+		opacity: .6;
+	}
+	.form-control{
+		width: 100%;
+	}
+	.btn-search{
+		margin: 23px 0 20px;
+	}
+	#amount{
+		text-align: right;
+		margin-top: -25px;
+		margin-bottom: 5px;
+		float: right;
+		font-size: .8em;
+	}
+	.ui-slider{
+		margin-top: 10px;
+	}
+}
+
+.boxed + .search-bar{
+	margin-bottom: 0px;
+	&.container{
+		margin-top: -$bar-height;
+	}
+}
+
+
+.widget_search .input-group{
+	width: 100%;
+}
+
+@media screen and (max-width: $screen-media-sm){
+	.search-bar{
+		margin-top: 0;
+		display: block;
+		&.container{
+			margin-top: 0;
+		}
+		& > div{
+			display: block;
+		}
+		.text-wrap{
+			text-align: left;
+			border-right: 0;
+			float: none;
+		}
+		.btn-search{
+			margin: 10px 0 30px;
+		}
+	}
+}
