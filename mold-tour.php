@@ -98,12 +98,13 @@ if(!function_exists('mold_tour_enqueue_styles_scripts_plugin')) {
 require 'taxonomy/class-grade-taxonomy.php';
 require 'taxonomy/class-location-taxonomy.php';
 
+
 /**
  * Widget
  */
-require 'widget/grade-widget.php';
-require 'widget/location-widget.php';
-require 'widget/searc-tour-widget.php';
+//require 'widget/grade-widget.php';
+//require 'widget/location-widget.php';
+//require 'widget/searc-tour-widget.php';
 
 /**
  * WooCommerce Support
