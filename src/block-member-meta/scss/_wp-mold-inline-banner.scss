@@ -1,0 +1,64 @@
+/* Frontend styles */
+$primary-500: #e6a345;
+$tertiary-200: #e97451;
+$tertiary: #83c4bd;
+.wp-mold-inline-banner-block{
+  border-radius: 10px;
+  $border-radius: 10px;
+  $bg: $tertiary;
+  $color: white;
+  $clr-1:  rgba(#f63000, .3);
+  $clr-2: $primary-500;
+  $clr-3: $tertiary-200;
+  $blur:50px;
+  $ls: clamp(-1.75px, -0.25vw, -3.5px);
+
+  background: $bg;
+  border-radius: $border-radius;
+  overflow: hidden;
+  position: relative;
+
+  .banner-text{
+    position: relative;
+    z-index: 999;
+    margin: 0;
+  }
+
+/*aurora*/
+.aurora {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  //mix-blend-mode: darken;
+  pointer-events: none;
+  border-radius:$border-radius;
+  overflow: hidden;
+
+}
+
+.aurora__item {
+  overflow: hidden;
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  background-color: $clr-1;
+  border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  -webkit-filter: blur($blur);
+  -moz-filter: blur($blur);
+  -ms-filter: blur($blur);
+  filter: blur($blur);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  background-repeat: repeat;
+}
+
+
+}
+
+
+

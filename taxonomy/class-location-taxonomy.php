@@ -219,56 +219,97 @@ if ( ! class_exists( 'Mold_Location' ) ) {
 		 */
 		public function mold_location_add_script() { ?>
 		<script>
-			jQuery(document).ready( function($) {
-				function location_image_upload(button_class) {
-					var _custom_media = true,
-					_orig_send_attachment = wp.media.editor.send.attachment;
-					$('body').on('click', button_class, function(e) {
-						var button_id = '#'+$(this).attr('id');
-						var send_attachment_bkp = wp.media.editor.send.attachment;
-						var button = $(button_id);
-						_custom_media = true;
-						wp.media.editor.send.attachment = function(props, attachment){
-								$('#location-image-id').val(attachment.id);
-								$('#location-image-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
-								$('#location-image-wrapper .custom_media_image').attr('src',attachment.sizes.thumbnail.url).css('display','block');
-						}
-						wp.media.editor.open();
-						return false;
-					});
-				}
-				location_image_upload('.location_image_add.button'); 
-				$('body').on('click','.location_image_remove',function(){
-					$('#location-image-id').val('');
-					$('#location-image-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
-				});
+    jQuery(document).ready( function($) {
+        // Only run on location taxonomy pages
+        if (!$('body').hasClass('taxonomy-location')) {
+            return;
+        }
 
+        function location_image_upload(button_class) {
+            var _custom_media = true,
+            _orig_send_attachment = wp.media.editor.send.attachment;
+            
+            $('body').on('click', button_class, function(e) {
+                e.preventDefault();
+                
+                var button_id = '#'+$(this).attr('id');
+                var send_attachment_bkp = wp.media.editor.send.attachment;
+                var button = $(button_id);
+                _custom_media = true;
+                
+                // Make sure wp.media is available
+                if (typeof wp.media === 'undefined') {
+                    console.error('wp.media is not available');
+                    return false;
+                }
+                
+                var frame = wp.media({
+                    title: 'Select or Upload Image',
+                    library: { type: 'image' },
+                    button: { text: 'Use this image' },
+                    multiple: false
+                });
+                
+                frame.on('select', function() {
+                    var attachment = frame.state().get('selection').first().toJSON();
+                    $('#location-image-id').val(attachment.id);
+                    $('#location-image-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
+                    $('#location-image-wrapper .custom_media_image').attr('src',attachment.sizes.thumbnail.url).css('display','block');
+                });
+                
+                frame.open();
+                return false;
+            });
+        }
+        
+        location_image_upload('.location_image_add.button'); 
+        
+        $('body').on('click','.location_image_remove',function(){
+            $('#location-image-id').val('');
+            $('#location-image-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
+        });
 
-			    /***********/
+        /***********/
 
-			    function map_image_upload(button_class) {
-			     	var _custom_media = true,
-			     	_orig_send_attachment = wp.media.editor.send.attachment;
-			     	$('body').on('click', button_class, function(e) {
-			     		var button_id = '#'+$(this).attr('id');
-			     		var send_attachment_bkp = wp.media.editor.send.attachment;
-			     		var button = $(button_id);
-			     		wp.media.editor.send.attachment = function(props, attachment){
-			     				$('#map-image-id').val(attachment.id);
-			     				$('#map-image-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
-			     				$('#map-image-wrapper .custom_media_image').attr('src',attachment.sizes.thumbnail.url).css('display','block');
-			     		}
-			     		wp.media.editor.open();
-			     		return false;
-			     	});
-			     }
-			     map_image_upload('.map_image_add.button'); 
-			     $('body').on('click','.map_image_remove',function(){
-			     	$('#map-image-id').val('');
-			     	$('#map-image-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
-			     });
-		 	});
-		</script>
+        function map_image_upload(button_class) {
+            $('body').on('click', button_class, function(e) {
+                e.preventDefault();
+                
+                var button_id = '#'+$(this).attr('id');
+                
+                // Make sure wp.media is available
+                if (typeof wp.media === 'undefined') {
+                    console.error('wp.media is not available');
+                    return false;
+                }
+                
+                var frame = wp.media({
+                    title: 'Select or Upload Map Image',
+                    library: { type: 'image' },
+                    button: { text: 'Use this image' },
+                    multiple: false
+                });
+                
+                frame.on('select', function() {
+                    var attachment = frame.state().get('selection').first().toJSON();
+                    $('#map-image-id').val(attachment.id);
+                    $('#map-image-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
+                    $('#map-image-wrapper .custom_media_image').attr('src',attachment.sizes.thumbnail.url).css('display','block');
+                });
+                
+                frame.open();
+                return false;
+            });
+        }
+        
+        map_image_upload('.map_image_add.button'); 
+        
+        $('body').on('click','.map_image_remove',function(){
+            $('#map-image-id').val('');
+            $('#map-image-wrapper').html('<img class="custom_media_image" src="" style="margin:0;padding:0;max-height:100px;float:none;" />');
+        });
+    });
+</script>
 		<?php 
 		}
 

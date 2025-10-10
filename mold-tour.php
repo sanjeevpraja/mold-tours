@@ -45,8 +45,8 @@ if(!function_exists('mold_load_tour_admin_styles')) {
 		wp_enqueue_style('mold-tour-admin', MOLD_TOUR_BASE_URL .'css/tour-admin.css', array(), MOLD_TOUR_VERSION);
 
 		global $post;
-		if ( is_object( $post ) && $post->post_type=='product' ) {
-			$is_mold_trip = get_post_meta( $post->ID, 'is_mold_trip', true ); 
+		if ( is_object( $post ) && ($post->post_type=='product' || $post->post_type=='tour')) {
+			$is_mold_trip = get_post_meta( $post->ID, 'is_mold_trip', true );
 			wp_enqueue_script( 'productadmin', MOLD_TOUR_BASE_URL . 'js/productadmin.js', array('jquery'), array(), MOLD_TOUR_VERSION);
 			$bookable = array(
 				'bookable'      	=> $is_mold_trip, //used in admin.js
@@ -137,7 +137,8 @@ require 'helper/minmax-price.php';
 function wp_mold_tour_register_block() {
 	$options = get_option('wp_mold_tour_blocks_settings');
 	$blocks = [
-			'block-overview'
+			'block-overview',
+			'block-member-meta'
 	];
 
 	foreach ($blocks as $block) {
@@ -188,3 +189,17 @@ add_action('admin_notices', function() {
 			echo '<div class="notice notice-warning"><p><strong>Note:</strong> WooCommerce is not active, so WooCommerce-specific blocks (like Carousel) are disabled.</p></div>';
 	}
 });
+
+
+
+
+// Add CPT member
+$member_cpt_file = plugin_dir_path(__FILE__) . 'inc/cpt-member.php';
+if (file_exists($member_cpt_file)) {
+    require_once $member_cpt_file;
+}
+
+$tour_cpt_file = plugin_dir_path(__FILE__) . 'inc/cpt-tour.php';
+if (file_exists($tour_cpt_file)) {
+    require_once $tour_cpt_file;
+}

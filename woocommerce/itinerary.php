@@ -10,7 +10,7 @@ if (!function_exists('mold_add_itinerary_meta_box')) {
             'mold_itinerary_meta_box',
             esc_html__('Trip Itinerary', 'mold-tour'),
             'mold_itinerary_meta_box_content',
-            'product',
+            ['product', 'tour'],
             'normal',
             'high'
         );
@@ -25,7 +25,7 @@ if (!function_exists('mold_itinerary_meta_box_content')) {
     function mold_itinerary_meta_box_content($post) {
         // Add nonce for security
         wp_nonce_field('mold_itinerary_meta_box', 'mold_itinerary_nonce');
-        
+
         $mold_itinerary_options = array(
             'title' => get_post_meta($post->ID, 'mold_itinerary_title', true),
             'content' => get_post_meta($post->ID, 'mold_itinerary_content', true),
@@ -107,37 +107,28 @@ if (!function_exists('mold_itinerary_meta_box_content')) {
                                     $i = $i + 1;
                                 }
                             else: ?>
-                                <div class="form-field" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; background: #f9f9f9;">
-                                    <div class="formicon" data-icon-id="0"><i class="no-icon icon" id="formicon0"></i> <?php esc_html_e('Select Icon', 'mold-tour'); ?></div>
+                                <div class="form-field">
+                                    <div class="formicon" data-icon-id="0"><i class="no-icon icon" id="formicon0"></i></div>
                                     <input type="hidden" name="itineraryformicon0" id="formicon_hidden0" value="" />
-                                    
-                                    <p><strong><?php esc_html_e('Day', 'mold-tour'); ?>:</strong>
                                     <input type="text" class="input-day widefat" name="itineraryformday0" value="" placeholder="<?php esc_attr_e('e.g., Day 1', 'mold-tour'); ?>" />
-                                    </p>
-                                    
-                                    <p><strong><?php esc_html_e('Title', 'mold-tour'); ?>:</strong>
+
                                     <textarea class="input-title widefat" name="itineraryformtitle0" placeholder="<?php esc_attr_e('Itinerary title', 'mold-tour'); ?>" style="height: 60px;"></textarea>
-                                    </p>
-                                    
-                                    <p><strong><?php esc_html_e('Description', 'mold-tour'); ?>:</strong>
+
                                     <?php
                                     $editor_id = 'itineraryformvalue0';
                                     $setting = array(
                                         'media_buttons' => false,
                                         'quicktags'     => true,
                                         'teeny'     => true,
-                                        'editor_height' => 200,
-                                        'textarea_rows' => 10,
-                                        'editor_css' => '<style>.wp-editor-container{border: 1px solid #ddd;}</style>',
+                                        'textarea_rows' => 3,
                                         'tinymce' => array(
                                             'toolbar1' => 'bullist,bold,italic,link,unlink'
                                         ),
                                     );
                                     wp_editor('', $editor_id, $setting);
                                     ?>
-                                    </p>
-                                    
-                                    <button type="button" class="button btn-delete" style="background: #dc3232; color: white; border-color: #dc3232; margin-top: 10px;"><?php esc_html_e('Remove', 'mold-tour'); ?></button>
+
+                                    <button type="button" class="btn-delete" title="<?php esc_attr_e('Remove', 'mold-tour'); ?>"></button>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -184,24 +175,24 @@ if (!function_exists('mold_save_itinerary_meta_box')) {
         // Check user permissions
         if (!current_user_can('edit_post', $post_id)) {
             return;
-        }        
+        }
         // Save basic fields
         if (isset($_POST['mold_trip_itinerary_title'])) {
             update_post_meta($post_id, 'mold_trip_itinerary_title', sanitize_text_field($_POST['mold_trip_itinerary_title']));
         }
 
-        
+
         // Save itinerary items
         if (isset($_POST['itinerary-form-count'])) {
             $form_count = intval($_POST['itinerary-form-count']);
             $itinerarytempArray = array();
-            
+
             for ($i = 0; $i <= $form_count; $i++) {
                 $form_icon = isset($_POST['itineraryformicon' . $i]) ? sanitize_text_field($_POST['itineraryformicon' . $i]) : '';
                 $form_day = isset($_POST['itineraryformday' . $i]) ? sanitize_text_field($_POST['itineraryformday' . $i]) : '';
                 $form_title = isset($_POST['itineraryformtitle' . $i]) ? sanitize_textarea_field($_POST['itineraryformtitle' . $i]) : '';
                 $form_value = isset($_POST['itineraryformvalue' . $i]) ? wp_kses_post($_POST['itineraryformvalue' . $i]) : '';
-                
+
                 if (!empty($form_day) || !empty($form_title) || !empty($form_value)) {
                     $itinerarytempArray[$i] = array(
                         "icon" => $form_icon,
@@ -211,7 +202,7 @@ if (!function_exists('mold_save_itinerary_meta_box')) {
                     );
                 }
             }
-            
+
             update_post_meta($post_id, 'mold_itinerary_field', $itinerarytempArray);
         }
     }

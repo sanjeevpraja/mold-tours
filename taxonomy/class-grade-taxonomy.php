@@ -112,20 +112,20 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 				'show_tagcloud'     => true,
 				'query_var'         => true,
 				'rewrite'           => array( 'slug' => 'grade' ),
-			
+
 				//Add REST support for Gutenberg
 				'show_in_rest'      => true,
 				'rest_base'         => 'product-grades',
 				'rest_controller_class' => 'WP_REST_Terms_Controller',
-			
+
 				//Keep meta_box_cb for classic editor only
 				'meta_box_cb'       => array( $this, 'grade_meta_box' ),
-			
+
 				//Clean and ready
 				'capabilities'      => array(),
 			);
-			
-			register_taxonomy( 'grade', array( 'product' ), $args );
+
+			register_taxonomy( 'grade', array( 'product', 'tour' ), $args );
 		}
 
 
@@ -288,30 +288,57 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 		 */
 		public function mold_grade_add_script() { ?>
 		<script>
-			jQuery(document).ready( function($) {
-				function ct_media_upload(button_class) {
-					var _custom_media = true,
-					_orig_send_attachment = wp.media.editor.send.attachment;
-					$('body').on('click', button_class, function(e) {
-						var button_id = '#'+$(this).attr('id');
-						var send_attachment_bkp = wp.media.editor.send.attachment;
-						var button = $(button_id);
-						wp.media.editor.send.attachment = function(props, attachment){
-							$('#grade-image-id').val(attachment.id);
-							$('#grade-image-wrapper').html('<img class="custom_media_image" src="" style="max-height:100px;" />');
-							$('#grade-image-wrapper .custom_media_image').attr('src',attachment.sizes.thumbnail.url).css('display','block');
-						}
-						wp.media.editor.open();
-						return false;
-					});
-				}
-				ct_media_upload('.grade_image_add.button'); 
-				$('body').on('click','.grade_imgae_remove',function(){
-					$('#grade-image-id').val('');
-					$('#grade-image-wrapper').html('<img class="custom_media_image" src="" />');
-				});
-			});
-		</script>
+jQuery(document).ready( function($) {
+    function ct_media_upload(button_class) {
+        $('body').on('click', button_class, function(e) {
+            e.preventDefault();
+
+            var button_id = '#'+$(this).attr('id');
+            var button = $(button_id);
+
+            // Check if wp.media is available
+            if (typeof wp === 'undefined' || typeof wp.media === 'undefined') {
+                console.error('WordPress media library is not available');
+                return false;
+            }
+
+            // Create media frame
+            var frame = wp.media({
+                title: 'Select or Upload Image',
+                library: {
+                    type: 'image'
+                },
+                button: {
+                    text: 'Use this image'
+                },
+                multiple: false
+            });
+            
+            // Handle image selection
+            frame.on('select', function() {
+                var attachment = frame.state().get('selection').first().toJSON();
+                $('#grade-image-id').val(attachment.id);
+                $('#grade-image-wrapper').html('<img class="custom_media_image" src="" style="max-height:100px;" />');
+                $('#grade-image-wrapper .custom_media_image').attr('src', attachment.sizes.thumbnail.url).css('display','block');
+            });
+            
+            // Open media frame
+            frame.open();
+            return false;
+        });
+    }
+    
+    // Initialize media upload for grade images
+    ct_media_upload('.grade_image_add.button'); 
+    
+    // Handle image removal - FIXED TYPO: was '.grade_imgae_remove'
+    $('body').on('click', '.grade_image_remove', function(e) {
+        e.preventDefault();
+        $('#grade-image-id').val('');
+        $('#grade-image-wrapper').html('<img class="custom_media_image" src="" />');
+    });
+});
+</script>
 		<?php }
 
 
