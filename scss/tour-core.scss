@@ -137,3 +137,12 @@ $baseurl: '../img';
 }
 
 
+
+.mold-tour-gallery{
+	width: 100%;
+	.swiper-slide{
+		img{
+			width: 100%;
+		}
+	}
+}

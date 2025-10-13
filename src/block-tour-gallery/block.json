@@ -1,0 +1,10 @@
+{
+  "apiVersion": 2,
+  "name": "mold/tour-gallery",
+  "title": "Tour Gallery",
+  "category": "mold",
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./frontend.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style-index.css"
+}

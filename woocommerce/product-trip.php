@@ -54,9 +54,9 @@ if(!function_exists('mold_meta_box_product_layout')) {
                 'mold_slider_layout_box', 
                 esc_html__('Mold Slider Layout', 'mold-tour'), 
                 'mold_slider_layout_detail', 
-                'product', 
-                'side', 
-                'low' ); 
+                'product',
+                'side',
+                'low' );
         }
     }
     add_action( 'add_meta_boxes', 'mold_meta_box_product_layout' );

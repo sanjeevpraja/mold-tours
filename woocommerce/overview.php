@@ -32,14 +32,14 @@ if (!function_exists('mold_overview_meta_box_content')) {
         <div class="mold-overview-metabox">
         <div>
                         <h3><?php echo esc_html__('Overview Items', 'mold-tour'); ?></h3>
-                        
+
                         <?php
                         if (!function_exists('is_countable')) {
                             function is_countable($var) {
                                 return is_array($var) || $var instanceof Countable;
                             }
                         }
-                        
+
                         $overview = get_post_meta($post->ID, 'mold_trip_overview', true);
                         if (is_countable($overview)) {
                             $overview_count = count($overview);

@@ -1891,4 +1891,11 @@ ul.clean-ul .desc {
 .layout-aside .content-wrap > p:first-child {
   margin-top: 0;
 }
+
+.mold-tour-gallery {
+  width: 100%;
+}
+.mold-tour-gallery .swiper-slide img {
+  width: 100%;
+}
 /*# sourceMappingURL=tour-core.css.map */

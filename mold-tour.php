@@ -138,7 +138,9 @@ function wp_mold_tour_register_block() {
 	$options = get_option('wp_mold_tour_blocks_settings');
 	$blocks = [
 			'block-overview',
-			'block-member-meta'
+			'block-member-meta',
+			'block-tour-meta',
+			'block-tour-gallery'
 	];
 
 	foreach ($blocks as $block) {

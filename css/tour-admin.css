@@ -409,7 +409,9 @@ ul.wc-tabs .mold-cost-book > a::before {
   content: "\f174" !important;
 }
 
-.mold-cost-book.hide-if-simple, .mold-overview.hide-if-simple, .mold-itenary.hide-if-simple {
+.mold-cost-book.hide-if-simple,
+.mold-overview.hide-if-simple,
+.mold-itenary.hide-if-simple {
   display: none;
 }
 
@@ -549,5 +551,44 @@ ul.wc-tabs .mold-cost-book > a::before {
 }
 .iconlist li:hover {
   color: #5bc0de;
+}
+
+/******************/
+#tour_images_container ul.product_images {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#tour_images_container ul.product_images li.image {
+  float: left;
+  margin: 0 5px 5px 0;
+  width: 80px;
+  position: relative;
+}
+
+#tour_images_container ul.product_images li.image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#tour_images_container ul.actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+}
+
+#tour_images_container ul.product_images li.image:hover ul.actions {
+  display: block;
+}
+
+#tour_images_container ul.actions a.delete {
+  color: #fff;
+  background: #d63638;
+  padding: 0 5px;
+  border-radius: 50%;
+  text-decoration: none;
 }
 /*# sourceMappingURL=tour-admin.css.map */

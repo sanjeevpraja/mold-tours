@@ -1,0 +1,23 @@
+{
+  "apiVersion": 2,
+  "name": "mold/tour-meta",
+  "title": "Tour Meta",
+  "category": "mold",
+  "supports": {
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "typography": {
+      "fontSize": true,
+      "fontFamily": true,
+      "fontWeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalFontWeight": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./frontend.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style-index.css"
+}
