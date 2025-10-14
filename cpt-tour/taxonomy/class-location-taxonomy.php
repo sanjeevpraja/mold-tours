@@ -16,7 +16,7 @@ if ( ! class_exists( 'Mold_Location' ) ) {
 			add_action( 'created_location', array ( $this, 'mold_save_location_image' ), 10, 1);
 			add_action( 'location_edit_form_fields', array ( $this, 'mold_update_location_image' ), 10, 2);
 			add_action( 'edited_location', array ( $this, 'mold_edit_location_image' ), 10, 1);
-			
+
 
 			add_action( 'location_add_form_fields', array ( $this, 'mold_add_map_image' ));
 			add_action( 'created_location', array ( $this, 'mold_save_map_image' ), 10, 1 );
@@ -67,7 +67,7 @@ if ( ! class_exists( 'Mold_Location' ) ) {
 					'capabilities'      => array(),
 				);
 				
-				register_taxonomy( 'location', array( 'product' ), $args );
+				register_taxonomy( 'location', array( 'product', 'tour' ), $args );
 		}
 
 

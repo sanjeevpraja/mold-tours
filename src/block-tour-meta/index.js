@@ -52,7 +52,8 @@ registerBlockType('mold/tour-meta', {
             { label: __('Date', 'wp-mold'), value: 'tour_date' },
             { label: __('Days', 'wp-mold'), value: 'tour_days' },
             { label: __('Nights', 'wp-mold'), value: 'tour_nights' },
-            { label: __('Price', 'wp-mold'), value: 'tour_price' }
+            { label: __('Price', 'wp-mold'), value: 'tour_price' },
+            { label: __('Grade Icon', 'wp-mold'), value: 'tour_grade_icon' }
         ];
 
         // Get the current post's meta data based on selected metaKey
@@ -135,13 +136,11 @@ registerBlockType('mold/tour-meta', {
                                 );
                             default:
                                 return (
-                                    <div className='wp-mold-member-meta' {...blockProps}>
-                                        <htmlTag className="wp-mold-member-meta-info">
+                                    <div className="wp-mold-member-meta" >
+                                        <htmlTag className="wp-mold-member-meta-info" {...blockProps}>
                                             {displayContent}
                                         </htmlTag>
-                                        <div>
-                                            <small>{__('Meta key:', 'wp-mold')} <code>_{metaKey}</code></small>
-                                        </div>
+                                        <small style={{ fontSize: '9px' }}>{__('Meta:', 'wp-mold')} <code>_{metaKey}</code></small>
                                     </div>
                                 );
                         }

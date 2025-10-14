@@ -13,7 +13,7 @@ if (!function_exists('mold_add_overview_meta_box')) {
             'mold_overview_meta_box',
             esc_html__('Trip Overview', 'mold-tour'),
             'mold_overview_meta_box_content',
-            'product',
+            'tour',
             'normal',
             'high'
         );
@@ -82,16 +82,10 @@ if (!function_exists('mold_overview_meta_box_content')) {
                                 }
                             else: ?>
                                 <div class="form-field">
-                                    <div class="formicon" data-icon-id="0"><i class="no-icon icon" id="formicon0"></i> <?php esc_html_e('Select Icon', 'mold-tour'); ?></div>
+                                    <div class="formicon" data-icon-id="0" title="<?php esc_attr_e('Select Icon', 'mold-tour'); ?>"><i class="no-icon icon" id="formicon0"></i></div>
                                     <input type="hidden" name="formicon0" id="formicon_hidden0" value="" />
-
-                                    <p><strong><?php esc_html_e('Title', 'mold-tour'); ?>:</strong>
                                     <input type="text" name="formtitle0" value="" class="widefat" placeholder="<?php esc_attr_e('e.g., Duration', 'mold-tour'); ?>" />
-                                    </p>
-
-                                    <p><strong><?php esc_html_e('Value', 'mold-tour'); ?>:</strong>
                                     <input type="text" name="formvalue0" value="" class="widefat" placeholder="<?php esc_attr_e('e.g., 5 Days', 'mold-tour'); ?>" />
-                                    </p>
 
                                     <button type="button" class=" btn-delete" title="<?php esc_attr_e('Remove Item', 'mold-tour'); ?>"></button>
                                 </div>
@@ -117,7 +111,7 @@ if (!function_exists('mold_overview_meta_box_content')) {
 
                     </div>
         </div>
-        
+
         <?php
     }
 }
@@ -131,29 +125,24 @@ if (!function_exists('mold_save_overview_meta_box')) {
         if (!isset($_POST['mold_overview_nonce']) || !wp_verify_nonce($_POST['mold_overview_nonce'], 'mold_overview_meta_box')) {
             return;
         }
-        
+
         // Check if this is an autosave
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
             return;
-        }
-        
+        }    
         // Check user permissions
         if (!current_user_can('edit_post', $post_id)) {
             return;
         }
-        
 
-        
         // Save overview items
         if (isset($_POST['form-count'])) {
             $form_count = intval($_POST['form-count']);
             $tempArray = array();
-            
             for ($i = 0; $i <= $form_count; $i++) {
                 $form_icon = isset($_POST['formicon' . $i]) ? sanitize_text_field($_POST['formicon' . $i]) : '';
                 $form_title = isset($_POST['formtitle' . $i]) ? sanitize_text_field($_POST['formtitle' . $i]) : '';
                 $form_value = isset($_POST['formvalue' . $i]) ? sanitize_text_field($_POST['formvalue' . $i]) : '';
-                
                 if (!empty($form_title) || !empty($form_value)) {
                     $tempArray[$i] = array(
                         "icon" => $form_icon,
@@ -162,7 +151,6 @@ if (!function_exists('mold_save_overview_meta_box')) {
                     );
                 }
             }
-            
             update_post_meta($post_id, 'mold_trip_overview', $tempArray);
         }
     
@@ -173,82 +161,4 @@ if (!function_exists('mold_save_overview_meta_box')) {
         }
     }
     add_action('save_post_product', 'mold_save_overview_meta_box');
-}
-
-
-/* Front End - Keep this part the same */
-
-if (!function_exists('mold_rename_tab_overview')) {
-    /* Save Overview tab to description if product not bookable */
-    function mold_rename_tab_overview($tabs) {
-        global $product, $post;
-        $is_mold_trip = get_post_meta($post->ID, 'is_mold_trip', true);
-        if ($post->post_content) {
-            if ($is_mold_trip ==  'on') {
-                $overview_title = get_post_meta($post->ID, 'mold_trip_overview_title', true);
-                if ($overview_title == '') {
-                    $overview_title = esc_html__('Overview', 'mold-tour');
-                }
-                $tabs['description']['title'] = $overview_title;/* Rename the description tab*/
-            } else {
-                $tabs['description']['title'] = esc_html__('Description', 'mold-tour');/* Rename the description tab*/
-            }
-
-            $tabs['description']['callback'] = 'mold_custom_description_tab_content';
-        }
-
-        return $tabs;
-    }
-    add_filter('woocommerce_product_tabs', 'mold_rename_tab_overview', 98);
-
-    function mold_custom_description_tab_content() {
-        global $post;
-        $mold_trip_overview = get_post_meta($post->ID, 'mold_trip_overview', true);
-        $array_filter_overview = $mold_trip_overview;
-        $is_mold_trip = get_post_meta($post->ID, 'is_mold_trip', true);
-        $grade = strip_tags(get_the_term_list($post->ID, 'grade', '', '', ''));
-        $mold_day = get_post_meta($post->ID, 'mold_tour_day', true);
-        $mold_night = get_post_meta($post->ID, 'mold_tour_night', true);
-        $mold_overview_icons_hide = get_post_meta($post->ID, 'mold_overview_icons_hide', true);
-        $mold_overview_side_pos = get_post_meta($post->ID, 'mold_overview_side_pos', true);
-        $mold_overview_side_content = get_post_meta($post->ID, 'mold_overview_side_content', true);
-
-        echo '<div class="row">';
-        if (isset($is_mold_trip) && $is_mold_trip = 'on') {
-            require 'overview-icons.php';
-                        the_content();
-        } else {
-            the_content();
-        }
-
-        echo '</div>';
-    }
-}
-
-// Make sure the overview-icons.php file exists and works correctly
-if (!function_exists('mold_display_overview_icons')) {
-    function mold_display_overview_icons() {
-        global $post;
-        $mold_trip_overview = get_post_meta($post->ID, 'mold_trip_overview', true);
-        
-        if (is_array($mold_trip_overview) && !empty($mold_trip_overview)) {
-            echo '<div class="overview-icons">';
-            foreach ($mold_trip_overview as $item) {
-                if (!empty($item['title']) || !empty($item['value'])) {
-                    echo '<div class="overview-item">';
-                    if (!empty($item['icon'])) {
-                        echo '<i class="' . esc_attr($item['icon']) . '"></i>';
-                    }
-                    if (!empty($item['title'])) {
-                        echo '<span class="overview-title">' . esc_html($item['title']) . '</span>';
-                    }
-                    if (!empty($item['value'])) {
-                        echo '<span class="overview-value">' . esc_html($item['value']) . '</span>';
-                    }
-                    echo '</div>';
-                }
-            }
-            echo '</div>';
-        }
-    }
 }

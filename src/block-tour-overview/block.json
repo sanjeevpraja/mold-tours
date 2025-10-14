@@ -1,7 +1,7 @@
 {
   "apiVersion": 2,
-  "name": "mold/overview",
-  "title": "Overview",
+  "name": "mold/tour-overview",
+  "title": "Tour Overview",
   "category": "mold",
   "editorScript": "file:./index.js",
   "viewScript": "file:./frontend.js",

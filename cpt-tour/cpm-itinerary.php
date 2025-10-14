@@ -10,7 +10,7 @@ if (!function_exists('mold_add_itinerary_meta_box')) {
             'mold_itinerary_meta_box',
             esc_html__('Trip Itinerary', 'mold-tour'),
             'mold_itinerary_meta_box_content',
-            ['product', 'tour'],
+            ['tour'],
             'normal',
             'high'
         );
@@ -207,44 +207,6 @@ if (!function_exists('mold_save_itinerary_meta_box')) {
         }
     }
     add_action('save_post_product', 'mold_save_itinerary_meta_box');
-}
-
-
-/*
-* Frontend display - Keep this part the same *
-*/
-
-if (!function_exists('mold_itinerary_woo_tab')) {
-    /*Add itenary tab to product detail on frontend*/
-    function mold_itinerary_woo_tab($tabs) {
-        global $post;
-        $is_mold_trip = get_post_meta($post->ID, 'is_mold_trip', true);
-        if ($is_mold_trip == 'on') {
-            $itinerary_title = get_post_meta($post->ID, 'mold_trip_itinerary_title', true);
-
-            if ($itinerary_title == "") {
-                $itinerary_title = esc_html__('Itinerary', 'mold-tour');
-            }
-            $tabs['itinerary'] = array(
-                'title'     => $itinerary_title,
-                'priority'  => 20,
-                'callback'  => 'mold_itinerary_woo_tab_content'
-            );
-
-            $mold_trip_itinerary_tab_hide = get_post_meta($post->ID, 'mold_trip_itinerary_tab_hide', true);
-            if ($mold_trip_itinerary_tab_hide != 'hide') {
-                return $tabs;
-            }
-        }
-    }
-    add_filter('woocommerce_product_tabs', 'mold_itinerary_woo_tab');
-
-    function mold_itinerary_woo_tab_content() {
-        global $post;
-        $mold_itinerary_field = get_post_meta($post->ID, 'mold_itinerary_field', true);
-
-        mold_itinerary_steps($mold_itinerary_field);
-    }
 }
 
 // Helper function for frontend display (make sure this exists)

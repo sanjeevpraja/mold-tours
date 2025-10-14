@@ -3,8 +3,8 @@ const { useBlockProps, InspectorControls } = wp.blockEditor;
 const { PanelBody, SelectControl } = wp.components;
 const { __ } = wp.i18n;
 
-registerBlockType('mold/overview', {
-    title: __('Trip Overview', 'mold-tour'),
+registerBlockType('mold/tour-overview', {
+    title: __('Tour Overview', 'mold-tour'),
     description: __('Display trip overview information including category, location, grade, and custom overview items.', 'mold-tour'),
     icon: 'location',
     category: 'mold-tour',
@@ -27,7 +27,7 @@ registerBlockType('mold/overview', {
 
     edit: function(props) {
         const blockProps = useBlockProps();
-        
+
         return (
             <>
                 <InspectorControls>

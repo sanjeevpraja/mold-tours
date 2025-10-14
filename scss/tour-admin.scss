@@ -221,41 +221,47 @@ ul.wc-tabs .mold-cost-book>a::before {
 }
 
 
+
 /******************/
-#tour_images_container ul.product_images {
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
+#tour_images_container {
+	ul.product_images {
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
 
-#tour_images_container ul.product_images li.image {
-	float: left;
-	margin: 0 5px 5px 0;
-	width: 80px;
-	position: relative;
-}
+	ul.product_images li.image {
+		position: relative;
+		width: 70px;
+		height: 70px;
+	}
 
-#tour_images_container ul.product_images li.image img {
-	width: 100%;
-	height: auto;
-	display: block;
-}
+	ul.product_images li.image img {
+		width: 70px;
+		height: 70px;
+		display: block;
+	}
 
-#tour_images_container ul.actions {
-	position: absolute;
-	top: 0;
-	right: 0;
-	display: none;
-}
+	ul.actions {
+		position: absolute;
+		top: 0;
+		right: 0;
+		display: none;
+	}
 
-#tour_images_container ul.product_images li.image:hover ul.actions {
-	display: block;
-}
+	ul.product_images li.image:hover ul.actions {
+		display: block;
+	}
 
-#tour_images_container ul.actions a.delete {
-	color: #fff;
-	background: #d63638;
-	padding: 0 5px;
-	border-radius: 50%;
-	text-decoration: none;
+	ul.actions a.delete {
+		color: #fff;
+		background: #d63638;
+		padding: 0 5px;
+		border-radius: 50%;
+		text-decoration: none;
+	}
+
 }
