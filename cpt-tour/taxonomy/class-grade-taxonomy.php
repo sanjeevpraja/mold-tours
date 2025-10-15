@@ -4,9 +4,9 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 		public function __construct() {
 			register_activation_hook( MOLD_TOUR_MAIN_FILE_URL ,array($this,'mold_activate'));
 			add_action( 'init', array ( $this, 'mold_grade_taxonomies') );
-			
+
 			// Add meta box for block editor compatibility
-			add_action( 'add_meta_boxes', array( $this, 'mold_add_grade_meta_box' ) );
+			add_action( 'add_meta_boxes_tour', array( $this, 'mold_add_grade_meta_box' ) );
 			add_action( 'save_post_tour', array ( $this,'mold_save_grade_meta_box') );
 
 			add_action( 'grade_add_form_fields', array ( $this, 'mold_add_grade_icon' ));
@@ -19,9 +19,11 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 			add_action( 'grade_edit_form_fields', array ( $this, 'mold_update_grade_image' ), 10, 2);
 			add_action( 'edited_grade', array ( $this, 'mold_edit_grade_image' ), 10, 1);
 			add_action( 'admin_footer', array ( $this, 'mold_grade_add_script' ));
+		
 
 			// Enqueue admin styles
 			add_action( 'admin_enqueue_scripts', array( $this, 'mold_enqueue_admin_styles' ) );
+
 		}
 
 		public function mold_activate() {
@@ -109,16 +111,16 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 			$args = array(
 				'labels'            => $labels,
 				'public'            => true,
-				'show_in_nav_menus' => true,
+				'show_in_nav_menus' => false,
 				'show_ui'           => true,
 				'show_admin_column' => true,
-				'hierarchical'      => true,
-				'show_tagcloud'     => true,
-				'query_var'         => true,
+				'hierarchical'      => false,
+				'show_tagcloud'     => false,
+				'query_var'         => false,
 				'rewrite'           => array( 'slug' => 'grade' ),
 
 				// FSE/Block Editor support
-				'show_in_rest'      => false,
+				'show_in_rest'      => true,
 				'rest_base'         => 'grades',
 				'rest_controller_class' => 'WP_REST_Terms_Controller',
 
@@ -131,10 +133,13 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 			register_taxonomy( 'grade', array( 'tour' ), $args ); // Only for 'tour' CPT
 		}
 
+
+
 		/**
 		 * Add custom meta box for grade selection (Block Editor Compatible)
 		 */
 		public function mold_add_grade_meta_box() {
+    	remove_meta_box( 'tagsdiv-grade', 'tour', 'side' ); // For non-hierarchical ones
 			add_meta_box(
 				'mold-grade-selector',
 				esc_html__( 'Tour Grade', 'mold-tour' ),
@@ -187,6 +192,8 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 			echo '</div>';
 			echo '<p class="description">' . esc_html__( 'Select the difficulty grade for this tour', 'mold-tour' ) . '</p>';
 		}
+
+
 
 		/**
 		 * Save grade meta box data

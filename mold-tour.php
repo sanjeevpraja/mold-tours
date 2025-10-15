@@ -48,24 +48,11 @@ if (!function_exists('mold_load_tour_admin_styles')) {
 		wp_enqueue_style('mold-tour-admin', MOLD_TOUR_BASE_URL . 'css/tour-admin.css', array(), MOLD_TOUR_VERSION);
 
 		global $post;
-		if (is_object($post) && ($post->post_type == 'product' || $post->post_type == 'tour')) {
-			$is_mold_trip = get_post_meta($post->ID, 'is_mold_trip', true);
+		if (is_object($post) && ($post->post_type == 'tour')) {
 			wp_enqueue_script('productadmin', MOLD_TOUR_BASE_URL . 'js/productadmin.js', array('jquery'), array(), MOLD_TOUR_VERSION);
-			$bookable = array(
-				'bookable'      	=> $is_mold_trip, //used in admin.js
-			);
-			wp_localize_script('productadmin', 'trip', $bookable);
-
 			wp_enqueue_script('hideseek', MOLD_TOUR_BASE_URL . 'js/hideseek.js', array('jquery'), array(), MOLD_TOUR_VERSION);
 		}
 
-		wp_enqueue_style('deasil-iconfont', MOLD_TOUR_BASE_URL . 'font/iconfont/iconstyle.css', array(), MOLD_TOUR_VERSION);
-		wp_enqueue_style('deasil-icofont', MOLD_TOUR_BASE_URL . 'font/icofont/icofont.css', array(), MOLD_TOUR_VERSION);
-
-		wp_enqueue_script('deasil-datajson', MOLD_TOUR_BASE_URL . 'font/iconfont/data.json', array(), MOLD_TOUR_VERSION);
-		wp_localize_script('deasil-datajson', 'iconfont', array(
-			'pluginsUrl' =>  MOLD_TOUR_BASE_URL
-		));
 	}
 	add_action('admin_enqueue_scripts', 'mold_load_tour_admin_styles');
 }
@@ -80,10 +67,7 @@ if (!function_exists('mold_tour_enqueue_styles_scripts_plugin')) {
 		wp_enqueue_script('mold-tour', MOLD_TOUR_BASE_URL . 'js/tour.js', array('jquery'), array(), MOLD_TOUR_VERSION);
 		wp_enqueue_style('mold-tour-core', MOLD_TOUR_BASE_URL . 'css/tour-core.css', array(), MOLD_TOUR_VERSION);
 
-		wp_enqueue_style('deasil-iconfont-font', MOLD_TOUR_BASE_URL . 'font/iconfont/iconstyle.css', array(), MOLD_TOUR_VERSION);
-		wp_enqueue_style('deasil-icofont-font', MOLD_TOUR_BASE_URL . 'font/icofont/icofont.css', array(), MOLD_TOUR_VERSION);
-
-		// Flatpickr
+	 // Flatpickr
 		wp_enqueue_style('flatpickr-css', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css');
 		wp_enqueue_script('flatpickr-js', 'https://cdn.jsdelivr.net/npm/flatpickr', [], null, true);
 	}
@@ -99,7 +83,6 @@ function wp_mold_tour_register_block()
 	$blocks = [
 		'block-member-meta',
 		'block-tour-meta',
-		'block-tour-overview',
 		'block-tour-gallery'
 	];
 
@@ -113,16 +96,6 @@ function wp_mold_tour_register_block()
 		if (!defined($constant_name)) {
 			define($constant_name, $is_disabled);
 		}
-
-		// Skip mold-blocks-specific blocks if mold-blocks isn't active
-		$requires_wc = in_array($block, [
-			'block-tour-overview'
-		]);
-
-		if ($requires_wc && !wp_mold_tour_is_mold_block_active()) {
-			continue;
-		}
-
 
 		// Register the block if not disabled
 		if ($is_disabled !== '1') {
@@ -164,10 +137,6 @@ if (file_exists($tour_cpt_file)) {
 
 	require 'cpt-tour/cpm-fields.php';
 	require 'cpt-tour/cpt-gallery.php';
-	require 'cpt-tour/cpm-overview.php';
-	require 'cpt-tour/cpm-itinerary.php';
-
-
 
 	/**
 	 * Taxonomy
