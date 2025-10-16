@@ -588,4 +588,61 @@ ul.wc-tabs .mold-cost-book > a::before {
   border-radius: 50%;
   text-decoration: none;
 }
+
+.mold-grade-radio-container {
+  margin: 10px 0;
+}
+
+.mold-grade-option {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border: 1px solid #c3c4c7;
+  border-radius: 4px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mold-grade-option:hover {
+  background-color: #f0f0f1;
+  border-color: #007cba;
+}
+
+.mold-grade-option input[type=radio]:checked + * {
+  font-weight: 600;
+}
+
+.mold-grade-option input[type=radio]:checked ~ .grade-name {
+  font-weight: 600;
+  color: #007cba;
+}
+
+.mold-grade-option:has(input[type=radio]:checked) {
+  background-color: #f0f6fc;
+  border-color: #007cba;
+  box-shadow: 0 0 0 1px #007cba;
+}
+
+.grade-name {
+  margin-left: 5px;
+}
+
+/* Block editor specific styles */
+.block-editor-page .mold-grade-option {
+  border-color: #8c8f94;
+}
+
+.block-editor-page .mold-grade-option:hover {
+  background-color: #f0f0f0;
+  border-color: #007cba;
+}
+
+/* Term list table styles */
+.wp-list-table .column-grade_icon,
+.wp-list-table .column-grade_image {
+  width: 100px;
+  text-align: center;
+}
 /*# sourceMappingURL=tour-admin.css.map */

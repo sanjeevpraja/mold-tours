@@ -35,7 +35,7 @@ function tour_details_callback($post) {
             </tr>
             <tr>
                 <th scope="row"><label for="tour_price"><?php _e('Price', 'wp-mold'); ?></label></th>
-                <td><input type="text" id="tour_price" name="tour_price" value="<?php echo esc_attr($price); ?>" class="regular-text" /></td>
+                <td><input type="number" id="tour_price" name="tour_price" value="<?php echo esc_attr($price); ?>" class="regular-text" /></td>
             </tr>
         </tbody>
     </table>

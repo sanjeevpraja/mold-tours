@@ -2,13 +2,6 @@
 @use '../styles/_color';
 @use 'scss/_wp-mold-inline-banner';
 
-a.wp-mold-member-meta{
-    $height: 32px;
-    height: $height;
-    width: $height;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+.wp-mold-tour-meta-info{
+    margin: 0;
 }

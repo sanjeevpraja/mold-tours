@@ -9,20 +9,14 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 			add_action( 'add_meta_boxes_tour', array( $this, 'mold_add_grade_meta_box' ) );
 			add_action( 'save_post_tour', array ( $this,'mold_save_grade_meta_box') );
 
-			add_action( 'grade_add_form_fields', array ( $this, 'mold_add_grade_icon' ));
-			add_action( 'created_grade', array ( $this, 'mold_save_grade_icon' ), 10, 1 );
-			add_action( 'grade_edit_form_fields', array ( $this, 'mold_update_grade_icon' ), 10, 2);
-			add_action( 'edited_grade', array ( $this, 'mold_edit_grade_icon' ), 10, 1);
-
 			add_action( 'grade_add_form_fields', array ( $this, 'mold_add_grade_image' ), 10, 1);
 			add_action( 'created_grade', array ( $this, 'mold_save_grade_image' ) , 10, 1);
 			add_action( 'grade_edit_form_fields', array ( $this, 'mold_update_grade_image' ), 10, 2);
 			add_action( 'edited_grade', array ( $this, 'mold_edit_grade_image' ), 10, 1);
-			add_action( 'admin_footer', array ( $this, 'mold_grade_add_script' ));
-		
 
-			// Enqueue admin styles
-			add_action( 'admin_enqueue_scripts', array( $this, 'mold_enqueue_admin_styles' ) );
+			// Enqueue media scripts on taxonomy pages
+      add_action( 'admin_enqueue_scripts', array ( $this, 'mold_enqueue_media') );
+			add_action( 'admin_footer', array ( $this, 'mold_grade_add_script' ));
 
 		}
 
@@ -32,57 +26,52 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 				if( !term_exists( 'Easy', 'grade' ) ) {
 					$term = wp_insert_term(
 						'Easy',
-						'grade', 
+						'grade',
 						array(
 							'description'  => '',
 							'slug'          => 'easy'
 						)
 					);
-					add_term_meta($term['term_id'], 'grade-icon-id', 'icon-level-1');
 				}
 				if( !term_exists( 'Moderate', 'grade' ) ) {
 					$term = wp_insert_term(
 						'Moderate',
-						'grade', 
+						'grade',
 						array(
 							'description'  => '',
 							'slug'          => 'moderate'
 						)
 					);
-					add_term_meta($term['term_id'], 'grade-icon-id', 'icon-level-3');
 				}
 				if( !term_exists( 'Difficult', 'grade' ) ) {
 					$term = wp_insert_term(
 						'Difficult',
-						'grade', 
+						'grade',
 						array(
 							'description'  => '',
 							'slug'          => 'difficult'
 						)
 					);
-					add_term_meta($term['term_id'], 'grade-icon-id', 'icon-level-5');
 				}
 				if( !term_exists( 'Adventurous', 'grade' ) ) {
 					$term = wp_insert_term(
 						'Adventurous',
-						'grade', 
+						'grade',
 						array(
 							'description'  => '',
 							'slug'          => 'adventurous'
 						)
 					);
-					add_term_meta($term['term_id'], 'grade-icon-id', 'icon-level-8');
 				}
 				if( !term_exists( 'Challenging', 'grade' ) ) {
 					$term = wp_insert_term(
 						'Challenging',
-						'grade', 
+						'grade',
 						array(
 							'description'  => '',
 							'slug'          => 'Challenging'
 						)
 					);
-					add_term_meta($term['term_id'], 'grade-icon-id', 'icon-level-10');
 				}
 			}
 		}
@@ -111,12 +100,12 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 			$args = array(
 				'labels'            => $labels,
 				'public'            => true,
-				'show_in_nav_menus' => false,
+				'show_in_nav_menus' => true,
 				'show_ui'           => true,
 				'show_admin_column' => true,
 				'hierarchical'      => false,
 				'show_tagcloud'     => false,
-				'query_var'         => false,
+				'query_var'         => true,
 				'rewrite'           => array( 'slug' => 'grade' ),
 
 				// FSE/Block Editor support
@@ -171,24 +160,21 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 			
 			if ( !empty( $terms ) && !is_wp_error( $terms ) ) {
 				foreach ( $terms as $term ) {
-					$icon = get_term_meta( $term->term_id, 'grade-icon-id', true );
-					$icon_html = $icon ? '<span class="' . esc_attr($icon) . '" style="margin-right: 8px;"></span>' : '';
-					
+		
 					printf(
 						'<label class="mold-grade-option">
 							<input type="radio" name="mold_selected_grade" value="%s" %s>
-							%s<span class="grade-name">%s</span>
+							<span class="grade-name">%s</span>
 						</label>',
 						esc_attr( $term->term_id ),
 						checked( $current_term_id, $term->term_id, false ),
-						$icon_html,
 						esc_html( $term->name )
 					);
 				}
 			} else {
 				echo '<p>' . esc_html__( 'No grades found. Please add some grades first.', 'mold-tour' ) . '</p>';
 			}
-			
+
 			echo '</div>';
 			echo '<p class="description">' . esc_html__( 'Select the difficulty grade for this tour', 'mold-tour' ) . '</p>';
 		}
@@ -233,164 +219,7 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 			}
 		}
 
-		/**
-		 * Enqueue admin styles
-		 */
-		public function mold_enqueue_admin_styles( $hook ) {
-			if ( ! in_array( $hook, array( 'post.php', 'post-new.php', 'edit-tags.php', 'term.php' ) ) ) {
-				return;
-			}
-			
-			$screen = get_current_screen();
-			if ( $screen && ( $screen->post_type === 'tour' || $screen->taxonomy === 'grade' ) ) {
-				wp_add_inline_style( 'wp-admin', $this->mold_get_admin_css() );
-			}
-		}
 
-		/**
-		 * Admin CSS for better styling
-		 */
-		private function mold_get_admin_css() {
-			return '
-			.mold-grade-radio-container {
-				margin: 10px 0;
-			}
-			
-			.mold-grade-option {
-				display: flex;
-				align-items: center;
-				padding: 10px 12px;
-				margin-bottom: 8px;
-				border: 1px solid #c3c4c7;
-				border-radius: 4px;
-				background: #fff;
-				cursor: pointer;
-				transition: all 0.2s ease;
-			}
-			
-			.mold-grade-option:hover {
-				background-color: #f0f0f1;
-				border-color: #007cba;
-			}
-			
-			.mold-grade-option input[type="radio"]:checked + * {
-				font-weight: 600;
-			}
-			
-			.mold-grade-option input[type="radio"]:checked ~ .grade-name {
-				font-weight: 600;
-				color: #007cba;
-			}
-			
-			.mold-grade-option:has(input[type="radio"]:checked) {
-				background-color: #f0f6fc;
-				border-color: #007cba;
-				box-shadow: 0 0 0 1px #007cba;
-			}
-			
-			.grade-name {
-				margin-left: 5px;
-			}
-			
-			/* Block editor specific styles */
-			.block-editor-page .mold-grade-option {
-				border-color: #8c8f94;
-			}
-			
-			.block-editor-page .mold-grade-option:hover {
-				background-color: #f0f0f0;
-				border-color: #007cba;
-			}
-			
-			/* Term list table styles */
-			.wp-list-table .column-grade_icon,
-			.wp-list-table .column-grade_image {
-				width: 100px;
-				text-align: center;
-			}
-			';
-		}
-
-		/***********************/
-		/* ICON FIELD METHODS */
-		/***********************/
-
-		/*
-		 * Add a icon field in the new Grade
-		 * @since 1.0.0
-		 */
-		 public function mold_add_grade_icon ( $taxonomy ) { ?>
-		 <div class="form-field term-group">
-		 	<label for="grade-icon-id"><?php esc_html_e('Icon', 'mold-tour'); ?></label>
-		 	<select id="grade-icon-id" name="grade-icon-id">
-		 		<option value="" selected>--</option>
-		 		<option value="icon-level-1">icon-level-1</option>
-		 		<option value="icon-level-2">icon-level-2</option>
-		 		<option value="icon-level-3">icon-level-3</option>
-		 		<option value="icon-level-4">icon-level-4</option>
-		 		<option value="icon-level-5">icon-level-5</option>
-		 		<option value="icon-level-6">icon-level-6</option>
-		 		<option value="icon-level-7">icon-level-7</option>
-		 		<option value="icon-level-8">icon-level-8</option>
-		 		<option value="icon-level-9">icon-level-9</option>
-		 		<option value="icon-level-10">icon-level-10</option>
-		 	</select>
-		 </div>
-		 <?php
-		}
-
-		/*
-		 * Save icon field
-		 * @since 1.0.0
-		 */
-		public function mold_save_grade_icon ( $term_id) {
-			if( isset( $_POST['grade-icon-id'] ) && '' !== $_POST['grade-icon-id'] ){
-				$grade_icon = sanitize_text_field( $_POST['grade-icon-id'] );
-				add_term_meta( $term_id, 'grade-icon-id', $grade_icon, true );
-			}
-		}
-
-		 /*
-		  * Edit icon field
-		  * @since 1.0.0
-		 */
-		 public function mold_update_grade_icon ( $term, $taxonomy ) { ?>
-		 <tr class="form-field term-group-wrap">
-		 	<th scope="row">
-		 		<label for="grade-icon-id"><?php esc_html_e( 'Icon', 'mold-tour' ); ?></label>
-		 	</th>
-		 	<td>
-		 		<?php $icon_id = get_term_meta ( $term -> term_id, 'grade-icon-id', true ); ?>
-		 		<select id="grade-icon-id" name="grade-icon-id">
-		 			<option value="" <?php selected( $icon_id, "" ); ?>>--</option>
-		 			<option value="icon-level-1" <?php selected( $icon_id, "icon-level-1" ); ?>>icon-level-1</option>
-		 			<option value="icon-level-2" <?php selected( $icon_id, "icon-level-2" ); ?>>icon-level-2</option>
-		 			<option value="icon-level-3" <?php selected( $icon_id, "icon-level-3" ); ?>>icon-level-3</option>
-		 			<option value="icon-level-4" <?php selected( $icon_id, "icon-level-4" ); ?>>icon-level-4</option>
-		 			<option value="icon-level-5" <?php selected( $icon_id, "icon-level-5" ); ?>>icon-level-5</option>
-		 			<option value="icon-level-6" <?php selected( $icon_id, "icon-level-6" ); ?>>icon-level-6</option>
-		 			<option value="icon-level-7" <?php selected( $icon_id, "icon-level-7" ); ?>>icon-level-7</option>
-		 			<option value="icon-level-8" <?php selected( $icon_id, "icon-level-8" ); ?>>icon-level-8</option>
-		 			<option value="icon-level-9" <?php selected( $icon_id, "icon-level-9" ); ?>>icon-level-9</option>
-		 			<option value="icon-level-10" <?php selected( $icon_id, "icon-level-10" ); ?>>icon-level-10</option>
-		 		</select>
-		 	</td>
-		 </tr>
-		 <?php
-		}
-
-		/*
-		 * Edit icon field value
-		 * @since 1.0.0
-		 */
-		public function mold_edit_grade_icon ( $term_id) {
-			if( isset( $_POST['grade-icon-id'] ) && '' !== $_POST['grade-icon-id'] ){
-				$grade_icon = sanitize_text_field( $_POST['grade-icon-id'] );
-				update_term_meta ( $term_id, 'grade-icon-id', $grade_icon );
-			} else {
-				update_term_meta ( $term_id, 'grade-icon-id', '' );
-			}
-		}
 
 		/***********************/
 		/* IMAGE FIELD METHODS */
@@ -462,6 +291,18 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 				update_term_meta ( $term_id, 'grade-image-id', '' );
 			}
 		}
+
+
+		
+		  /**
+         * Enqueue media scripts for taxonomy pages
+         */
+        public function mold_enqueue_media() {
+            $screen = get_current_screen();
+            if ( $screen && $screen->taxonomy === 'grade' ) {
+                wp_enqueue_media();
+            }
+        }
 
 		/*
 		 * Add script for image
@@ -535,7 +376,6 @@ if ( ! class_exists( 'Mold_Grade' ) ) {
 /*adding icon column to term list*/
 add_filter('manage_edit-grade_columns', 'mold_add_grade_icon_column' );
 function mold_add_grade_icon_column( $columns ){
-	$columns['grade_icon'] = esc_html__( 'Icon', 'mold-tour' );
 	$columns['grade_image'] = esc_html__( 'Image', 'mold-tour' );
 	return $columns;
 }
@@ -543,18 +383,9 @@ function mold_add_grade_icon_column( $columns ){
 add_filter('manage_grade_custom_column', 'mold_add_grade_icon_column_content', 10, 3 );
 function mold_add_grade_icon_column_content( $content, $column_name, $term_id ){
 	$term_id = absint( $term_id );
-	$grade_icon = get_term_meta( $term_id, 'grade-icon-id', true );
 	$grade_image = get_term_meta( $term_id, 'grade-image-id', true );
 
 	switch( $column_name ){
-		case 'grade_icon' :
-			if($grade_icon != ''){
-				echo '<span class="' . esc_attr($grade_icon) . '" style="font-size: 30px;"></span>';
-			}
-			else{
-				echo '--';
-			}
-			break;
 		case 'grade_image' :
 			if ( $grade_image ) {
 				$grade_img_url = wp_get_attachment_image_src ( $grade_image, 'thumbnail' );
@@ -564,5 +395,5 @@ function mold_add_grade_icon_column_content( $content, $column_name, $term_id ){
 				echo '--';
 			}
 			break;
-	}	
+	}
 }
