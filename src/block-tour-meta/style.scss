@@ -4,4 +4,8 @@
 
 .wp-mold-tour-meta-info{
     margin: 0;
+    &.meta-original-price{
+        text-decoration: line-through;
+        opacity: 0.7;
+    }
 }

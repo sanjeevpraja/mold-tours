@@ -53,6 +53,7 @@ registerBlockType('mold/tour-meta', {
             { label: __('Days', 'wp-mold'), value: 'tour_days' },
             { label: __('Nights', 'wp-mold'), value: 'tour_nights' },
             { label: __('Price', 'wp-mold'), value: 'tour_price' },
+            { label: __('Original Price', 'wp-mold'), value: 'tour_original_price' },
             { label: __('Grade Icon', 'wp-mold'), value: 'tour_grade_icon' }
         ];
 

@@ -21,6 +21,8 @@ function tour_details_callback($post) {
     $days = get_post_meta($post->ID, '_tour_days', true);
     $nights = get_post_meta($post->ID, '_tour_nights', true);
     $price = get_post_meta($post->ID, '_tour_price', true);
+    $original_price = get_post_meta($post->ID, '_tour_original_price', true);
+
 
     ?>
     <table class="form-table" role="presentation">
@@ -36,6 +38,10 @@ function tour_details_callback($post) {
             <tr>
                 <th scope="row"><label for="tour_price"><?php _e('Price', 'wp-mold'); ?></label></th>
                 <td><input type="number" id="tour_price" name="tour_price" value="<?php echo esc_attr($price); ?>" class="regular-text" /></td>
+            </tr>
+            <tr>
+                <th scope="row"><label for="tour_original_price" style="text-decoration: line-through;"><?php _e('Original Price', 'wp-mold'); ?></label></th>
+                <td><input type="number" id="tour_original_price" name="tour_original_price" value="<?php echo esc_attr($original_price); ?>" class="regular-text" /></td>
             </tr>
         </tbody>
     </table>
@@ -69,6 +75,7 @@ function save_tour_meta_box_data($post_id) {
         'tour_days' => '_tour_days',
         'tour_nights' => '_tour_nights',
         'tour_price' => '_tour_price',
+        'tour_original_price' => '_tour_original_price',
     );
 
     foreach ($fields as $field => $meta_key) {
@@ -93,6 +100,7 @@ function display_tour_info($post_id = null) {
         'days' => __('Days', 'wp-mold'),
         'nights' => __('Nights', 'wp-mold'),
         'price' => __('Price', 'wp-mold'),
+        'original_price' => __('Original Price', 'wp-mold'),
     );
 
     echo '<div class="cpt-info">';
@@ -120,6 +128,7 @@ function register_tour_meta_fields() {
         'days',
         'nights',
         'price',
+        'original_price',
     );
 
     foreach ($fields as $field_name) {
@@ -171,6 +180,9 @@ function tour_custom_columns($column, $post_id) {
             break;
         case 'price':
             echo esc_html(get_post_meta($post_id, '_tour_price', true));
+            break;
+        case 'original_price':
+            echo esc_html(get_post_meta($post_id, '_tour_original_price', true));
             break;
     }
 }

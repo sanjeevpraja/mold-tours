@@ -135,20 +135,24 @@ $tour_cpt_file = plugin_dir_path(__FILE__) . 'cpt-tour/cpt-tour.php';
 if (file_exists($tour_cpt_file)) {
 	require_once $tour_cpt_file;
 
-	require 'cpt-tour/cpm-fields.php';
-	require 'cpt-tour/cpt-gallery.php';
+	/**
+	 * Tour Setting
+	 */
+	require_once 'cpt-tour/tour-setting.php';
+	require_once 'cpt-tour/cpm-fields.php';
+	require_once 'cpt-tour/cpt-gallery.php';
 
 	/**
 	 * Taxonomy
 	 */
-	require 'cpt-tour/taxonomy/class-grade-taxonomy.php';
-	require 'cpt-tour/taxonomy/class-location-taxonomy.php';
+	require_once 'cpt-tour/taxonomy/class-grade-taxonomy.php';
+	require_once 'cpt-tour/taxonomy/class-location-taxonomy.php';
 
 
 	/**
 	 * Widget
 	 */
-	require 'cpt-tour/widget/grade-widget.php';
-	require 'cpt-tour/widget/location-widget.php';
-	require 'cpt-tour/widget/searc-tour-widget.php';
+	require_once 'cpt-tour/widget/grade-widget.php';
+	require_once 'cpt-tour/widget/location-widget.php';
+	require_once 'cpt-tour/widget/searc-tour-widget.php';
 }

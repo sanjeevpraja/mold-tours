@@ -4,8 +4,13 @@
 function callback_block_tour_meta($attributes, $content, $block)
 {
     $html_tag = !empty($attributes['htmlTag']) ? $attributes['htmlTag'] : 'p';
-    $fallback = !empty($attributes['fallback']) ? $attributes['fallback'] : '--';
+    $fallback = !empty($attributes['fallback']) ? $attributes['fallback'] : '';
     $meta_key = !empty($attributes['metaKey']) ? $attributes['metaKey'] : 'tour_days';
+
+    $currency   = get_option('tour_currency', 'USD');
+    $thousand   = get_option('tour_thousand_separator', '');
+    $decimal    = get_option('tour_decimal_separator', '');
+    $decimals   = (int) get_option('tour_number_of_decimals', 2);
 
     // Get the current post ID
     $post_id = get_the_ID();
@@ -40,8 +45,17 @@ function callback_block_tour_meta($attributes, $content, $block)
     switch ($meta_key) {
         case 'tour_price':
             // Format price with currency symbol if it's a numeric value
-            if (is_numeric($display_content)) {
-                $display_content = '$' . number_format($display_content, 2);
+            if (is_numeric($display_content) && $display_content != '' && $display_content != 'N/A') {
+                $display_content = $currency . ' ' . number_format($display_content, $decimals, $decimal, $thousand);
+            } else {
+                $display_content = $fallback;
+            }
+            break;
+        case 'tour_original_price':
+            if (is_numeric($display_content) && $display_content != '' && $display_content != 'N/A') {
+                $display_content =  number_format($display_content, $decimals, $decimal, $thousand);
+            } else {
+                $display_content = $fallback;
             }
             break;
 
@@ -67,7 +81,7 @@ function callback_block_tour_meta($attributes, $content, $block)
             }
             break;
 
-        case 'tour_grade_icon':
+        case 'tour_grade_img':
             // Format date if it's a valid date string
             if (!empty($terms)) {
                 foreach ($terms as $term) {
@@ -79,19 +93,26 @@ function callback_block_tour_meta($attributes, $content, $block)
             break;
     }
 
-    if ($meta_key == 'tour_grade_icon') {
+    if ($meta_key == 'tour_grade_img') {
         $output = sprintf(
-        '<span class="%1$s"></span>',
-        esc_attr($display_content)
-    );
+            '<img src="%1$s" alt="%2$s" class="%3$s">',
+            esc_attr($display_content)
+        );
     }
-    else{
-// For all tour meta fields (they're all text fields)
-    $output = sprintf(
-        '<%1$s class="wp-mold-tour-meta-info">%2$s</%1$s>',
-        $html_tag,
-        esc_html($display_content)
-    );
+    elseif ($meta_key == 'tour_original_price') {
+        $output = sprintf(
+            '<%1$s class="wp-mold-tour-meta-info meta-original-price">%2$s</%1$s>',
+            $html_tag,
+            $display_content
+        );
+    }
+    else {
+        // For all tour meta fields (they're all text fields)
+        $output = sprintf(
+            '<%1$s class="wp-mold-tour-meta-info">%2$s</%1$s>',
+            $html_tag,
+            esc_html($display_content)
+        );
     }
 
     // Add debug info in admin or when WP_DEBUG is true
