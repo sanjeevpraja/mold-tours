@@ -83,7 +83,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"fontSize":"small","layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group has-small-font-size"><!-- wp:mold/tour-meta {"fallback":"N/A","metaKey":"tour_price","fontSize":"x-large"} /-->
 
-<!-- wp:mold/tour-meta {"fallback":"N/A","metaKey":"tour_original_price","fontSize":"large"} /--></div>
+<!-- wp:mold/tour-meta {"fallback":"","metaKey":"tour_original_price","fontSize":"large"} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
@@ -104,17 +104,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <hr class="wp-block-separator has-text-color has-grey-100-color has-alpha-channel-opacity has-grey-100-background-color has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--60)"/>
 <!-- /wp:separator -->
 
-<!-- wp:mold/tab {"activeTabColor":"#508c14","tabGap":10,"borderRadius":10,"headerStyles":{"fontFamily":"","fontSize":"","textColor":"#333333","padding":{"inline":"30px","block":"16px"},"fontWeight":"bold"}} -->
-<div class="wp-block-mold-tab tab-container tab-style-default" data-active-tab="0" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#333333;--tab-header-background-color:inherit;--tab-header-gap:10px;--tab-header-padding:16px 30px;--tab-header-border-radius:10px;--tab-header-border-width:1px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#FFFFFF;--tab-header-active-tab-background-color:#508c14;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#333333;--tab-content-background-color:#ffffff;--tab-content-padding:10px 15px;--tab-content-border-radius:10px;--tab-content-border-width:1px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Overview"} -->
-<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Overview" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|80"},"margin":{"top":"var:preset|spacing|40"}}}} -->
-<div class="wp-block-columns" style="margin-top:var(--wp--preset--spacing--40)"><!-- wp:column {"width":"66.66%"} -->
-<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:mold/text-column {"bigFirstLetter":true} -->
-<div class="wp-block-mold-text-column mold-text-column big-first-letter" style="--columnCount:2"><p>Explore the thrill of mountain climbing with our guided tour designed for all skill levels. This adventure takes you through stunning landscapes, challenging yet rewarding climbs, and breathtaking views. Our expert guides ensure safety and share tips to help you enjoy every step. Whether youa beginner or looking to improve, this tour offers the perfect mix of excitement and learning. Experience the beauty of nature, test your limits, and create unforgettable memories. Suitable gear and instructions are provided. Join us for a safe, fun, and inspiring mountain climbing journey!</p></div>
-<!-- /wp:mold/text-column --></div>
-<!-- /wp:column -->
-
-<!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"constrained"}} -->
+<!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"grid"}} -->
 <div class="wp-block-group"><!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"speed","iconSize":40} -->
 <div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">speed</span></div>
@@ -202,21 +192,35 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div>
+<!-- /wp:group -->
+
+<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|60"}}},"backgroundColor":"grey-100"} -->
+<hr class="wp-block-separator has-text-color has-grey-100-color has-alpha-channel-opacity has-grey-100-background-color has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--60)"/>
+<!-- /wp:separator -->
+
+<!-- wp:columns -->
+<div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
+<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:mold/tab {"activeTabColor":"#508c14","tabGap":10,"borderRadius":10,"headerStyles":{"fontFamily":"","fontSize":"","textColor":"#333333","padding":{"inline":"30px","block":"16px"},"fontWeight":"bold"}} -->
+<div class="wp-block-mold-tab tab-container tab-style-default" data-active-tab="0" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#333333;--tab-header-background-color:inherit;--tab-header-gap:10px;--tab-header-padding:16px 30px;--tab-header-border-radius:10px;--tab-header-border-width:1px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#FFFFFF;--tab-header-active-tab-background-color:#508c14;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#333333;--tab-content-background-color:#ffffff;--tab-content-padding:10px 15px;--tab-content-border-radius:10px;--tab-content-border-width:1px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Overview"} -->
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Overview" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:paragraph {"placeholder":"Add tab content here..."} -->
+<p class="">Explore the thrill of mountain climbing with our guided tour designed for all skill levels. This adventure takes you through stunning landscapes, challenging yet rewarding climbs, and breathtaking views. Our expert guides ensure safety and share tips to help you enjoy every step. Whether youa beginner or looking to improve, this tour offers the perfect mix of excitement and learning. Experience the beauty of nature, test your limits, and create unforgettable memories. Suitable gear and instructions are provided. Join us for a safe, fun, and inspiring mountain climbing journey!</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:mold/tab-item -->
 
 <!-- wp:mold/tab-item {"title":"Itinineary"} -->
-<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Itinineary" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:mold/step {"stepType":"icon","listItems":[{"text":"Test","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#f2f2f2","iconBgColor":"#121212","icon":"add_card"},{"text":"Test 2","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"add_task"},{"text":"Test 3","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"add_shopping_cart"}]} -->
-<div class="wp-block-mold-step" data-animation-interval="2500" style="--head-color:#333333;--body-color:#333333;--track-color:#dddddd;--active-color:;--step-size:60px;--track-width:2px;padding:10px"><ul class="wp-mold-step" data-animation="false"><li class="wp-mold-step-li active animation-false" data-attr="list-1"><div class="step-index list-1 active" style="background: #121212; color: #f2f2f2"><span class="material-symbols-outlined">add_card</span></div><div class="text-area"><div><h3 class="head-text">Test</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-2"><div class="step-index list-2 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">add_task</span></div><div class="text-area"><div><h3 class="head-text">Test 2</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-3"><div class="step-index list-3 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">add_shopping_cart</span></div><div class="text-area"><div><h3 class="head-text">Test 3</h3><div class="body-text"><p>Description</p></div></div></div></li></ul></div>
-<!-- /wp:mold/step -->
-
-<!-- wp:paragraph {"placeholder":"Add tab content here..."} -->
-<p class=""></p>
-<!-- /wp:paragraph --></div>
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Itinineary" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:mold/step {"stepType":"icon","listItems":[{"text":"Test","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#f2f2f2","iconBgColor":"#121212","icon":"add_card"},{"text":"Test 2","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"add_task"},{"text":"Test 3","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"add_shopping_cart"},{"text":"List Header","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","icon":"","indexColor":"#fff","iconBgColor":"#222"},{"text":"List Header","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","icon":"","indexColor":"#fff","iconBgColor":"#222"}]} -->
+<div class="wp-block-mold-step" data-animation-interval="2500" style="--head-color:#333333;--body-color:#333333;--track-color:#dddddd;--active-color:;--step-size:60px;--track-width:2px;padding:10px"><ul class="wp-mold-step" data-animation="false"><li class="wp-mold-step-li active animation-false" data-attr="list-1"><div class="step-index list-1 active" style="background: #121212; color: #f2f2f2"><span class="material-symbols-outlined">add_card</span></div><div class="text-area"><div><h3 class="head-text">Test</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-2"><div class="step-index list-2 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">add_task</span></div><div class="text-area"><div><h3 class="head-text">Test 2</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-3"><div class="step-index list-3 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">add_shopping_cart</span></div><div class="text-area"><div><h3 class="head-text">Test 3</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-4"><div class="step-index list-4 " style="background: #222; color: #fff"><span class="material-symbols-outlined"></span></div><div class="text-area"><div><h3 class="head-text">List Header</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-5"><div class="step-index list-5 " style="background: #222; color: #fff"><span class="material-symbols-outlined"></span></div><div class="text-area"><div><h3 class="head-text">List Header</h3><div class="body-text"><p>Description</p></div></div></div></li></ul></div>
+<!-- /wp:mold/step --></div>
 <!-- /wp:mold/tab-item --></div></div>
 <!-- /wp:mold/tab --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"width":"33.33%"} -->
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:shortcode -->
+[contact-form-7 id="a289753" title="Untitled"]
+<!-- /wp:shortcode --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
 <!-- /wp:group -->';
 
         // Update the post
@@ -227,4 +231,56 @@ function mold_set_default_tour_content($post_id, $post, $update) {
     }
 }
 add_action('wp_insert_post', 'mold_set_default_tour_content', 10, 3);
+
+
+
+// Enqueue admin script
+function tour_admin_scripts($hook) {
+    if ($hook !== 'edit.php' || get_current_screen()->post_type !== 'tour') {
+        return;
+    }
+
+    wp_enqueue_script(
+        'tour-admin-featured',
+        MOLD_TOUR_BASE_URL . '/js/tour-admin-featured.js', array('jquery'), '1.0', true);
+
+    wp_localize_script('tour-admin-featured', 'tourFeatured', array(
+        'ajax_url' => admin_url('admin-ajax.php'),
+        'nonce'    => wp_create_nonce('tour_featured_nonce'),
+    ));
+}
+add_action('admin_enqueue_scripts', 'tour_admin_scripts');
+
+
+
+// AJAX handler for toggling featured (using tag instead of meta)
+function tour_toggle_featured() {
+    check_ajax_referer('tour_featured_nonce', 'nonce');
+
+    $post_id = intval($_POST['post_id']);
+    $tag_name = 'featured';
+
+    // Get current tags for this post
+    $tags = wp_get_post_terms($post_id, 'post_tag', array('fields' => 'names'));
+
+    if (in_array($tag_name, $tags, true)) {
+        // Remove the "featured" tag
+        wp_remove_object_terms($post_id, $tag_name, 'post_tag');
+        $new_status = 0;
+    } else {
+        // Add the "featured" tag (create if it doesn't exist)
+        wp_add_object_terms($post_id, $tag_name, 'post_tag');
+        $new_status = 1;
+    }
+
+    wp_send_json_success(array(
+        'new_status' => $new_status,
+        'icon' => $new_status ? 'dashicons-star-filled' : 'dashicons-star-empty',
+    ));
+}
+add_action('wp_ajax_tour_toggle_featured', 'tour_toggle_featured');
+
+
+
+
 ?>

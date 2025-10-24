@@ -645,4 +645,9 @@ ul.wc-tabs .mold-cost-book > a::before {
   width: 100px;
   text-align: center;
 }
+
+/* this is for cb feature star on tour list */
+.wp-list-table .column-featured {
+  width: 10px;
+}
 /*# sourceMappingURL=tour-admin.css.map */

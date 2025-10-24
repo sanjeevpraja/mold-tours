@@ -1688,7 +1688,23 @@ ul.clean-ul .desc {
   right: 0px;
 }
 
-.form-control, .form-textarea, .form-select {
+.wpcf7-form label {
+  font-size: 0.9rem;
+  color: #666666;
+}
+.wpcf7-form input[type=submit],
+.wpcf7-form input[type=button] {
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: 0px;
+  border-radius: 10px;
+  background: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--primary-contrast);
+}
+
+.form-control, .form-textarea, .form-select,
+.wpcf7-form-control:not([type=submit]):not([type=button]) {
   display: block;
   width: 100%;
   padding: 8px 12px;
@@ -1700,18 +1716,21 @@ ul.clean-ul .desc {
   border-radius: 4px;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.form-control:focus, .form-textarea:focus, .form-select:focus {
+.form-control:focus, .form-textarea:focus, .form-select:focus,
+.wpcf7-form-control:not([type=submit]):not([type=button]):focus {
   color: #495057;
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
 }
-.form-control:disabled, .form-textarea:disabled, .form-select:disabled {
+.form-control:disabled, .form-textarea:disabled, .form-select:disabled,
+.wpcf7-form-control:not([type=submit]):not([type=button]):disabled {
   background-color: #e9ecef;
   opacity: 1;
 }
-.form-control::placeholder, .form-textarea::placeholder, .form-select::placeholder {
+.form-control::placeholder, .form-textarea::placeholder, .form-select::placeholder,
+.wpcf7-form-control:not([type=submit]):not([type=button])::placeholder {
   color: #6c757d;
   opacity: 1;
 }

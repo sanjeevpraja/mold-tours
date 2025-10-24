@@ -13,7 +13,25 @@ $input-disabled-bg: #e9ecef;
 $input-placeholder-color: #6c757d;
 
 // Base form control styles
-.form-control {
+.wpcf7-form{
+label{
+ font-size: .9rem;
+ color:#666666;
+}
+input[type="submit"],
+input[type="button"]{
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: 0px;
+  border-radius: 10px;
+  background: var(--wp--preset--color--primary);
+  color: var(--wp--preset--color--primary-contrast);
+}
+}
+
+.form-control,
+.wpcf7-form-control:not([type="submit"]):not([type="button"]) {
   display: block;
   width: 100%;
   padding: $input-padding-y $input-padding-x;

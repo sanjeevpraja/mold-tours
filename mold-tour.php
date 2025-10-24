@@ -49,7 +49,7 @@ if (!function_exists('mold_load_tour_admin_styles')) {
 
 		global $post;
 		if (is_object($post) && ($post->post_type == 'tour')) {
-			wp_enqueue_script('productadmin', MOLD_TOUR_BASE_URL . 'js/productadmin.js', array('jquery'), array(), MOLD_TOUR_VERSION);
+			wp_enqueue_script('productadmin', MOLD_TOUR_BASE_URL . '/js/productadmin.js', [ 'wp-data', 'wp-edit-post', 'wp-dom-ready' ], false, MOLD_TOUR_VERSION);
 			wp_enqueue_script('hideseek', MOLD_TOUR_BASE_URL . 'js/hideseek.js', array('jquery'), array(), MOLD_TOUR_VERSION);
 		}
 
@@ -156,3 +156,29 @@ if (file_exists($tour_cpt_file)) {
 	require_once 'cpt-tour/widget/location-widget.php';
 	require_once 'cpt-tour/widget/searc-tour-widget.php';
 }
+
+
+
+/**contact form 7*/
+add_filter( 'wpcf7_form_tag', function( $tag ) {
+    if ( ! is_array( $tag ) || empty( $tag['name'] ) ) {
+        return $tag;
+    }
+
+    global $post;
+
+    // Only proceed if there's a current post (like a tour)
+    if ( $post ) {
+        // Prefill page title
+        if ( 'page_title' === $tag['name'] ) {
+            $tag['values'] = [ get_the_title( $post->ID ) ];
+        }
+
+        // Prefill page URL
+        if ( 'page_url' === $tag['name'] ) {
+            $tag['values'] = [ get_permalink( $post->ID ) ];
+        }
+    }
+
+    return $tag;
+}, 10, 1 );

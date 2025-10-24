@@ -62,14 +62,14 @@ function callback_block_tour_meta($attributes, $content, $block)
         case 'tour_days':
             // Add "Days" suffix if not already present
             if (is_numeric($display_content) && !str_contains($display_content, __('Day', 'wp-mold'))) {
-                $display_content = $display_content . ' ' . _n('Day', 'Days', $display_content, 'wp-mold');
+                $display_content = $display_content;
             }
             break;
 
         case 'tour_nights':
             // Add "Nights" suffix if not already present
             if (is_numeric($display_content) && !str_contains($display_content, __('Night', 'wp-mold'))) {
-                $display_content = $display_content . ' ' . _n('Night', 'Nights', $display_content, 'wp-mold');
+                $display_content = $display_content;
             }
             break;
 

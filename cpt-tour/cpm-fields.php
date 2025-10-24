@@ -1,6 +1,7 @@
 <?php
 // Add Meta Boxes
-function add_tour_meta_boxes() {
+function add_tour_meta_boxes()
+{
     add_meta_box(
         'tour_details',
         __('Tour Details', 'wp-mold'),
@@ -13,7 +14,8 @@ function add_tour_meta_boxes() {
 add_action('add_meta_boxes', 'add_tour_meta_boxes');
 
 // Meta Box Callback Function
-function tour_details_callback($post) {
+function tour_details_callback($post)
+{
     // Add nonce field for security
     wp_nonce_field('tour_meta_box', 'tour_meta_box_nonce');
 
@@ -24,7 +26,7 @@ function tour_details_callback($post) {
     $original_price = get_post_meta($post->ID, '_tour_original_price', true);
 
 
-    ?>
+?>
     <table class="form-table" role="presentation">
         <tbody>
             <tr>
@@ -45,11 +47,12 @@ function tour_details_callback($post) {
             </tr>
         </tbody>
     </table>
-    <?php
+<?php
 }
 
 // Save Meta Box Data - FIXED VERSION
-function save_tour_meta_box_data($post_id) {
+function save_tour_meta_box_data($post_id)
+{
     // Check if nonce is valid
     if (!isset($_POST['tour_meta_box_nonce']) || !wp_verify_nonce($_POST['tour_meta_box_nonce'], 'tour_meta_box')) {
         return;
@@ -87,11 +90,13 @@ function save_tour_meta_box_data($post_id) {
 }
 add_action('save_post', 'save_tour_meta_box_data');
 
-function get_tour_meta($post_id, $field) {
+function get_tour_meta($post_id, $field)
+{
     return get_post_meta($post_id, '_tour_' . $field, true);
 }
 
-function display_tour_info($post_id = null) {
+function display_tour_info($post_id = null)
+{
     if (!$post_id) {
         $post_id = get_the_ID();
     }
@@ -117,13 +122,15 @@ function display_tour_info($post_id = null) {
 }
 
 // Flush rewrite rules on activation
-function tour_flush_rewrite_rules() {
+function tour_flush_rewrite_rules()
+{
     create_tour_post_type();
     flush_rewrite_rules();
 }
 register_activation_hook(__FILE__, 'tour_flush_rewrite_rules');
 
-function register_tour_meta_fields() {
+function register_tour_meta_fields()
+{
     $fields = array(
         'days',
         'nights',
@@ -137,13 +144,13 @@ function register_tour_meta_fields() {
             'show_in_rest' => true,
             'single' => true,
             'type' => 'string',
-            'auth_callback' => function() {
+            'auth_callback' => function () {
                 return current_user_can('edit_posts');
             },
         ));
 
         // Add a shortcode for each field with post_id parameter
-        add_shortcode('tour_' . $field_name, function($atts) use ($field_name) {
+        add_shortcode('tour_' . $field_name, function ($atts) use ($field_name) {
             $atts = shortcode_atts(array(
                 'post_id' => get_the_ID(),
             ), $atts);
@@ -156,22 +163,34 @@ function register_tour_meta_fields() {
 add_action('init', 'register_tour_meta_fields');
 
 // Admin list view
-function tour_admin_columns($columns) {
+function tour_admin_columns($columns)
+{
     $new_columns = array();
     $new_columns['cb'] = $columns['cb'];
+    $new_columns['featured'] = '<span class="dashicons dashicons-star-filled" title="Featured"></span>';
     $new_columns['title'] = $columns['title'];
     $new_columns['days'] = __('Days', 'wp-mold');
     $new_columns['nights'] = __('Nights', 'wp-mold');
     $new_columns['price'] = __('Price', 'wp-mold');
     $new_columns['date'] = $columns['date'];
-    
+
     return $new_columns;
 }
 add_filter('manage_tour_posts_columns', 'tour_admin_columns');
 
 // Display custom columns in admin
-function tour_custom_columns($column, $post_id) {
+function tour_custom_columns($column, $post_id)
+{
     switch ($column) {
+        case 'featured':
+            $tags = wp_get_post_terms($post_id, 'post_tag', array('fields' => 'names'));
+            $is_featured = in_array('featured', $tags, true);
+            $icon = $is_featured ? 'dashicons-star-filled' : 'dashicons-star-empty';
+            $title = $is_featured ? __('Unmark as featured', 'wp-mold') : __('Mark as featured', 'wp-mold');
+            echo '<a href="#" class="tour-featured-toggle" data-post-id="' . esc_attr($post_id) . '" title="' . esc_attr($title) . '">
+            <span class="dashicons ' . esc_attr($icon) . '"></span>
+          </a>';
+            break;
         case 'days':
             echo esc_html(get_post_meta($post_id, '_tour_days', true));
             break;
@@ -189,7 +208,8 @@ function tour_custom_columns($column, $post_id) {
 add_action('manage_tour_posts_custom_column', 'tour_custom_columns', 10, 2);
 
 // Make columns sortable
-function tour_sortable_columns($columns) {
+function tour_sortable_columns($columns)
+{
     $columns['days'] = 'days';
     $columns['nights'] = 'nights';
     $columns['price'] = 'price';
