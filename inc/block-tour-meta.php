@@ -8,8 +8,8 @@ function callback_block_tour_meta($attributes, $content, $block)
     $meta_key = !empty($attributes['metaKey']) ? $attributes['metaKey'] : 'tour_days';
 
     $currency   = get_option('tour_currency', 'USD');
-    $thousand   = get_option('tour_thousand_separator', '');
-    $decimal    = get_option('tour_decimal_separator', '');
+    $thousand   = get_option('tour_thousand_separator', ',');
+    $decimal    = get_option('tour_decimal_separator', '.');
     $decimals   = (int) get_option('tour_number_of_decimals', 2);
 
     // Get the current post ID

@@ -49,10 +49,9 @@ if (!function_exists('mold_load_tour_admin_styles')) {
 
 		global $post;
 		if (is_object($post) && ($post->post_type == 'tour')) {
-			wp_enqueue_script('productadmin', MOLD_TOUR_BASE_URL . '/js/productadmin.js', [ 'wp-data', 'wp-edit-post', 'wp-dom-ready' ], false, MOLD_TOUR_VERSION);
+			wp_enqueue_script('productadmin', MOLD_TOUR_BASE_URL . '/js/productadmin.js', ['wp-data', 'wp-edit-post', 'wp-dom-ready'], false, MOLD_TOUR_VERSION);
 			wp_enqueue_script('hideseek', MOLD_TOUR_BASE_URL . 'js/hideseek.js', array('jquery'), array(), MOLD_TOUR_VERSION);
 		}
-
 	}
 	add_action('admin_enqueue_scripts', 'mold_load_tour_admin_styles');
 }
@@ -67,7 +66,7 @@ if (!function_exists('mold_tour_enqueue_styles_scripts_plugin')) {
 		wp_enqueue_script('mold-tour', MOLD_TOUR_BASE_URL . 'js/tour.js', array('jquery'), array(), MOLD_TOUR_VERSION);
 		wp_enqueue_style('mold-tour-core', MOLD_TOUR_BASE_URL . 'css/tour-core.css', array(), MOLD_TOUR_VERSION);
 
-	 // Flatpickr
+		// Flatpickr
 		wp_enqueue_style('flatpickr-css', 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css');
 		wp_enqueue_script('flatpickr-js', 'https://cdn.jsdelivr.net/npm/flatpickr', [], null, true);
 	}
@@ -116,21 +115,9 @@ add_action('init', 'wp_mold_tour_register_block');
 
 
 
-
-
-	/**
-	 * CPT Member
-	 */
-$member_cpt_file = plugin_dir_path(__FILE__) . 'cpt-member/cpt-member.php';
-if (file_exists($member_cpt_file)) {
-	require_once $member_cpt_file;
-}
-
-
-
-	/**
-	 * CPT Tour
-	 */
+/**
+ * CPT Tour
+ */
 $tour_cpt_file = plugin_dir_path(__FILE__) . 'cpt-tour/cpt-tour.php';
 if (file_exists($tour_cpt_file)) {
 	require_once $tour_cpt_file;
@@ -159,26 +146,36 @@ if (file_exists($tour_cpt_file)) {
 
 
 
+/**
+ * CPT Member
+ */
+$member_cpt_file = plugin_dir_path(__FILE__) . 'cpt-member/cpt-member.php';
+if (file_exists($member_cpt_file)) {
+	require_once $member_cpt_file;
+}
+
+
+
 /**contact form 7*/
-add_filter( 'wpcf7_form_tag', function( $tag ) {
-    if ( ! is_array( $tag ) || empty( $tag['name'] ) ) {
-        return $tag;
-    }
+add_filter('wpcf7_form_tag', function ($tag) {
+	if (! is_array($tag) || empty($tag['name'])) {
+		return $tag;
+	}
 
-    global $post;
+	global $post;
 
-    // Only proceed if there's a current post (like a tour)
-    if ( $post ) {
-        // Prefill page title
-        if ( 'page_title' === $tag['name'] ) {
-            $tag['values'] = [ get_the_title( $post->ID ) ];
-        }
+	// Only proceed if there's a current post (like a tour)
+	if ($post) {
+		// Prefill page title
+		if ('page_title' === $tag['name']) {
+			$tag['values'] = [get_the_title($post->ID)];
+		}
 
-        // Prefill page URL
-        if ( 'page_url' === $tag['name'] ) {
-            $tag['values'] = [ get_permalink( $post->ID ) ];
-        }
-    }
+		// Prefill page URL
+		if ('page_url' === $tag['name']) {
+			$tag['values'] = [get_permalink($post->ID)];
+		}
+	}
 
-    return $tag;
-}, 10, 1 );
+	return $tag;
+}, 10, 1);

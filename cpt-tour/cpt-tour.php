@@ -46,7 +46,7 @@ function create_tour_post_type() {
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 20,
-        'menu_icon'             => 'dashicons-groups',
+        'menu_icon'             => 'dashicons-location',
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
@@ -84,19 +84,17 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <div class="wp-block-group has-small-font-size"><!-- wp:mold/tour-meta {"fallback":"N/A","metaKey":"tour_price","fontSize":"x-large"} /-->
 
 <!-- wp:mold/tour-meta {"fallback":"","metaKey":"tour_original_price","fontSize":"large"} /--></div>
-<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph -->
+<p class="">Price per person</p>
+<!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"right"}} -->
-<div class="wp-block-group"><!-- wp:paragraph -->
-<p class="">Price per person</p>
-<!-- /wp:paragraph -->
+<div class="wp-block-group"><!-- wp:post-terms {"term":"category"} /-->
 
-<!-- wp:buttons -->
-<div class="wp-block-buttons"><!-- wp:button -->
-<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Book Now</a></div>
-<!-- /wp:button --></div>
-<!-- /wp:buttons --></div>
+<!-- wp:post-terms {"term":"post_tag"} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
@@ -105,7 +103,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:separator -->
 
 <!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"grid"}} -->
-<div class="wp-block-group"><!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:group {"metadata":{"name":"Overview Difficulty"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"speed","iconSize":40} -->
 <div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">speed</span></div>
 <!-- /wp:mold/materialicon -->
@@ -119,7 +117,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<!-- wp:group {"metadata":{"name":"Overview Location"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"map","iconSize":40} -->
 <div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">map</span></div>
 <!-- /wp:mold/materialicon -->
@@ -133,35 +131,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"wb_sunny","iconSize":40} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">wb_sunny</span></div>
-<!-- /wp:mold/materialicon -->
-
-<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-500"}}}},"textColor":"grey-500"} -->
-<p class="has-grey-500-color has-text-color has-link-color">Days</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:mold/tour-meta {"htmlTag":"h4","metaKey":"tour_days","fontFamily":"monospace","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"0","bottom":"0"}}}} /--></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
-<!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"nightlight","iconSize":40} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">nightlight</span></div>
-<!-- /wp:mold/materialicon -->
-
-<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-500"}}}},"textColor":"grey-500"} -->
-<p class="has-grey-500-color has-text-color has-link-color">Nights</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:mold/tour-meta {"htmlTag":"h4","metaKey":"tour_nights","fontFamily":"monospace","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"0","bottom":"0"}}}} /--></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
-<!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<!-- wp:group {"metadata":{"name":"Overview Accomodation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"accessibility","iconSize":40} -->
 <div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">accessibility</span></div>
 <!-- /wp:mold/materialicon -->
@@ -177,7 +147,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"directions_bus","iconSize":40} -->
 <div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">directions_bus</span></div>
 <!-- /wp:mold/materialicon -->
@@ -191,6 +161,38 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <h4 class="wp-block-heading">Bus</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"person_pin","iconSize":40} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">person_pin</span></div>
+<!-- /wp:mold/materialicon -->
+
+<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-500"}}}},"textColor":"grey-500"} -->
+<p class="has-grey-500-color has-text-color has-link-color">Tour Guide</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4 class="wp-block-heading">Barry Macdonald &amp; Local Guide</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"groups","iconSize":40} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">groups</span></div>
+<!-- /wp:mold/materialicon -->
+
+<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-500"}}}},"textColor":"grey-500"} -->
+<p class="has-grey-500-color has-text-color has-link-color">Group Size</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"level":4} -->
+<h4 class="wp-block-heading">6</h4>
+<!-- /wp:heading --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
@@ -200,16 +202,16 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 
 <!-- wp:columns -->
 <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
-<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:mold/tab {"activeTabColor":"#508c14","tabGap":10,"borderRadius":10,"headerStyles":{"fontFamily":"","fontSize":"","textColor":"#333333","padding":{"inline":"30px","block":"16px"},"fontWeight":"bold"}} -->
-<div class="wp-block-mold-tab tab-container tab-style-default" data-active-tab="0" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#333333;--tab-header-background-color:inherit;--tab-header-gap:10px;--tab-header-padding:16px 30px;--tab-header-border-radius:10px;--tab-header-border-width:1px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#FFFFFF;--tab-header-active-tab-background-color:#508c14;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#333333;--tab-content-background-color:#ffffff;--tab-content-padding:10px 15px;--tab-content-border-radius:10px;--tab-content-border-width:1px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Overview"} -->
+<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:mold/tab {"activeTab":1,"activeTabColor":"#508c14","tabGap":10,"borderRadius":10,"headerStyles":{"fontFamily":"","fontSize":"","textColor":"#333333","padding":{"inline":"30px","block":"16px"},"fontWeight":"bold"}} -->
+<div class="wp-block-mold-tab tab-container tab-style-default" data-active-tab="1" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#333333;--tab-header-background-color:inherit;--tab-header-gap:10px;--tab-header-padding:16px 30px;--tab-header-border-radius:10px;--tab-header-border-width:1px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#FFFFFF;--tab-header-active-tab-background-color:#508c14;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#333333;--tab-content-background-color:#ffffff;--tab-content-padding:10px 15px;--tab-content-border-radius:10px;--tab-content-border-width:1px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Overview"} -->
 <div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Overview" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:paragraph {"placeholder":"Add tab content here..."} -->
 <p class="">Explore the thrill of mountain climbing with our guided tour designed for all skill levels. This adventure takes you through stunning landscapes, challenging yet rewarding climbs, and breathtaking views. Our expert guides ensure safety and share tips to help you enjoy every step. Whether youa beginner or looking to improve, this tour offers the perfect mix of excitement and learning. Experience the beauty of nature, test your limits, and create unforgettable memories. Suitable gear and instructions are provided. Join us for a safe, fun, and inspiring mountain climbing journey!</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:mold/tab-item -->
 
 <!-- wp:mold/tab-item {"title":"Itinineary"} -->
-<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Itinineary" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:mold/step {"stepType":"icon","listItems":[{"text":"Test","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#f2f2f2","iconBgColor":"#121212","icon":"add_card"},{"text":"Test 2","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"add_task"},{"text":"Test 3","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"add_shopping_cart"},{"text":"List Header","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","icon":"","indexColor":"#fff","iconBgColor":"#222"},{"text":"List Header","content":"\u003cp\u003eDescription\u003c/p\u003e","imageUrl":"","icon":"","indexColor":"#fff","iconBgColor":"#222"}]} -->
-<div class="wp-block-mold-step" data-animation-interval="2500" style="--head-color:#333333;--body-color:#333333;--track-color:#dddddd;--active-color:;--step-size:60px;--track-width:2px;padding:10px"><ul class="wp-mold-step" data-animation="false"><li class="wp-mold-step-li active animation-false" data-attr="list-1"><div class="step-index list-1 active" style="background: #121212; color: #f2f2f2"><span class="material-symbols-outlined">add_card</span></div><div class="text-area"><div><h3 class="head-text">Test</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-2"><div class="step-index list-2 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">add_task</span></div><div class="text-area"><div><h3 class="head-text">Test 2</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-3"><div class="step-index list-3 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">add_shopping_cart</span></div><div class="text-area"><div><h3 class="head-text">Test 3</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-4"><div class="step-index list-4 " style="background: #222; color: #fff"><span class="material-symbols-outlined"></span></div><div class="text-area"><div><h3 class="head-text">List Header</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-5"><div class="step-index list-5 " style="background: #222; color: #fff"><span class="material-symbols-outlined"></span></div><div class="text-area"><div><h3 class="head-text">List Header</h3><div class="body-text"><p>Description</p></div></div></div></li></ul></div>
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Itinineary" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:mold/step {"stepType":"icon","listItems":[{"text":"Label","content":"<p>Description</p>","imageUrl":"","indexColor":"#f2f2f2","iconBgColor":"#121212","icon":"add_card"},{"text":"Label","content":"<p>Description</p>","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"add_task"}]} -->
+<div class="wp-block-mold-step" data-animation-interval="2500" style="--head-color:#333333;--body-color:#333333;--track-color:#dddddd;--active-color:;--step-size:60px;--track-width:2px;padding:10px"><ul class="wp-mold-step" data-animation="false"><li class="wp-mold-step-li active animation-false" data-attr="list-1"><div class="step-index list-1 active" style="background: #121212; color: #f2f2f2"><span class="material-symbols-outlined">add_card</span></div><div class="text-area"><div><h3 class="head-text">Label</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-2"><div class="step-index list-2 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">add_task</span></div><div class="text-area"><div><h3 class="head-text">Label</h3><div class="body-text"><p>Description</p></div></div></div></li></ul></div>
 <!-- /wp:mold/step --></div>
 <!-- /wp:mold/tab-item --></div></div>
 <!-- /wp:mold/tab --></div>
