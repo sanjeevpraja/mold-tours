@@ -71,16 +71,18 @@ function mold_set_default_tour_content($post_id, $post, $update) {
     
     // Check if content is empty
     if (empty($post->post_content)) {
-        $default_content = '<!-- wp:group {"layout":{"type":"constrained"}} -->
-<div class="wp-block-group"><!-- wp:mold/tour-gallery /-->
+        $default_content = '<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}},"color":{"background":"#212121"}},"textColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-color has-text-color has-background has-link-color" style="background-color:#212121;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:post-title {"textAlign":"center"} /-->
+
+<!-- wp:spacer {"height":"50px"} -->
+<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:mold/tour-gallery /-->
 
 <!-- wp:group {"metadata":{"name":"Price Row"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
 <div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph -->
-<p class="">USD</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"fontSize":"small","layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"fontSize":"small","layout":{"type":"flex","flexWrap":"nowrap"}} -->
 <div class="wp-block-group has-small-font-size"><!-- wp:mold/tour-meta {"fallback":"N/A","metaKey":"tour_price","fontSize":"x-large"} /-->
 
 <!-- wp:mold/tour-meta {"fallback":"","metaKey":"tour_original_price","fontSize":"large"} /--></div>
@@ -98,14 +100,14 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|60"}}},"backgroundColor":"grey-100"} -->
-<hr class="wp-block-separator has-text-color has-grey-100-color has-alpha-channel-opacity has-grey-100-background-color has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--60)"/>
+<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|60"}},"color":{"background":"#f2f2f20f"}}} -->
+<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--60);background-color:#f2f2f20f;color:#f2f2f20f"/>
 <!-- /wp:separator -->
 
 <!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"grid"}} -->
 <div class="wp-block-group"><!-- wp:group {"metadata":{"name":"Overview Difficulty"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"speed","iconSize":40} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">speed</span></div>
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"speed","iconSize":40,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">speed</span></div>
 <!-- /wp:mold/materialicon -->
 
 <!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -118,8 +120,8 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group -->
 
 <!-- wp:group {"metadata":{"name":"Overview Location"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"map","iconSize":40} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">map</span></div>
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"map","iconSize":40,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">map</span></div>
 <!-- /wp:mold/materialicon -->
 
 <!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -132,8 +134,8 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group -->
 
 <!-- wp:group {"metadata":{"name":"Overview Accomodation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"accessibility","iconSize":40} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">accessibility</span></div>
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"accessibility","iconSize":40,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">accessibility</span></div>
 <!-- /wp:mold/materialicon -->
 
 <!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -148,8 +150,8 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group -->
 
 <!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"directions_bus","iconSize":40} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">directions_bus</span></div>
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"directions_bus","iconSize":40,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">directions_bus</span></div>
 <!-- /wp:mold/materialicon -->
 
 <!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -164,8 +166,8 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group -->
 
 <!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"person_pin","iconSize":40} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">person_pin</span></div>
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"person_pin","iconSize":40,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">person_pin</span></div>
 <!-- /wp:mold/materialicon -->
 
 <!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -174,14 +176,14 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":4} -->
-<h4 class="wp-block-heading">Barry Macdonald &amp; Local Guide</h4>
+<h4 class="wp-block-heading">Tour guide</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"groups","iconSize":40} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#000000;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">groups</span></div>
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"groups","iconSize":40,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">groups</span></div>
 <!-- /wp:mold/materialicon -->
 
 <!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
@@ -196,31 +198,33 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|60"}}},"backgroundColor":"grey-100"} -->
-<hr class="wp-block-separator has-text-color has-grey-100-color has-alpha-channel-opacity has-grey-100-background-color has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--60)"/>
+<!-- wp:separator {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|60"}},"color":{"background":"#f2f2f20f"}}} -->
+<hr class="wp-block-separator has-text-color has-alpha-channel-opacity has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--60);background-color:#f2f2f20f;color:#f2f2f20f"/>
 <!-- /wp:separator -->
 
-<!-- wp:columns -->
+<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70"}}}} -->
 <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
-<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:mold/tab {"activeTab":1,"activeTabColor":"#508c14","tabGap":10,"borderRadius":10,"headerStyles":{"fontFamily":"","fontSize":"","textColor":"#333333","padding":{"inline":"30px","block":"16px"},"fontWeight":"bold"}} -->
-<div class="wp-block-mold-tab tab-container tab-style-default" data-active-tab="1" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#333333;--tab-header-background-color:inherit;--tab-header-gap:10px;--tab-header-padding:16px 30px;--tab-header-border-radius:10px;--tab-header-border-width:1px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#FFFFFF;--tab-header-active-tab-background-color:#508c14;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#333333;--tab-content-background-color:#ffffff;--tab-content-padding:10px 15px;--tab-content-border-radius:10px;--tab-content-border-width:1px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Overview"} -->
+<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:mold/tab {"activeTab":1,"activeTabColor":"#eb8122","tabGap":10,"borderRadius":10,"headerStyles":{"fontFamily":"","fontSize":"","textColor":"#ffffff","padding":{"inline":"30px","block":"16px"},"fontWeight":"bold","backgroundColor":"#12121200"},"contentStyles":{"fontFamily":"","fontSize":"","textColor":"#ffffff","backgroundColor":"#12121200","padding":{"inline":"15px","block":"10px"}}} -->
+<div class="wp-block-mold-tab tab-container tab-style-default" data-active-tab="1" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#ffffff;--tab-header-background-color:#12121200;--tab-header-gap:10px;--tab-header-padding:16px 30px;--tab-header-border-radius:10px;--tab-header-border-width:1px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#000000;--tab-header-active-tab-background-color:#eb8122;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#ffffff;--tab-content-background-color:#12121200;--tab-content-padding:10px 15px;--tab-content-border-radius:10px;--tab-content-border-width:1px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Overview"} -->
 <div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Overview" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:paragraph {"placeholder":"Add tab content here..."} -->
-<p class="">Explore the thrill of mountain climbing with our guided tour designed for all skill levels. This adventure takes you through stunning landscapes, challenging yet rewarding climbs, and breathtaking views. Our expert guides ensure safety and share tips to help you enjoy every step. Whether youa beginner or looking to improve, this tour offers the perfect mix of excitement and learning. Experience the beauty of nature, test your limits, and create unforgettable memories. Suitable gear and instructions are provided. Join us for a safe, fun, and inspiring mountain climbing journey!</p>
+<p class="">Add Overview Decription</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:mold/tab-item -->
 
 <!-- wp:mold/tab-item {"title":"Itinineary"} -->
-<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Itinineary" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:mold/step {"stepType":"icon","listItems":[{"text":"Label","content":"<p>Description</p>","imageUrl":"","indexColor":"#f2f2f2","iconBgColor":"#121212","icon":"add_card"},{"text":"Label","content":"<p>Description</p>","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"add_task"}]} -->
-<div class="wp-block-mold-step" data-animation-interval="2500" style="--head-color:#333333;--body-color:#333333;--track-color:#dddddd;--active-color:;--step-size:60px;--track-width:2px;padding:10px"><ul class="wp-mold-step" data-animation="false"><li class="wp-mold-step-li active animation-false" data-attr="list-1"><div class="step-index list-1 active" style="background: #121212; color: #f2f2f2"><span class="material-symbols-outlined">add_card</span></div><div class="text-area"><div><h3 class="head-text">Label</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-2"><div class="step-index list-2 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">add_task</span></div><div class="text-area"><div><h3 class="head-text">Label</h3><div class="body-text"><p>Description</p></div></div></div></li></ul></div>
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Itinineary" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:mold/step {"stepType":"icon","stepColor":"#121212","stepBgColor":"#eb8122","headColor":"#eb8122","bodyColor":"#ffffff","trackColor":"#555555","listItems":[{"text":"Day 1","content":"<p>Description</p>","imageUrl":"","icon":"airplanemode_active","indexColor":"#ffffff","iconBgColor":"#121212"},{"text":"Day 2","content":"<p>Description</p>","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"directions_bus"}]} -->
+<div class="wp-block-mold-step" data-animation-interval="2500" style="--head-color:#eb8122;--body-color:#ffffff;--track-color:#555555;--active-color:;--step-size:60px;--track-width:2px;padding:10px"><ul class="wp-mold-step" data-animation="false"><li class="wp-mold-step-li active animation-false" data-attr="list-1"><div class="step-index list-1 active" style="background: #eb8122; color: #121212"><span class="material-symbols-outlined">airplanemode_active</span></div><div class="text-area"><div><h3 class="head-text">Day 1</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-2"><div class="step-index list-2 " style="background: #eb8122; color: #121212"><span class="material-symbols-outlined">directions_bus</span></div><div class="text-area"><div><h3 class="head-text">Day 2</h3><div class="body-text"><p>Description</p></div></div></div></li></ul></div>
 <!-- /wp:mold/step --></div>
 <!-- /wp:mold/tab-item --></div></div>
 <!-- /wp:mold/tab --></div>
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:shortcode -->
-[contact-form-7 id="a289753" title="Untitled"]
+<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:group {"metadata":{"name":"Booking Query Form"},"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-100"}}}},"textColor":"grey-100","fontSize":"extra-small","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-grey-100-color has-text-color has-link-color has-extra-small-font-size"><!-- wp:shortcode -->
+[contact-form-7 id="57abdff" title="Booking Query"]
 <!-- /wp:shortcode --></div>
+<!-- /wp:group --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->';
