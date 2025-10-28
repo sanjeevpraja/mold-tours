@@ -12,7 +12,7 @@ function callback_block_tour_gallery($attributes, $content, $block)
 
     $mold_slider_bg = get_post_meta( $post->ID, 'mold_slider_bg', true );
     $mold_slider_effect = get_post_meta($post->ID, 'mold_slider_effect', true);
-    $mold_slider_height = get_post_meta($post->ID, 'mold_slider_height', true) == 'full' ? '100vh' : '500px';
+    $mold_slider_height = get_post_meta($post->ID, 'mold_slider_height', true) == 'full' ? '100vh' : '600px';
     $mold_slider_nav = get_post_meta($post->ID, 'mold_slider_nav', true);
     $mold_slider_indicator = get_post_meta($post->ID, 'mold_slider_indicator', true);
     $mold_slider_speed = get_post_meta($post->ID, 'mold_slider_speed', true);

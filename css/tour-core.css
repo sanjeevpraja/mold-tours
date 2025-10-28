@@ -1367,101 +1367,17 @@ ul.clean-ul .desc {
 }
 /*woocommerce ends*/
 /*---------- 4.28 Image Gallery ----------*/
-#trip-gallery {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-#trip-gallery:before {
-  display: none !important;
-}
-#trip-gallery .img-responsive {
-  height: auto;
-}
-#trip-gallery .trip-gallery-item {
-  width: 100% !important;
-  display: block;
-  position: relative;
-  overflow: hidden;
-}
-#trip-gallery .trip-gallery-item img {
+.mold-tour-gallery {
   width: 100%;
 }
-#trip-gallery .trip-gallery-item .hover-overlay {
+.mold-tour-gallery .swiper-slide img {
   width: 100%;
   height: 100%;
-  line-height: 100%;
-  font-size: 0.9em;
-  text-align: center;
-  color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0px;
-  opacity: 0;
-  cursor: pointer;
-  transition: all 0.1s linear;
-}
-#trip-gallery .trip-gallery-item .hover-overlay [class^=icon-] {
-  margin-top: -25px;
-  display: inline-block;
-  font-size: 0px;
-  width: 0;
-  height: 0;
-  line-height: 0;
-  position: relative;
-  top: 50%;
-  border-radius: 0;
-  transform: rotate(-90deg);
-  transition: all 0.1s linear;
-}
-#trip-gallery .trip-gallery-item:hover .hover-overlay {
-  opacity: 1;
-  transition: all 0.1s linear;
-}
-#trip-gallery .trip-gallery-item:hover .hover-overlay [class^=icon-] {
-  font-size: 20px;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  border-radius: 50px;
-  transform: rotate(0deg);
-  transition: all 0.2s linear;
-}
-#trip-gallery .owl-nav {
-  position: absolute;
-  width: 100%;
-  bottom: 15px;
-}
-#trip-gallery .owl-nav .owl-prev, #trip-gallery .owl-nav .owl-next {
-  height: 40px;
-  line-height: 40px;
-  padding: 0;
-  width: 40px;
-  color: #fff;
-  text-align: center;
-  font-size: 16px;
-}
-#trip-gallery .owl-nav .owl-prev {
-  float: left;
-  margin-left: 15px;
-}
-#trip-gallery .owl-nav .owl-next {
-  float: right;
-  margin-right: 15px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
 }
 
-@media screen and (max-width: 768px) {
-  #trip-gallery {
-    display: block;
-  }
-  .trip-gallery .img-responsive {
-    height: auto;
-    width: 100%;
-  }
-  #trip-gallery .owl-item img {
-    width: 100%;
-  }
-}
 /*---------- 3.7 Grade/Location Archive Page ----------*/
 .grade-icon {
   font-size: 130px;
@@ -1906,12 +1822,5 @@ ul.clean-ul .desc {
 }
 .layout-aside .content-wrap > p:first-child {
   margin-top: 0;
-}
-
-.mold-tour-gallery {
-  width: 100%;
-}
-.mold-tour-gallery .swiper-slide img {
-  width: 100%;
 }
 /*# sourceMappingURL=tour-core.css.map */

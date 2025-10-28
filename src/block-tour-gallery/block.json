@@ -6,5 +6,5 @@
   "editorScript": "file:./index.js",
   "viewScript": "file:./frontend.js",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style.css"
 }
