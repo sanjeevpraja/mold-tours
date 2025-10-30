@@ -4,6 +4,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 import { Placeholder, Spinner, Notice } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import './editor.scss';
+import './style.scss';
 
 registerBlockType('mold/tour-gallery', {
     title: __('Tour Gallery', 'wp-mold'),

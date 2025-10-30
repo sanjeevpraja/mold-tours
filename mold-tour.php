@@ -82,7 +82,8 @@ function wp_mold_tour_register_block()
 	$blocks = [
 		'block-member-meta',
 		'block-tour-meta',
-		'block-tour-gallery'
+		'block-tour-gallery',
+		'block-location-image',
 	];
 
 	foreach ($blocks as $block) {
@@ -102,8 +103,15 @@ function wp_mold_tour_register_block()
 				$funtion_name = 'callback_' . str_replace('-', '_', $block);
 				require_once plugin_dir_path(__FILE__) . 'inc/' . $block . '.php';
 				register_block_type(__DIR__ . "/build/$block", [
-					'render_callback' => $funtion_name
+					'render_callback' => $funtion_name,
+                    'style' => 'mold-' . $block . '-style'
 				]);
+                wp_register_style(
+                    'mold-' . $block . '-style',
+                    plugin_dir_url(__FILE__) . "build/$block/style-index.css",
+                    array(),
+                    '1.0.0'
+                );
 			} else {
 				register_block_type(__DIR__ . "/build/$block");
 			}
@@ -134,7 +142,7 @@ if (file_exists($tour_cpt_file)) {
 	 */
 	require_once 'cpt-tour/taxonomy/class-grade-taxonomy.php';
 	require_once 'cpt-tour/taxonomy/class-location-taxonomy.php';
-
+    require_once 'cpt-tour/taxonomy/class-accomodation-taxonomy.php';
 
 	/**
 	 * Widget
