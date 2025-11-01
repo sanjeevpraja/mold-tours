@@ -4,7 +4,7 @@ function add_tour_meta_boxes()
 {
     add_meta_box(
         'tour_details',
-        __('Tour Details', 'wp-mold'),
+        __('Tour Details', 'mold-tour'),
         'tour_details_callback',
         'tour',
         'normal',
@@ -30,19 +30,19 @@ function tour_details_callback($post)
     <table class="form-table" role="presentation">
         <tbody>
             <tr>
-                <th scope="row"><label for="tour_days"><?php _e('Days', 'wp-mold'); ?></label></th>
+                <th scope="row"><label for="tour_days"><?php _e('Days', 'mold-tour'); ?></label></th>
                 <td><input type="text" id="tour_days" name="tour_days" value="<?php echo esc_attr($days); ?>" class="regular-text" /></td>
             </tr>
             <tr>
-                <th scope="row"><label for="tour_nights"><?php _e('Nights', 'wp-mold'); ?></label></th>
+                <th scope="row"><label for="tour_nights"><?php _e('Nights', 'mold-tour'); ?></label></th>
                 <td><input type="text" id="tour_nights" name="tour_nights" value="<?php echo esc_attr($nights); ?>" class="regular-text" /></td>
             </tr>
             <tr>
-                <th scope="row"><label for="tour_price"><?php _e('Price', 'wp-mold'); ?></label></th>
+                <th scope="row"><label for="tour_price"><?php _e('Price', 'mold-tour'); ?></label></th>
                 <td><input type="number" id="tour_price" name="tour_price" value="<?php echo esc_attr($price); ?>" class="regular-text" /></td>
             </tr>
             <tr>
-                <th scope="row"><label for="tour_original_price" style="text-decoration: line-through;"><?php _e('Original Price', 'wp-mold'); ?></label></th>
+                <th scope="row"><label for="tour_original_price" style="text-decoration: line-through;"><?php _e('Original Price', 'mold-tour'); ?></label></th>
                 <td><input type="number" id="tour_original_price" name="tour_original_price" value="<?php echo esc_attr($original_price); ?>" class="regular-text" /></td>
             </tr>
         </tbody>
@@ -102,10 +102,10 @@ function display_tour_info($post_id = null)
     }
 
     $fields = array(
-        'days' => __('Days', 'wp-mold'),
-        'nights' => __('Nights', 'wp-mold'),
-        'price' => __('Price', 'wp-mold'),
-        'original_price' => __('Original Price', 'wp-mold'),
+        'days' => __('Days', 'mold-tour'),
+        'nights' => __('Nights', 'mold-tour'),
+        'price' => __('Price', 'mold-tour'),
+        'original_price' => __('Original Price', 'mold-tour'),
     );
 
     echo '<div class="cpt-info">';
@@ -169,9 +169,9 @@ function tour_admin_columns($columns)
     $new_columns['cb'] = $columns['cb'];
     $new_columns['featured'] = '<span class="dashicons dashicons-star-filled" title="Featured"></span>';
     $new_columns['title'] = $columns['title'];
-    $new_columns['days'] = __('Days', 'wp-mold');
-    $new_columns['nights'] = __('Nights', 'wp-mold');
-    $new_columns['price'] = __('Price', 'wp-mold');
+    $new_columns['days'] = __('Days', 'mold-tour');
+    $new_columns['nights'] = __('Nights', 'mold-tour');
+    $new_columns['price'] = __('Price', 'mold-tour');
     $new_columns['date'] = $columns['date'];
 
     return $new_columns;
@@ -186,7 +186,7 @@ function tour_custom_columns($column, $post_id)
             $tags = wp_get_post_terms($post_id, 'post_tag', array('fields' => 'names'));
             $is_featured = in_array('featured', $tags, true);
             $icon = $is_featured ? 'dashicons-star-filled' : 'dashicons-star-empty';
-            $title = $is_featured ? __('Unmark as featured', 'wp-mold') : __('Mark as featured', 'wp-mold');
+            $title = $is_featured ? __('Unmark as featured', 'mold-tour') : __('Mark as featured', 'mold-tour');
             echo '<a href="#" class="tour-featured-toggle" data-post-id="' . esc_attr($post_id) . '" title="' . esc_attr($title) . '">
             <span class="dashicons ' . esc_attr($icon) . '"></span>
           </a>';

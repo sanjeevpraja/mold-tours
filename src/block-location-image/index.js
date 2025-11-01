@@ -19,7 +19,7 @@ const ALLOWED_BLOCKS = [
 
 
 registerBlockType('mold/location-image', {
-    title: __('Location Featured Container', 'wp-mold'),
+    title: __('Location Featured Container', 'mold-tour'),
     icon: 'archive',
     category: 'mold',
     attributes: {

@@ -8,38 +8,38 @@
 // Register Custom Post Type
 function create_accomodation_post_type() {
     $labels = array(
-        'name'                  => _x('Accomodations', 'Post Type General Name', 'wp-mold'),
-        'singular_name'         => _x('Accomodation', 'Post Type Singular Name', 'wp-mold'),
-        'menu_name'             => __('Accomodations', 'wp-mold'),
-        'name_admin_bar'        => __('Accomodation', 'wp-mold'),
-        'archives'              => __('Accomodation Archives', 'wp-mold'),
-        'attributes'            => __('Accomodation Attributes', 'wp-mold'),
-        'parent_item_colon'     => __('Parent Accomodation:', 'wp-mold'),
-        'all_items'             => __('All Accomodations', 'wp-mold'),
-        'add_new_item'          => __('Add New Accomodation', 'wp-mold'),
-        'add_new'               => __('Add New', 'wp-mold'),
-        'new_item'              => __('New Accomodation', 'wp-mold'),
-        'edit_item'             => __('Edit Accomodation', 'wp-mold'),
-        'update_item'           => __('Update Accomodation', 'wp-mold'),
-        'view_item'             => __('View Accomodation', 'wp-mold'),
-        'view_items'            => __('View Accomodations', 'wp-mold'),
-        'search_items'          => __('Search Accomodation', 'wp-mold'),
-        'not_found'             => __('Not found', 'wp-mold'),
-        'not_found_in_trash'    => __('Not found in Trash', 'wp-mold'),
-        'featured_image'        => __('Featured Image', 'wp-mold'),
-        'set_featured_image'    => __('Set featured image', 'wp-mold'),
-        'remove_featured_image' => __('Remove featured image', 'wp-mold'),
-        'use_featured_image'    => __('Use as featured image', 'wp-mold'),
-        'insert_into_item'      => __('Insert into accomodation', 'wp-mold'),
-        'uploaded_to_this_item' => __('Uploaded to this accomodation', 'wp-mold'),
-        'items_list'            => __('Accomodations list', 'wp-mold'),
-        'items_list_navigation' => __('Accomodations list navigation', 'wp-mold'),
-        'filter_items_list'     => __('Filter accomodations list', 'wp-mold'),
+        'name'                  => _x('Accomodations', 'Post Type General Name', 'mold-tour'),
+        'singular_name'         => _x('Accomodation', 'Post Type Singular Name', 'mold-tour'),
+        'menu_name'             => __('Accomodations', 'mold-tour'),
+        'name_admin_bar'        => __('Accomodation', 'mold-tour'),
+        'archives'              => __('Accomodation Archives', 'mold-tour'),
+        'attributes'            => __('Accomodation Attributes', 'mold-tour'),
+        'parent_item_colon'     => __('Parent Accomodation:', 'mold-tour'),
+        'all_items'             => __('All Accomodations', 'mold-tour'),
+        'add_new_item'          => __('Add New Accomodation', 'mold-tour'),
+        'add_new'               => __('Add New', 'mold-tour'),
+        'new_item'              => __('New Accomodation', 'mold-tour'),
+        'edit_item'             => __('Edit Accomodation', 'mold-tour'),
+        'update_item'           => __('Update Accomodation', 'mold-tour'),
+        'view_item'             => __('View Accomodation', 'mold-tour'),
+        'view_items'            => __('View Accomodations', 'mold-tour'),
+        'search_items'          => __('Search Accomodation', 'mold-tour'),
+        'not_found'             => __('Not found', 'mold-tour'),
+        'not_found_in_trash'    => __('Not found in Trash', 'mold-tour'),
+        'featured_image'        => __('Featured Image', 'mold-tour'),
+        'set_featured_image'    => __('Set featured image', 'mold-tour'),
+        'remove_featured_image' => __('Remove featured image', 'mold-tour'),
+        'use_featured_image'    => __('Use as featured image', 'mold-tour'),
+        'insert_into_item'      => __('Insert into accomodation', 'mold-tour'),
+        'uploaded_to_this_item' => __('Uploaded to this accomodation', 'mold-tour'),
+        'items_list'            => __('Accomodations list', 'mold-tour'),
+        'items_list_navigation' => __('Accomodations list navigation', 'mold-tour'),
+        'filter_items_list'     => __('Filter accomodations list', 'mold-tour'),
     );
 
     $args = array(
-        'label'                 => __('Accomodation', 'wp-mold'),
-        'description'           => __('Accomodation information', 'wp-mold'),
+        'label'                 => __('Accomodation', 'mold-tour'),
+        'description'           => __('Accomodation information', 'mold-tour'),
         'labels'                => $labels,
         'supports'              => array('title', 'editor', 'thumbnail', 'revisions', 'custom-fields'),
         'taxonomies'            =>  array('location', 'category', 'post_tag'),
@@ -67,7 +67,7 @@ add_action('init', 'create_accomodation_post_type', 0);
 function add_accomodation_meta_boxes() {
     add_meta_box(
         'accomodation_details',
-        __('Accomodation Details', 'wp-mold'),
+        __('Accomodation Details', 'mold-tour'),
         'accomodation_details_callback',
         'accomodation',
         'normal',
@@ -88,7 +88,7 @@ function accomodation_details_callback($post) {
     <table class="form-table" role="presentation">
         <tbody>
             <tr>
-                <th scope="row"><label for="accomodation_location"><?php _e('Location', 'wp-mold'); ?></label></th>
+                <th scope="row"><label for="accomodation_location"><?php _e('Location', 'mold-tour'); ?></label></th>
                 <td><input type="text" id="accomodation_location" name="accomodation_location" value="<?php echo esc_attr($location); ?>" class="regular-text" /></td>
             </tr>
         </tbody>
@@ -140,7 +140,7 @@ function accomodation_admin_columns($columns) {
     $new_columns = array();
     $new_columns['cb'] = $columns['cb'];
     $new_columns['title'] = $columns['title'];
-    $new_columns['location'] = __('Location', 'wp-mold');
+    $new_columns['location'] = __('Location', 'mold-tour');
     $new_columns['date'] = $columns['date'];
 
     return $new_columns;
@@ -201,7 +201,7 @@ function display_accomodation_info($post_id = null) {
     }
 
     $fields = array(
-        'location' => __('Location', 'wp-mold'),
+        'location' => __('Location', 'mold-tour'),
     );
 
     echo '<div class="accomodation-info">';

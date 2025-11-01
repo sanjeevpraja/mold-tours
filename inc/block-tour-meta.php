@@ -16,12 +16,12 @@ function callback_block_tour_meta($attributes, $content, $block)
     $post_id = get_the_ID();
 
     if (!$post_id) {
-        return '<div class="wp-mold-tour-meta-error">' . __('No post found', 'wp-mold') . '</div>';
+        return '<div class="wp-mold-tour-meta-error">' . __('No post found', 'mold-tour') . '</div>';
     }
 
     // Check if we're dealing with a tour post type
     if (get_post_type($post_id) !== 'tour') {
-        return '<div class="wp-mold-tour-meta-error">' . __('Not a tour post', 'wp-mold') . '</div>';
+        return '<div class="wp-mold-tour-meta-error">' . __('Not a tour post', 'mold-tour') . '</div>';
     }
 
     // Get the meta value - use underscore prefix to match your meta key pattern
@@ -61,14 +61,14 @@ function callback_block_tour_meta($attributes, $content, $block)
 
         case 'tour_days':
             // Add "Days" suffix if not already present
-            if (is_numeric($display_content) && !str_contains($display_content, __('Day', 'wp-mold'))) {
+            if (is_numeric($display_content) && !str_contains($display_content, __('Day', 'mold-tour'))) {
                 $display_content = $display_content;
             }
             break;
 
         case 'tour_nights':
             // Add "Nights" suffix if not already present
-            if (is_numeric($display_content) && !str_contains($display_content, __('Night', 'wp-mold'))) {
+            if (is_numeric($display_content) && !str_contains($display_content, __('Night', 'mold-tour'))) {
                 $display_content = $display_content;
             }
             break;
@@ -119,7 +119,7 @@ function callback_block_tour_meta($attributes, $content, $block)
     // if (is_admin() || (defined('WP_DEBUG') && WP_DEBUG)) {
     //     $output .= sprintf(
     //         '<div><small>%s <code>_%s</code></small></div>',
-    //         __('Meta key:', 'wp-mold'),
+    //         __('Meta key:', 'mold-tour'),
     //         esc_html($meta_key)
     //     );
     // }

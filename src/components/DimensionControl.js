@@ -11,7 +11,7 @@ const DIMENSION_UNITS = [
 ];
 
 const DimensionControl = ({
-    label = __('Dimension', 'wp-mold'),
+    label = __('Dimension', 'mold-tour'),
     value = '',
     unit = 'px',
     onChange = () => {},
@@ -66,13 +66,13 @@ const DimensionControl = ({
                             variant={isAuto ? 'primary' : 'secondary'}
                             onClick={() => handleChange('auto')}
                         >
-                            {__('Auto', 'wp-mold')}
+                            {__('Auto', 'mold-tour')}
                         </Button>
                         <Button
                             variant={!isAuto ? 'primary' : 'secondary'}
                             onClick={() => handleChange(numericValue)}
                         >
-                            {__('Manual', 'wp-mold')}
+                            {__('Manual', 'mold-tour')}
                         </Button>
                     </ButtonGroup>
                 </div>
@@ -98,7 +98,7 @@ const DimensionControl = ({
                                     value={unit}
                                     options={DIMENSION_UNITS}
                                     onChange={handleUnitChange}
-                                    label={__('Unit', 'wp-mold')}
+                                    label={__('Unit', 'mold-tour')}
                                     hideLabelFromVision
                                     className="wp-mold-dimension-control__select"
                                 />

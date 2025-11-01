@@ -19,7 +19,7 @@ const ALLOWED_BLOCKS = [
 
 
 registerBlockType('mold/grade-image', {
-    title: __('Grade Featured Container', 'wp-mold'),
+    title: __('Grade Featured Container', 'mold-tour'),
     icon: 'archive',
     category: 'mold',
     attributes: {

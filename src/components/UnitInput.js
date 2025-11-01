@@ -21,7 +21,7 @@ const UnitInput = ({ label, value = '', unit = 'px', onChangeValue, onChangeUnit
 				</FlexBlock>
 				<FlexItem>
 					<SelectControl
-						label={__('Unit', 'wp-mold')}
+						label={__('Unit', 'mold-tour')}
 						hideLabelFromVision
 						value={unit}
 						options={unitOptions.map((u) => ({ label: u, value: u }))}

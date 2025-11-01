@@ -4,7 +4,7 @@ add_action( 'add_meta_boxes', function() {
 	if ( post_type_exists( 'tour' ) ) {
 		add_meta_box(
 			'tour_gallery',
-			__( 'Tour Gallery', 'textdomain' ),
+			__( 'Tour Gallery', 'mold-tour' ),
 			'tour_gallery_metabox_callback',
 			'tour',
 			'side',
@@ -26,7 +26,7 @@ function tour_gallery_metabox_callback( $post ) {
 				$image = wp_get_attachment_image( $image_id, 'thumbnail' );
 				echo '<li class="image" data-attachment_id="' . esc_attr( $image_id ) . '">' . $image . '
 					<ul class="actions">
-						<li><a href="#" class="delete tips" data-tip="' . esc_attr__( 'Remove image', 'textdomain' ) . '">×</a></li>
+						<li><a href="#" class="delete tips" data-tip="' . esc_attr__( 'Remove image', 'mold-tour' ) . '">×</a></li>
 					</ul>
 				</li>';
 			}
@@ -36,7 +36,7 @@ function tour_gallery_metabox_callback( $post ) {
 	</div>
 
 	<p class="add_tour_images hide-if-no-js">
-		<a href="#" class="button"><?php esc_html_e( 'Add gallery images', 'textdomain' ); ?></a>
+		<a href="#" class="button"><?php esc_html_e( 'Add gallery images', 'mold-tour' ); ?></a>
 	</p>
 
 
@@ -118,8 +118,8 @@ function tour_gallery_metabox_callback( $post ) {
 			}
 
 			frame = wp.media({
-				title: '<?php esc_html_e( 'Add Images to Tour Gallery', 'textdomain' ); ?>',
-				button: { text: '<?php esc_html_e( 'Add to gallery', 'textdomain' ); ?>' },
+				title: '<?php esc_html_e( 'Add Images to Tour Gallery', 'mold-tour' ); ?>',
+				button: { text: '<?php esc_html_e( 'Add to gallery', 'mold-tour' ); ?>' },
 				multiple: true
 			});
 

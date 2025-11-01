@@ -7,7 +7,7 @@ import './editor.scss';
 import './style.scss';
 
 registerBlockType('mold/tour-gallery', {
-    title: __('Tour Gallery', 'wp-mold'),
+    title: __('Tour Gallery', 'mold-tour'),
     icon: 'format-gallery',
     category: 'widgets',
     supports: {
@@ -55,8 +55,8 @@ registerBlockType('mold/tour-gallery', {
                 <div {...blockProps}>
                     <Placeholder
                         icon="format-gallery"
-                        label={__('Tour Gallery', 'wp-mold')}
-                        instructions={__('No images found. Add some in the Tour Gallery metabox.', 'wp-mold')}
+                        label={__('Tour Gallery', 'mold-tour')}
+                        instructions={__('No images found. Add some in the Tour Gallery metabox.', 'mold-tour')}
                     />
                 </div>
             );

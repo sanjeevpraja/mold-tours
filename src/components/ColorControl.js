@@ -8,7 +8,7 @@ const ColorControl = ({ label, value, onChange, enableAlpha = false, clearable =
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <BaseControl label={__(label, 'wp-mold')}>
+        <BaseControl label={__(label, 'mold-tour')}>
             <div className="mold-color-control">
                 <Button
                     className="mold-color-control__button"
@@ -39,7 +39,7 @@ const ColorControl = ({ label, value, onChange, enableAlpha = false, clearable =
                                     onClick={() => setIsOpen(false)}
                                     style={{ marginTop: '10px' }}
                                 >
-                                    {__('Close', 'wp-mold')}
+                                    {__('Close', 'mold-tour')}
                                 </Button>
                             </div>
                         </div>

@@ -19,7 +19,7 @@ const PositionControl = ({ positionMatrix, onChange }) => {
 
     return (
         <div className="wp-mold-position-control">
-            <BaseControl label={__('Position', 'wp-mold')}>
+            <BaseControl label={__('Position', 'mold-tour')}>
                 {['Top', 'Right', 'Bottom', 'Left'].map((side) => {
                     const value = positionMatrix[`position${side}`];
                     const unit = positionMatrix[`position${side}Unit`];
@@ -27,7 +27,7 @@ const PositionControl = ({ positionMatrix, onChange }) => {
                     return (
                         <DimensionControl
                             key={side}
-                            label={__(side, 'wp-mold')}
+                            label={__(side, 'mold-tour')}
                             value={value}
                             unit={unit}
                             onChange={(value, unit) => handlePositionChange(side, value, unit)}

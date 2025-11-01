@@ -8,8 +8,8 @@ import './editor.scss';
 import './style.scss';
 
 registerBlockType('mold/member-meta', {
-    title: __('Member Meta', 'wp-mold'),
-    description: __('Display meta value for post type member', 'wp-mold'),
+    title: __('Member Meta', 'mold-tour'),
+    description: __('Display meta value for post type member', 'mold-tour'),
     icon: {
         src: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="16" height="16" rx="3" fill="#007CBA"/>
@@ -49,20 +49,20 @@ registerBlockType('mold/member-meta', {
 
         // Define available meta keys
         const metaKeys = [
-            { label: __('Designation', 'wp-mold'), value: 'member_designation' },
-            { label: __('Gender', 'wp-mold'), value: 'member_gender' },
-            { label: __('University', 'wp-mold'), value: 'member_university' },
-            { label: __('Campus Department', 'wp-mold'), value: 'member_campus_department' },
-            { label: __('Academic Degree', 'wp-mold'), value: 'member_academic_degree' },
-            { label: __('Completed Year', 'wp-mold'), value: 'member_completed_year' },
-            { label: __('Thesis Title', 'wp-mold'), value: 'member_thesis_title' },
-            { label: __('Supervisor', 'wp-mold'), value: 'member_supervisor' },
-            { label: __('Phone', 'wp-mold'), value: 'member_phone' },
-            { label: __('Email', 'wp-mold'), value: 'member_email' },
-            { label: __('Website', 'wp-mold'), value: 'member_website' },
-            { label: __('LinkedIn', 'wp-mold'), value: 'member_linkedin' },
-            { label: __('Twitter', 'wp-mold'), value: 'member_twitter' },
-            { label: __('Facebook', 'wp-mold'), value: 'member_facebook' }
+            { label: __('Designation', 'mold-tour'), value: 'member_designation' },
+            { label: __('Gender', 'mold-tour'), value: 'member_gender' },
+            { label: __('University', 'mold-tour'), value: 'member_university' },
+            { label: __('Campus Department', 'mold-tour'), value: 'member_campus_department' },
+            { label: __('Academic Degree', 'mold-tour'), value: 'member_academic_degree' },
+            { label: __('Completed Year', 'mold-tour'), value: 'member_completed_year' },
+            { label: __('Thesis Title', 'mold-tour'), value: 'member_thesis_title' },
+            { label: __('Supervisor', 'mold-tour'), value: 'member_supervisor' },
+            { label: __('Phone', 'mold-tour'), value: 'member_phone' },
+            { label: __('Email', 'mold-tour'), value: 'member_email' },
+            { label: __('Website', 'mold-tour'), value: 'member_website' },
+            { label: __('LinkedIn', 'mold-tour'), value: 'member_linkedin' },
+            { label: __('Twitter', 'mold-tour'), value: 'member_twitter' },
+            { label: __('Facebook', 'mold-tour'), value: 'member_facebook' }
         ];
 
         // Get the current post's meta data based on selected metaKey
@@ -79,17 +79,17 @@ registerBlockType('mold/member-meta', {
         );
 
         // Display content in editor
-        const displayContent = memberMetaValue || fallback || __('No value set', 'wp-mold');
+        const displayContent = memberMetaValue || fallback || __('No value set', 'mold-tour');
 
         return (
             <>
                 <InspectorControls>
-                    <PanelBody title={__('Content Settings', 'wp-mold')} initialOpen={true}>
+                    <PanelBody title={__('Content Settings', 'mold-tour')} initialOpen={true}>
                         <SelectControl
-                            label={__('Meta Field', 'wp-mold')}
+                            label={__('Meta Field', 'mold-tour')}
                             value={metaKey}
                             options={[
-                                { label: __('Select a meta field', 'wp-mold'), value: '' },
+                                { label: __('Select a meta field', 'mold-tour'), value: '' },
                                 ...metaKeys
                             ]}
                             onChange={(newMetaKey) => setAttributes({ metaKey: newMetaKey })}
@@ -98,16 +98,16 @@ registerBlockType('mold/member-meta', {
                         {(metaKey !== 'member_facebook' && metaKey !== 'member_twitter' && metaKey !== 'member_linkedin' && metaKey !== 'member_website') && (
                             <>
                                 <SelectControl
-                                    label={__('HTML Tag', 'wp-mold')}
+                                    label={__('HTML Tag', 'mold-tour')}
                                     value={htmlTag}
                                     options={htmlTags}
                                     onChange={(newTag) => setAttributes({ htmlTag: newTag })}
                                 />
                                 <TextControl
-                                    label={__('Fallback Text', 'wp-mold')}
+                                    label={__('Fallback Text', 'mold-tour')}
                                     value={fallback}
                                     onChange={(newFallback) => setAttributes({ fallback: newFallback })}
-                                    help={__('Text to show when no meta value is set', 'wp-mold')}
+                                    help={__('Text to show when no meta value is set', 'mold-tour')}
                                 />
                             </>
                         )}
@@ -150,7 +150,7 @@ registerBlockType('mold/member-meta', {
                                             {displayContent}
                                         </htmlTag>
                                         <div>
-                                            <small>{__('Meta key:', 'wp-mold')} <code>_{metaKey}</code></small>
+                                            <small>{__('Meta key:', 'mold-tour')} <code>_{metaKey}</code></small>
                                         </div>
                                     </div>
                                 );

@@ -5,8 +5,8 @@ function mold_add_tour_settings_submenu()
 {
     add_submenu_page(
         'edit.php?post_type=tour',     // Parent: your CPT
-        __('Tour Settings', 'wp-mold'), // Page title
-        __('Settings', 'wp-mold'),      // Menu title
+        __('Tour Settings', 'mold-tour'), // Page title
+        __('Settings', 'mold-tour'),      // Menu title
         'manage_options',               // Capability
         'tour-settings',                // Slug
         'mold_render_tour_settings_page' // Callback
@@ -18,7 +18,7 @@ function mold_render_tour_settings_page()
 {
 ?>
     <div class="wrap">
-        <h1><?php _e('Tour Settings', 'wp-mold'); ?></h1>
+        <h1><?php _e('Tour Settings', 'mold-tour'); ?></h1>
         <form method="post" action="options.php">
             <?php
             settings_fields('tour_settings_group');
@@ -52,7 +52,7 @@ function mold_register_tour_settings()
     // ✅ Currency Field
     add_settings_field(
         'tour_currency',
-        __('Currency', 'wp-mold'),
+        __('Currency', 'mold-tour'),
         function () {
             $selected = get_option('tour_currency', 'USD');
             $currencies = array(
@@ -170,11 +170,11 @@ function mold_register_tour_settings()
 
     add_settings_field(
         'tour_thousand_separator',
-        __('Thousand Separator', 'wp-mold'),
+        __('Thousand Separator', 'mold-tour'),
         function () {
             $value = get_option('tour_thousand_separator', ',');
             echo '<input type="text" name="tour_thousand_separator" value="' . esc_attr($value) . '" maxlength="1" style="width:60px; text-align:center;">';
-            echo '<p class="description">' . __('Character used to separate thousands (e.g., 1,000 or 1.000).', 'wp-mold') . '</p>';
+            echo '<p class="description">' . __('Character used to separate thousands (e.g., 1,000 or 1.000).', 'mold-tour') . '</p>';
         },
         'tour-settings',
         'tour_general_section'
@@ -182,11 +182,11 @@ function mold_register_tour_settings()
 
     add_settings_field(
         'tour_decimal_separator',
-        __('Decimal Separator', 'wp-mold'),
+        __('Decimal Separator', 'mold-tour'),
         function () {
             $value = get_option('tour_decimal_separator', '.');
             echo '<input type="text" name="tour_decimal_separator" value="' . esc_attr($value) . '" maxlength="1" style="width:60px; text-align:center;">';
-            echo '<p class="description">' . __('Character used for decimals (e.g., 1.50 or 1,50).', 'wp-mold') . '</p>';
+            echo '<p class="description">' . __('Character used for decimals (e.g., 1.50 or 1,50).', 'mold-tour') . '</p>';
         },
         'tour-settings',
         'tour_general_section'
@@ -194,11 +194,11 @@ function mold_register_tour_settings()
 
     add_settings_field(
         'tour_number_of_decimals',
-        __('Number of Decimals', 'wp-mold'),
+        __('Number of Decimals', 'mold-tour'),
         function () {
             $value = get_option('tour_number_of_decimals', 2);
             echo '<input type="number" name="tour_number_of_decimals" value="' . esc_attr($value) . '" min="0" max="6" step="1" style="width:80px;">';
-            echo '<p class="description">' . __('Number of digits to display after the decimal point (e.g., 2 for 1.50).', 'wp-mold') . '</p>';
+            echo '<p class="description">' . __('Number of digits to display after the decimal point (e.g., 2 for 1.50).', 'mold-tour') . '</p>';
         },
         'tour-settings',
         'tour_general_section'

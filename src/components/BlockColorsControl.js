@@ -11,7 +11,7 @@ const BlockColorsControl = ({ colors, onChange }) => {
     return (
         <>
             <div className="color-control-wrap">
-                <label>{__('Text', 'wp-mold')}</label>
+                <label>{__('Text', 'mold-tour')}</label>
                 <ColorControl
                     value={colors.textColor}
                     onChange={(value) => updateColor('textColor', value)}
@@ -20,7 +20,7 @@ const BlockColorsControl = ({ colors, onChange }) => {
                 />
             </div>
             <div className="color-control-wrap">
-                <label>{__('Background', 'wp-mold')}</label>
+                <label>{__('Background', 'mold-tour')}</label>
                 <ColorControl
                     value={colors.bgColor}
                     onChange={(value) => updateColor('bgColor', value)}
@@ -29,7 +29,7 @@ const BlockColorsControl = ({ colors, onChange }) => {
                 />
             </div>
             <div className="color-control-wrap">
-                <label>{__('Text Hover', 'wp-mold')}</label>
+                <label>{__('Text Hover', 'mold-tour')}</label>
                 <ColorControl
                     value={colors.textColorHover}
                     onChange={(value) => updateColor('textColorHover', value)}
@@ -38,7 +38,7 @@ const BlockColorsControl = ({ colors, onChange }) => {
                     />
             </div>
             <div className="color-control-wrap">
-                <label>{__('Background Hover', 'wp-mold')}</label>
+                <label>{__('Background Hover', 'mold-tour')}</label>
                 <ColorControl
                     value={colors.bgColorHover}
                     onChange={(value) => updateColor('bgColorHover', value)}

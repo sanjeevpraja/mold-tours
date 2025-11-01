@@ -11,7 +11,7 @@ function callback_block_member_meta($attributes, $content, $block)
     $post_id = get_the_ID();
 
     if (!$post_id) {
-        return '<div class="wp-mold-member-meta-error">' . __('No post found', 'wp-mold') . '</div>';
+        return '<div class="wp-mold-member-meta-error">' . __('No post found', 'mold-tour') . '</div>';
     }
 
     // Get the meta value - add underscore prefix to match your meta key pattern
@@ -84,7 +84,7 @@ function callback_block_member_meta($attributes, $content, $block)
             if (is_admin() || (defined('WP_DEBUG') && WP_DEBUG)) {
                 $output .= sprintf(
                     '<div><small>%s <code>_%s</code></small></div>',
-                    __('Meta key:', 'wp-mold'),
+                    __('Meta key:', 'mold-tour'),
                     esc_html($meta_key)
                 );
             }

@@ -26,7 +26,7 @@ import { ButtonGroup, Button } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 const TShirtSizeControl = ({
-	label = __('Size', 'wp-mold'),
+	label = __('Size', 'mold-tour'),
 	value,
 	onChange,
 	variant = 'full', // or 'sm'

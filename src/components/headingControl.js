@@ -1,7 +1,7 @@
 import { ButtonGroup, Button, ToolbarGroup } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
-const HeadingControl = ({ value, onChange, label = __('Heading Level', 'wp-mold') }) => {
+const HeadingControl = ({ value, onChange, label = __('Heading Level', 'mold-tour') }) => {
     const headingOptions = [
         { level: 1, label: 'H1' },
         { level: 2, label: 'H2' },

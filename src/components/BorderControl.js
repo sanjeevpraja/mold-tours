@@ -18,13 +18,13 @@ const BorderControl = ({ label = 'Border', value, onChange }) => {
 	return (
 		<div style={{ marginBottom: '20px' }}>
 			<label style={{ display: 'block', fontWeight: 600, marginBottom: 4 }}>
-				{__(label, 'wp-mold')}
+				{__(label, 'mold-tour')}
 			</label>
 
 			<Flex gap={2}>
 				<FlexBlock>
 					<TextControl
-						label={__('Width (px)', 'wp-mold')}
+						label={__('Width (px)', 'mold-tour')}
 						hideLabelFromVision
 						value={width}
 						type="number"
@@ -36,14 +36,14 @@ const BorderControl = ({ label = 'Border', value, onChange }) => {
 
 				<FlexItem>
 					<SelectControl
-						label={__('Style', 'wp-mold')}
+						label={__('Style', 'mold-tour')}
 						hideLabelFromVision
 						value={style}
 						options={[
-							{ label: __('Solid', 'wp-mold'), value: 'solid' },
-							{ label: __('Dashed', 'wp-mold'), value: 'dashed' },
-							{ label: __('Dotted', 'wp-mold'), value: 'dotted' },
-							{ label: __('None', 'wp-mold'), value: 'none' },
+							{ label: __('Solid', 'mold-tour'), value: 'solid' },
+							{ label: __('Dashed', 'mold-tour'), value: 'dashed' },
+							{ label: __('Dotted', 'mold-tour'), value: 'dotted' },
+							{ label: __('None', 'mold-tour'), value: 'none' },
 						]}
 						onChange={(val) => update('style', val)}
 					/>

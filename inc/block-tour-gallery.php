@@ -33,7 +33,7 @@ function callback_block_tour_gallery($attributes, $content, $block)
         $mold_slider_speed,
         $mold_slider_indicator == 'hide' ? 'false' : 'true',
         $mold_slider_nav == 'hide' ? 'false' : 'true',
-        $mold_slider_effect,
+        $mold_slider_effect
     );
 
     $post_id = get_the_ID();

@@ -8,17 +8,17 @@ import { select } from '@wordpress/data';
 export const getFontFamilyOptions = () => {
   const { fontFamilies } = select('core/block-editor').getSettings()?.typography || {};
   const defaultOptions = [
-    { label: __('Default', 'wp-mold'), value: '' }
+    { label: __('Default', 'mold-tour'), value: '' }
   ];
 
   if (!fontFamilies || fontFamilies.length === 0) {
     return defaultOptions.concat([
       { 
-        label: __('System Font', 'wp-mold'), 
+        label: __('System Font', 'mold-tour'),
         value: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif' 
       },
-      { label: __('Arial', 'wp-mold'), value: 'Arial, sans-serif' },
-      { label: __('Georgia', 'wp-mold'), value: 'Georgia, serif' },
+      { label: __('Arial', 'mold-tour'), value: 'Arial, sans-serif' },
+      { label: __('Georgia', 'mold-tour'), value: 'Georgia, serif' },
     ]);
   }
 

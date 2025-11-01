@@ -4,7 +4,7 @@ import DimensionControl from './DimensionControl';
 
 const WidthControl = (props) => {
     const {
-        label = __('Width', 'wp-mold'),
+        label = __('Width', 'mold-tour'),
         type = 'auto', // Default type
         value = 100, // Default value (only used in manual mode)
         unit = 'px', // Default unit
@@ -32,13 +32,13 @@ const WidthControl = (props) => {
                         variant={type === 'auto' ? 'primary' : 'secondary'}
                         onClick={() => handleTypeChange('auto')}
                     >
-                        {__('Auto', 'wp-mold')}
+                        {__('Auto', 'mold-tour')}
                     </Button>
                     <Button
                         variant={type === 'manual' ? 'primary' : 'secondary'}
                         onClick={() => handleTypeChange('manual')}
                     >
-                        {__('Manual', 'wp-mold')}
+                        {__('Manual', 'mold-tour')}
                     </Button>
                 </ButtonGroup>
             </BaseControl>

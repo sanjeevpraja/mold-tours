@@ -8,8 +8,8 @@ import './editor.scss';
 import './style.scss';
 
 registerBlockType('mold/tour-meta', {
-    title: __('Tour Meta', 'wp-mold'),
-    description: __('Display meta value for post type tour', 'wp-mold'),
+    title: __('Tour Meta', 'mold-tour'),
+    description: __('Display meta value for post type tour', 'mold-tour'),
     icon: {
         src: <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="16" height="16" rx="3" fill="#007CBA"/>
@@ -49,12 +49,12 @@ registerBlockType('mold/tour-meta', {
 
         // Define available meta keys
         const metaKeys = [
-            { label: __('Date', 'wp-mold'), value: 'tour_date' },
-            { label: __('Days', 'wp-mold'), value: 'tour_days' },
-            { label: __('Nights', 'wp-mold'), value: 'tour_nights' },
-            { label: __('Price', 'wp-mold'), value: 'tour_price' },
-            { label: __('Original Price', 'wp-mold'), value: 'tour_original_price' },
-            { label: __('Grade Icon', 'wp-mold'), value: 'tour_grade_icon' }
+            { label: __('Date', 'mold-tour'), value: 'tour_date' },
+            { label: __('Days', 'mold-tour'), value: 'tour_days' },
+            { label: __('Nights', 'mold-tour'), value: 'tour_nights' },
+            { label: __('Price', 'mold-tour'), value: 'tour_price' },
+            { label: __('Original Price', 'mold-tour'), value: 'tour_original_price' },
+            { label: __('Grade Icon', 'mold-tour'), value: 'tour_grade_icon' }
         ];
 
         // Get the current post's meta data based on selected metaKey
@@ -71,17 +71,17 @@ registerBlockType('mold/tour-meta', {
         );
 
         // Display content in editor
-        const displayContent = memberMetaValue || fallback || __('No value set', 'wp-mold');
+        const displayContent = memberMetaValue || fallback || __('No value set', 'mold-tour');
 
         return (
             <>
                 <InspectorControls>
-                    <PanelBody title={__('Content Settings', 'wp-mold')} initialOpen={true}>
+                    <PanelBody title={__('Content Settings', 'mold-tour')} initialOpen={true}>
                         <SelectControl
-                            label={__('Meta Field', 'wp-mold')}
+                            label={__('Meta Field', 'mold-tour')}
                             value={metaKey}
                             options={[
-                                { label: __('Select a meta field', 'wp-mold'), value: '' },
+                                { label: __('Select a meta field', 'mold-tour'), value: '' },
                                 ...metaKeys
                             ]}
                             onChange={(newMetaKey) => setAttributes({ metaKey: newMetaKey })}
@@ -90,16 +90,16 @@ registerBlockType('mold/tour-meta', {
                         {(metaKey !== 'member_facebook' && metaKey !== 'member_twitter' && metaKey !== 'member_linkedin' && metaKey !== 'member_website') && (
                             <>
                                 <SelectControl
-                                    label={__('HTML Tag', 'wp-mold')}
+                                    label={__('HTML Tag', 'mold-tour')}
                                     value={htmlTag}
                                     options={htmlTags}
                                     onChange={(newTag) => setAttributes({ htmlTag: newTag })}
                                 />
                                 <TextControl
-                                    label={__('Fallback Text', 'wp-mold')}
+                                    label={__('Fallback Text', 'mold-tour')}
                                     value={fallback}
                                     onChange={(newFallback) => setAttributes({ fallback: newFallback })}
-                                    help={__('Text to show when no meta value is set', 'wp-mold')}
+                                    help={__('Text to show when no meta value is set', 'mold-tour')}
                                 />
                             </>
                         )}
@@ -141,7 +141,7 @@ registerBlockType('mold/tour-meta', {
                                         <htmlTag className="wp-mold-member-meta-info" {...blockProps}>
                                             {displayContent}
                                         </htmlTag>
-                                        <small style={{ fontSize: '9px' }}>{__('Meta:', 'wp-mold')} <code>_{metaKey}</code></small>
+                                        <small style={{ fontSize: '9px' }}>{__('Meta:', 'mold-tour')} <code>_{metaKey}</code></small>
                                     </div>
                                 );
                         }
