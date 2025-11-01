@@ -1,0 +1,40 @@
+/* Frontend styles */
+@use '../styles/_color';
+
+.mold-featured-background{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  .map-image{
+    $height: 140px;
+    height: $height;
+    width: $height;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    img{
+      opacity: .8;
+      max-height: 100%;
+      max-width: 100%;
+      filter: invert(20%);
+    }
+  }
+}
+
+.location-meta-content{
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}

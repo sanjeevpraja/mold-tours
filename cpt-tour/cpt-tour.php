@@ -71,7 +71,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
     
     // Check if content is empty
     if (empty($post->post_content)) {
-        $default_content = '<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}},"color":{"background":"#212121"}},"textColor":"white","layout":{"type":"constrained"}} -->
+        $default_content = '<!-- wp:group {"metadata":{"name":"Tour Content"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}},"color":{"background":"#212121"}},"textColor":"white","layout":{"type":"constrained"}} -->
 <div class="wp-block-group has-white-color has-text-color has-background has-link-color" style="background-color:#212121;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:post-title {"textAlign":"center"} /-->
 
 <!-- wp:spacer {"height":"50px"} -->
@@ -96,7 +96,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|30"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"right"}} -->
 <div class="wp-block-group"><!-- wp:post-terms {"term":"category"} /-->
 
-<!-- wp:post-terms {"term":"post_tag"} /--></div>
+<!-- wp:post-terms {"term":"post_tag","style":{"typography":{"textTransform":"capitalize"},"spacing":{"padding":{"top":"5px","bottom":"5px","left":"var:preset|spacing|20","right":"var:preset|spacing|20"}}},"backgroundColor":"secondary"} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
@@ -144,7 +144,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":4} -->
-<h4 class="wp-block-heading">Teahouse</h4>
+<h4 class="wp-block-heading">Hotel</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
@@ -160,7 +160,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":4} -->
-<h4 class="wp-block-heading">Bus</h4>
+<h4 class="wp-block-heading">Mini Bus</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
@@ -176,7 +176,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":4} -->
-<h4 class="wp-block-heading">Tour guide</h4>
+<h4 class="wp-block-heading"><a href="https://natouravoyage.moldthemes.com/member/barry-macdonald/" data-type="member" data-id="190">Barry Macdonald</a> &amp; Local Guide</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
@@ -192,7 +192,7 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:paragraph -->
 
 <!-- wp:heading {"level":4} -->
-<h4 class="wp-block-heading">6</h4>
+<h4 class="wp-block-heading">Max 6</h4>
 <!-- /wp:heading --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group --></div>
@@ -204,16 +204,19 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 
 <!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|70"}}}} -->
 <div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
-<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:mold/tab {"activeTab":1,"activeTabColor":"#eb8122","tabGap":10,"borderRadius":10,"headerStyles":{"fontFamily":"","fontSize":"","textColor":"#ffffff","padding":{"inline":"30px","block":"16px"},"fontWeight":"bold","backgroundColor":"#12121200"},"contentStyles":{"fontFamily":"","fontSize":"","textColor":"#ffffff","backgroundColor":"#12121200","padding":{"inline":"15px","block":"10px"}}} -->
-<div class="wp-block-mold-tab tab-container tab-style-default" data-active-tab="1" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#ffffff;--tab-header-background-color:#12121200;--tab-header-gap:10px;--tab-header-padding:16px 30px;--tab-header-border-radius:10px;--tab-header-border-width:1px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#000000;--tab-header-active-tab-background-color:#eb8122;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#ffffff;--tab-content-background-color:#12121200;--tab-content-padding:10px 15px;--tab-content-border-radius:10px;--tab-content-border-width:1px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Overview"} -->
-<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Overview" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:paragraph {"placeholder":"Add tab content here..."} -->
-<p class="">Add Overview Decription</p>
+<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:mold/tab {"activeTabColor":"#eb8122","tabGap":10,"borderRadius":10,"headerStyles":{"fontFamily":"","fontSize":"","textColor":"#ffffff","padding":{"inline":"30px","block":"16px"},"fontWeight":"bold","backgroundColor":"#12121200"},"contentStyles":{"fontFamily":"","fontSize":"","textColor":"#ffffff","backgroundColor":"#12121200","padding":{"inline":"15px","block":"10px"}}} -->
+<div class="wp-block-mold-tab tab-container tab-style-default" data-active-tab="0" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#ffffff;--tab-header-background-color:#12121200;--tab-header-gap:10px;--tab-header-padding:16px 30px;--tab-header-border-radius:10px;--tab-header-border-width:1px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#000000;--tab-header-active-tab-background-color:#eb8122;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#ffffff;--tab-content-background-color:#12121200;--tab-content-padding:10px 15px;--tab-content-border-radius:10px;--tab-content-border-width:1px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Overview"} -->
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Overview" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:paragraph -->
+<p class="">Here is a short example paragraph like dummy text for an Tour description including details on availability and features.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:mold/tab-item -->
 
 <!-- wp:mold/tab-item {"title":"Itinineary"} -->
-<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Itinineary" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:mold/step {"stepType":"icon","stepColor":"#121212","stepBgColor":"#eb8122","headColor":"#eb8122","bodyColor":"#ffffff","trackColor":"#555555","listItems":[{"text":"Day 1","content":"<p>Description</p>","imageUrl":"","icon":"airplanemode_active","indexColor":"#ffffff","iconBgColor":"#121212"},{"text":"Day 2","content":"<p>Description</p>","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"directions_bus"}]} -->
-<div class="wp-block-mold-step" data-animation-interval="2500" style="--head-color:#eb8122;--body-color:#ffffff;--track-color:#555555;--active-color:;--step-size:60px;--track-width:2px;padding:10px"><ul class="wp-mold-step" data-animation="false"><li class="wp-mold-step-li active animation-false" data-attr="list-1"><div class="step-index list-1 active" style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">airplanemode_active</span></div><div class="text-area"><div><h3 class="head-text">Day 1</h3><div class="body-text"><p>Description</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-2"><div class="step-index list-2 " style="background: #121212; color: #ffffff"><span class="material-symbols-outlined">directions_bus</span></div><div class="text-area"><div><h3 class="head-text">Day 2</h3><div class="body-text"><p>Description</p></div></div></div></li></ul></div>
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Itinineary" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:mold/step {"stepType":"icon","stepColor":"#121212","stepBgColor":"#eb8122","headColor":"#eb8122","bodyColor":"#ffffff","trackColor":"#555555","listItems":[{"text":"Day 1 (January 21st 2026)","content":"u003cpu003eu003cstrongu003eManchester to Banjulu003c/strongu003eu003c/pu003enu003cpu003eMeet at the airport for our Flight to Banjulu003c/pu003e","imageUrl":"","icon":"airplanemode_active","indexColor":"#ffffff","iconBgColor":"#121212"},{"text":"Day 2 (January 22nd 2026)","content":"u003cpu003eu003cstrongu003eTransfer to Kombo Beach Hotelu003c/strongu003eu003c/pu003enu003cpu003eEvening arrivalu0026nbsp; and transfer to the hotel. Brief evening meeting at 7pm in Kombo Beach Hotel receptionu0026nbsp; to discuss itinerary for the week ahead. We then have a group mealu003c/pu003enu003cpu003eOvernight at Kombo Beach Hotel - All Inclusiveu003c/pu003e","imageUrl":"","indexColor":"#ffffff","iconBgColor":"#121212","icon":"directions_bus"},{"text":"Day 3 (January 23rd 2026)","content":"u003cpu003eu003cstrongu003eFull Days Birdingu003c/strongu003eu003cbr /u003eLamin Creek boat trip - Brufut - Madianau003cbr /u003eEarly morning excursion to oyster and Lamin creek area Birds u0026amp; Breakfast. Lunch at POCO LOCO Restaurant or similar. Afternoon excursion to Brufut/ Madiana area. Overnight at Kombo Beach Hotel - Fully Inclusiveu003c/pu003e","imageUrl":"","icon":"forest","indexColor":"#121212","iconBgColor":"#eb8122"}]} -->
+<div class="wp-block-mold-step" data-animation-interval="2500" style="--head-color:#eb8122;--body-color:#ffffff;--track-color:#555555;--active-color:;--step-size:60px;--track-width:2px;padding:10px"><ul class="wp-mold-step" data-animation="false"><li class="wp-mold-step-li active animation-false" data-attr="list-1"><div class="step-index list-1 active" style="background: #eb8122; color: #121212"><span class="material-symbols-outlined">airplanemode_active</span></div><div class="text-area"><div><h3 class="head-text">Day 1 (January 21st 2026)</h3><div class="body-text"><p><strong>Manchester to Banjul</strong></p>
+<p>Meet at the airport for our Flight to Banjul</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-2"><div class="step-index list-2 " style="background: #eb8122; color: #121212"><span class="material-symbols-outlined">directions_bus</span></div><div class="text-area"><div><h3 class="head-text">Day 2 (January 22nd 2026)</h3><div class="body-text"><p><strong>Transfer to Kombo Beach Hotel</strong></p>
+<p>Evening arrival&nbsp; and transfer to the hotel. Brief evening meeting at 7pm in Kombo Beach Hotel reception&nbsp; to discuss itinerary for the week ahead. We then have a group meal</p>
+<p>Overnight at Kombo Beach Hotel - All Inclusive</p></div></div></div></li><li class="wp-mold-step-li  animation-false" data-attr="list-3"><div class="step-index list-3 " style="background: #eb8122; color: #121212"><span class="material-symbols-outlined">forest</span></div><div class="text-area"><div><h3 class="head-text">Day 3 (January 23rd 2026)</h3><div class="body-text"><p><strong>Full Days Birding</strong><br />Lamin Creek boat trip - Brufut - Madiana<br />Early morning excursion to oyster and Lamin creek area Birds &amp; Breakfast. Lunch at POCO LOCO Restaurant or similar. Afternoon excursion to Brufut/ Madiana area. Overnight at Kombo Beach Hotel - Fully Inclusive</p></div></div></div></li></ul></div>
 <!-- /wp:mold/step --></div>
 <!-- /wp:mold/tab-item --></div></div>
 <!-- /wp:mold/tab --></div>
@@ -226,7 +229,83 @@ function mold_set_default_tour_content($post_id, $post, $update) {
 <!-- /wp:shortcode --></div>
 <!-- /wp:group --></div>
 <!-- /wp:column --></div>
-<!-- /wp:columns --></div>
+<!-- /wp:columns -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:gallery {"columns":4,"linkTo":"none","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|40","left":"var:preset|spacing|40"}}}} -->
+<figure class="wp-block-gallery has-nested-images columns-4 is-cropped"><!-- wp:image {"id":253,"sizeSlug":"full","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-full has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/720x480-1.jpg" alt="" class="wp-image-253" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":252,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/642_3335697_Serenity_Use_Only-scaled-1-1-1024x768.jpg" alt="" class="wp-image-252" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":251,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/609_5463829_Serenity_Use_Only-1024x720.jpg" alt="Birds of Gambia" class="wp-image-251" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":254,"sizeSlug":"full","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-full has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/720x480.jpg" alt="" class="wp-image-254" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":255,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/59609_11204209_Serenity_Use_Only-scaled-1-1024x683.jpg" alt="" class="wp-image-255" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":256,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/62090_1042997_Serenity__3rd_Party-855x1024.jpg" alt="" class="wp-image-256" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":257,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69057_4254102_Serenity_Use_Only-scaled-1-1024x683.jpeg" alt="" class="wp-image-257" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":258,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69088_4603713_Serenity_Use_Only-scaled-1-1024x683.jpeg" alt="" class="wp-image-258" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":259,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69094_10220505_Serenity_Use_Only-scaled-1-1024x683.jpeg" alt="" class="wp-image-259" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":260,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69099_806307_Serenity_Use_Only-scaled-1-1024x683.jpeg" alt="" class="wp-image-260" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":261,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69111_5461636_Serenity_Use_Only-scaled-1-1024x683.jpeg" alt="" class="wp-image-261" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":262,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69115_3260881_Serenity_Use_Only-scaled-1-1024x683.jpeg" alt="" class="wp-image-262" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":263,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69116_1790973_Serenity_Use_Only-scaled-1-1024x683.jpeg" alt="" class="wp-image-263" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":264,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69128_2755647_Serenity_Use_Only-scaled-1-1024x684.jpeg" alt="" class="wp-image-264" style="border-radius:10px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:image {"id":265,"sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
+<figure class="wp-block-image size-large has-custom-border"><img src="https://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/69130_2814134_Serenity_Use_Only-scaled-1-1024x684.jpeg" alt="" class="wp-image-265" style="border-radius:10px"/></figure>
+<!-- /wp:image --></figure>
+<!-- /wp:gallery -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:html {"metadata":{"name":"Map Custom html"}} -->
+<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7565200.415820887!2d-15.368893!3d13.417479!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xec29c2965af3807%3A0x9e4a4c406b139d2a!2sThe%20Gambia!5e1!3m2!1sen!2suk!4v1742247925976!5m2!1sen!2suk" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0; width: 100%;max-width: -webkit-fill-available"></iframe>
+<!-- /wp:html --></div>
+<!-- /wp:group --></div>
 <!-- /wp:group -->';
 
         // Update the post

@@ -1,0 +1,17 @@
+/* Editor styles */
+@use '../styles/_color';
+
+.mold-grade-featured-container {
+  position: relative;
+  width: 100%;
+  background: rgba(100,100,100,.2);
+  box-sizing: border-box;
+.mold-featured-content {
+    display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+}
+
+

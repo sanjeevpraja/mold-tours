@@ -1,23 +1,2 @@
 /*---------- 3.7 Grade/Location Archive Page ----------*/
 @use 'variables/_dimension' as *;
-.grade-icon{
-	font-size: 130px;
-	line-height: 50px;
-	display: table;
-	margin: -10px auto;
-}
-
-.map-image{
-	width: 80%;
-	margin: 0 auto;
-}
-
-@media(max-width: $screen-media-sm){
-	.map-image{
-		width: 100%;
-	}
-	.grade-icon{
-		display: block;
-		margin: 10px 0;
-	}
-}

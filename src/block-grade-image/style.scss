@@ -1,0 +1,12 @@
+/* Frontend styles */
+@use '../styles/_color';
+
+.mold-featured-background{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
