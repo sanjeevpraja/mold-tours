@@ -20,8 +20,8 @@ function tour_details_callback($post)
     wp_nonce_field('tour_meta_box', 'tour_meta_box_nonce');
 
     // Get current values
-    $days = get_post_meta($post->ID, '_tour_days', true);
-    $nights = get_post_meta($post->ID, '_tour_nights', true);
+    $group_tour = get_post_meta($post->ID, '_group_tour', true);
+    $tailor_tour = get_post_meta($post->ID, '_tailor_tour', true);
     $price = get_post_meta($post->ID, '_tour_price', true);
     $original_price = get_post_meta($post->ID, '_tour_original_price', true);
 
@@ -30,12 +30,12 @@ function tour_details_callback($post)
     <table class="form-table" role="presentation">
         <tbody>
             <tr>
-                <th scope="row"><label for="tour_days"><?php _e('Days', 'mold-tour'); ?></label></th>
-                <td><input type="text" id="tour_days" name="tour_days" value="<?php echo esc_attr($days); ?>" class="regular-text" /></td>
+                <th scope="row"><label for="group_tour"><?php _e('Group Tour', 'mold-tour'); ?></label></th>
+                <td><input type="checkbox" id="group_tour" name="group_tour" <?php checked($group_tour, 'yes'); ?> /></td>
             </tr>
             <tr>
-                <th scope="row"><label for="tour_nights"><?php _e('Nights', 'mold-tour'); ?></label></th>
-                <td><input type="text" id="tour_nights" name="tour_nights" value="<?php echo esc_attr($nights); ?>" class="regular-text" /></td>
+                <th scope="row"><label for="tailor_tour"><?php _e('Tailor-Made Tour', 'mold-tour'); ?></label></th>
+                <td><input type="checkbox" id="tailor_tour" name="tailor_tour" <?php checked($tailor_tour, 'yes'); ?> /></td>
             </tr>
             <tr>
                 <th scope="row"><label for="tour_price"><?php _e('Price', 'mold-tour'); ?></label></th>
@@ -53,41 +53,39 @@ function tour_details_callback($post)
 // Save Meta Box Data - FIXED VERSION
 function save_tour_meta_box_data($post_id)
 {
-    // Check if nonce is valid
-    if (!isset($_POST['tour_meta_box_nonce']) || !wp_verify_nonce($_POST['tour_meta_box_nonce'], 'tour_meta_box')) {
+    if (!isset($_POST['tour_meta_box_nonce']) ||
+        !wp_verify_nonce($_POST['tour_meta_box_nonce'], 'tour_meta_box')) {
         return;
     }
 
-    // Check if user has permissions to save data
-    if (!current_user_can('edit_post', $post_id)) {
-        return;
+    if (!current_user_can('edit_post', $post_id)) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (get_post_type($post_id) !== 'tour') return;
+
+    // Checkbox fields: save "yes" or "no"
+    $checkboxes = [
+        'group_tour' => '_group_tour',
+        'tailor_tour' => '_tailor_tour',
+    ];
+
+    foreach ($checkboxes as $field => $meta_key) {
+        $value = isset($_POST[$field]) ? 'yes' : 'no';
+        update_post_meta($post_id, $meta_key, $value);
     }
 
-    // Check if not an autosave
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-
-    // Check if this is the correct post type
-    if (get_post_type($post_id) !== 'tour') {
-        return;
-    }
-
-    // Save meta data - FIXED: using correct field names with 'tour_' prefix
-    $fields = array(
-        'tour_days' => '_tour_days',
-        'tour_nights' => '_tour_nights',
+    // Number fields
+    $numbers = [
         'tour_price' => '_tour_price',
-        'tour_original_price' => '_tour_original_price',
-    );
+        'tour_original_price' => '_tour_original_price'
+    ];
 
-    foreach ($fields as $field => $meta_key) {
+    foreach ($numbers as $field => $meta_key) {
         if (isset($_POST[$field])) {
-            $value = sanitize_text_field($_POST[$field]);
-            update_post_meta($post_id, $meta_key, $value);
+            update_post_meta($post_id, $meta_key, sanitize_text_field($_POST[$field]));
         }
     }
 }
+
 add_action('save_post', 'save_tour_meta_box_data');
 
 function get_tour_meta($post_id, $field)
@@ -102,8 +100,8 @@ function display_tour_info($post_id = null)
     }
 
     $fields = array(
-        'days' => __('Days', 'mold-tour'),
-        'nights' => __('Nights', 'mold-tour'),
+        'group_tour' => __('Group Tour', 'mold-tour'),
+        'tailor_tour' => __('Tailor-Made Tour', 'mold-tour'),
         'price' => __('Price', 'mold-tour'),
         'original_price' => __('Original Price', 'mold-tour'),
     );
@@ -132,8 +130,8 @@ register_activation_hook(__FILE__, 'tour_flush_rewrite_rules');
 function register_tour_meta_fields()
 {
     $fields = array(
-        'days',
-        'nights',
+        'group_tour',
+        'tailor_tour',
         'price',
         'original_price',
     );
@@ -169,9 +167,10 @@ function tour_admin_columns($columns)
     $new_columns['cb'] = $columns['cb'];
     $new_columns['featured'] = '<span class="dashicons dashicons-star-filled" title="Featured"></span>';
     $new_columns['title'] = $columns['title'];
-    $new_columns['days'] = __('Days', 'mold-tour');
-    $new_columns['nights'] = __('Nights', 'mold-tour');
+    $new_columns['group_tour'] = __('Group Tour', 'mold-tour');
+    $new_columns['tailor_tour'] = __('Tailor-Made Tour', 'mold-tour');
     $new_columns['price'] = __('Price', 'mold-tour');
+    //$new_columns['original_price'] = __('Original Price', 'mold-tour');
     $new_columns['date'] = $columns['date'];
 
     return $new_columns;
@@ -191,11 +190,13 @@ function tour_custom_columns($column, $post_id)
             <span class="dashicons ' . esc_attr($icon) . '"></span>
           </a>';
             break;
-        case 'days':
-            echo esc_html(get_post_meta($post_id, '_tour_days', true));
+        case 'group_tour':
+            $value = get_post_meta($post_id, '_group_tour', true);
+            echo $value === 'yes' ? '<span class="dashicons dashicons-yes"></span>' : '<span class="dashicons dashicons-no"></span>';
             break;
-        case 'nights':
-            echo esc_html(get_post_meta($post_id, '_tour_nights', true));
+        case 'tailor_tour':
+            $value = get_post_meta($post_id, '_tailor_tour', true);
+            echo $value === 'yes' ? '<span class="dashicons dashicons-yes"></span>' : '<span class="dashicons dashicons-no"></span>';
             break;
         case 'price':
             echo esc_html(get_post_meta($post_id, '_tour_price', true));
@@ -210,8 +211,8 @@ add_action('manage_tour_posts_custom_column', 'tour_custom_columns', 10, 2);
 // Make columns sortable
 function tour_sortable_columns($columns)
 {
-    $columns['days'] = 'days';
-    $columns['nights'] = 'nights';
+    $columns['group_tour'] = 'group_tour';
+    $columns['tailor_tour'] = 'tailor_tour';
     $columns['price'] = 'price';
     return $columns;
 }
