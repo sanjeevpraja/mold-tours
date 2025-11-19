@@ -1,54 +1,54 @@
 <?php
 /**
- * Custom Post Type: Accomodation
+ * Custom Post Type: Region
  * Add this code to your theme's functions.php file or create a plugin
  */
  
 
 // Register Custom Post Type
-function create_accomodation_post_type() {
+function create_region_post_type() {
     $labels = array(
-        'name'                  => _x('Accomodations', 'Post Type General Name', 'mold-tour'),
-        'singular_name'         => _x('Accomodation', 'Post Type Singular Name', 'mold-tour'),
-        'menu_name'             => __('Accomodations', 'mold-tour'),
-        'name_admin_bar'        => __('Accomodation', 'mold-tour'),
-        'archives'              => __('Accomodation Archives', 'mold-tour'),
-        'attributes'            => __('Accomodation Attributes', 'mold-tour'),
-        'parent_item_colon'     => __('Parent Accomodation:', 'mold-tour'),
-        'all_items'             => __('All Accomodations', 'mold-tour'),
-        'add_new_item'          => __('Add New Accomodation', 'mold-tour'),
+        'name'                  => _x('Regions', 'Post Type General Name', 'mold-tour'),
+        'singular_name'         => _x('Region', 'Post Type Singular Name', 'mold-tour'),
+        'menu_name'             => __('Regions', 'mold-tour'),
+        'name_admin_bar'        => __('Region', 'mold-tour'),
+        'archives'              => __('Region Archives', 'mold-tour'),
+        'attributes'            => __('Region Attributes', 'mold-tour'),
+        'parent_item_colon'     => __('Parent Region:', 'mold-tour'),
+        'all_items'             => __('All Regions', 'mold-tour'),
+        'add_new_item'          => __('Add New Region', 'mold-tour'),
         'add_new'               => __('Add New', 'mold-tour'),
-        'new_item'              => __('New Accomodation', 'mold-tour'),
-        'edit_item'             => __('Edit Accomodation', 'mold-tour'),
-        'update_item'           => __('Update Accomodation', 'mold-tour'),
-        'view_item'             => __('View Accomodation', 'mold-tour'),
-        'view_items'            => __('View Accomodations', 'mold-tour'),
-        'search_items'          => __('Search Accomodation', 'mold-tour'),
+        'new_item'              => __('New Region', 'mold-tour'),
+        'edit_item'             => __('Edit Region', 'mold-tour'),
+        'update_item'           => __('Update Region', 'mold-tour'),
+        'view_item'             => __('View Region', 'mold-tour'),
+        'view_items'            => __('View Regions', 'mold-tour'),
+        'search_items'          => __('Search Region', 'mold-tour'),
         'not_found'             => __('Not found', 'mold-tour'),
         'not_found_in_trash'    => __('Not found in Trash', 'mold-tour'),
         'featured_image'        => __('Featured Image', 'mold-tour'),
         'set_featured_image'    => __('Set featured image', 'mold-tour'),
         'remove_featured_image' => __('Remove featured image', 'mold-tour'),
         'use_featured_image'    => __('Use as featured image', 'mold-tour'),
-        'insert_into_item'      => __('Insert into accomodation', 'mold-tour'),
-        'uploaded_to_this_item' => __('Uploaded to this accomodation', 'mold-tour'),
-        'items_list'            => __('Accomodations list', 'mold-tour'),
-        'items_list_navigation' => __('Accomodations list navigation', 'mold-tour'),
-        'filter_items_list'     => __('Filter accomodations list', 'mold-tour'),
+        'insert_into_item'      => __('Insert into region', 'mold-tour'),
+        'uploaded_to_this_item' => __('Uploaded to this region', 'mold-tour'),
+        'items_list'            => __('Regions list', 'mold-tour'),
+        'items_list_navigation' => __('Regions list navigation', 'mold-tour'),
+        'filter_items_list'     => __('Filter regions list', 'mold-tour'),
     );
 
     $args = array(
-        'label'                 => __('Accomodation', 'mold-tour'),
-        'description'           => __('Accomodation information', 'mold-tour'),
+        'label'                 => __('Region', 'mold-tour'),
+        'description'           => __('Region information', 'mold-tour'),
         'labels'                => $labels,
         'supports'              => array('title', 'editor', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes'),
-        'taxonomies'            =>  array('location', 'category', 'post_tag'),
+        'taxonomies'            =>  array('location'),
         'hierarchical'          => true,
         'public'                => true,
         'show_ui'               => true,
         'show_in_menu'          => true,
         'menu_position'         => 20,
-        'menu_icon'             => 'dashicons-flag',
+        'menu_icon'             => 'dashicons-admin-site',
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
@@ -59,26 +59,27 @@ function create_accomodation_post_type() {
         'show_in_rest'          => true,
     );
 
-    register_post_type('accomodation', $args);
+    register_post_type('region', $args);
 }
-add_action('init', 'create_accomodation_post_type', 0);
+add_action('init', 'create_region_post_type', 0);
+
+
 
 
 
 // Flush rewrite rules on activation (add this to your plugin activation hook or run once)
-function accomodation_flush_rewrite_rules() {
-    create_accomodation_post_type();
+function region_flush_rewrite_rules() {
+    create_region_post_type();
     flush_rewrite_rules();
 }
-register_activation_hook(__FILE__, 'accomodation_flush_rewrite_rules');
-
+register_activation_hook(__FILE__, 'region_flush_rewrite_rules');
 
 
 /****************/
-// Add default content when Accomodation is created
-function mold_set_default_accomodation_content($post_id, $post, $update) {
-    // Only for new tour posts
-    if ($update || $post->post_type !== 'accomodation') {
+// Add default content when Region is created
+function mold_set_default_region_content($post_id, $post, $update) {
+    // Only for new region posts
+    if ($update || $post->post_type !== 'region') {
         return;
     }
 
@@ -227,7 +228,7 @@ function mold_set_default_accomodation_content($post_id, $post, $update) {
         ));
     }
 }
-add_action('wp_insert_post', 'mold_set_default_accomodation_content', 10, 3);
+add_action('wp_insert_post', 'mold_set_default_region_content', 10, 3);
 
 
 

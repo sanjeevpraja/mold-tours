@@ -72,7 +72,7 @@ if (! class_exists('Mold_Location')) {
 				'capabilities'      => array(),
 			);
 
-			register_taxonomy('location', array('tour', 'accomodation'), $args);
+			register_taxonomy('location', array('tour', 'accomodation', 'region'), $args);
 		}
 
 

@@ -173,6 +173,13 @@ if (file_exists($accomodation_cpt_file)) {
 	require_once $accomodation_cpt_file;
 }
 
+/**
+ * CPT Region
+ */
+$region_cpt_file = plugin_dir_path(__FILE__) . 'cpt-region/cpt-region.php';
+if (file_exists($region_cpt_file)) {
+	require_once $region_cpt_file;
+}
 
 
 /**contact form 7*/
