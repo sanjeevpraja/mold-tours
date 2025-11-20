@@ -49,9 +49,8 @@ registerBlockType('mold/tour-meta', {
 
         // Define available meta keys
         const metaKeys = [
-            { label: __('Date', 'mold-tour'), value: 'tour_date' },
-            { label: __('Days', 'mold-tour'), value: 'tour_days' },
-            { label: __('Nights', 'mold-tour'), value: 'tour_nights' },
+            { label: __('Group Tour', 'mold-tour'), value: 'group_tour' },
+            { label: __('Tailor-Made Tour', 'mold-tour'), value: 'tailor_tour' },
             { label: __('Price', 'mold-tour'), value: 'tour_price' },
             { label: __('Original Price', 'mold-tour'), value: 'tour_original_price' },
             { label: __('Grade Icon', 'mold-tour'), value: 'tour_grade_icon' }
@@ -107,47 +106,6 @@ registerBlockType('mold/tour-meta', {
 
                     </PanelBody>
                 </InspectorControls>
-
-                <>
-                    {(() => {
-                        switch (metaKey) {
-                            case 'member_facebook':
-                                return (
-                                    <a href={displayContent} target="_blank" rel="noopener noreferrer" className='wp-mold-member-meta-icon' {...blockProps}>
-                                        <span className="dashicons dashicons-facebook-alt"></span>
-                                    </a>
-                                );
-                            case 'member_twitter':
-                                return (
-                                    <a href={displayContent} target="_blank" rel="noopener noreferrer" className='wp-mold-member-meta-icon' {...blockProps}>
-                                        <span className="dashicons dashicons-twitter"></span>
-                                    </a>
-                                );
-                            case 'member_linkedin':
-                                return (
-                                    <a href={displayContent} target="_blank" rel="noopener noreferrer" className='wp-mold-member-meta-icon' {...blockProps}>
-                                        <span className="dashicons dashicons-linkedin"></span>
-                                    </a>
-                                );
-                            case 'member_website':
-                                return (
-                                    <a href={displayContent} target="_blank" rel="noopener noreferrer" className='wp-mold-member-meta-icon' {...blockProps}>
-                                        <span className="dashicons dashicons-admin-site"></span>
-                                    </a>
-                                );
-                            default:
-                                return (
-                                    <div className="wp-mold-member-meta" >
-                                        <htmlTag className="wp-mold-member-meta-info" {...blockProps}>
-                                            {displayContent}
-                                        </htmlTag>
-                                        <small style={{ fontSize: '9px' }}>{__('Meta:', 'mold-tour')} <code>_{metaKey}</code></small>
-                                    </div>
-                                );
-                        }
-                    })()}
-                </>
-
             </>
         );
     },

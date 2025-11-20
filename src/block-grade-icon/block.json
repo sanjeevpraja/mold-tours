@@ -1,0 +1,32 @@
+{
+  "apiVersion": 2,
+  "name": "mold/grade-icon",
+  "title": "Icon - Grade",
+  "icon": "dashboard",
+  "category": "mold",
+  "supports": {
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "typography": {
+      "fontSize": true,
+      "fontFamily": true,
+      "fontWeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalFontWeight": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "__experimentalBorder": {
+      "color": true,
+      "radius": true,
+      "width": true,
+      "style": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css"
+}

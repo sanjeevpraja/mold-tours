@@ -1,0 +1,12 @@
+/* Frontend styles */
+@use '../styles/_color';
+
+.grade-value{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .grade-icon{
+    font-size: 30px;
+  }
+}
+

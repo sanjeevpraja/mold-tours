@@ -1,0 +1,12 @@
+/* Frontend styles */
+@use '../styles/_color';
+
+.location-value{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  .location-icon{
+    font-size: 30px;
+  }
+}
+

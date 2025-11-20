@@ -1,11 +1,39 @@
 /* Frontend styles */
 @use '../styles/_color';
-@use 'scss/_wp-mold-inline-banner';
 
 .wp-mold-tour-meta-info{
     margin: 0;
     &.meta-original-price{
         text-decoration: line-through;
         opacity: 0.7;
+    }
+}
+
+.wp-mold-tour-meta{
+    .tour-type {
+        display: flex;
+        align-items: center;
+        &::before {
+            font-family: "Material Symbols Outlined";
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24;
+            font-size: 30px;
+            opacity: .6;
+        }
+        &.tour-type--group {
+            &::before {
+                content: "\e7ef";
+                margin-right: 4px;
+            }
+        }
+        &.tour-type--tailor {
+            &::before {
+                content: "\e87b";
+                margin-right: 4px;
+            }
+        }
     }
 }

@@ -84,7 +84,9 @@ function wp_mold_tour_register_block()
 		'block-tour-meta',
 		'block-tour-gallery',
 		'block-location-image',
-		'block-grade-image'
+		'block-grade-image',
+		// 'block-grade-icon',
+		// 'block-location-icon',
 	];
 
 	foreach ($blocks as $block) {
@@ -205,3 +207,5 @@ add_filter('wpcf7_form_tag', function ($tag) {
 
 	return $tag;
 }, 10, 1);
+
+

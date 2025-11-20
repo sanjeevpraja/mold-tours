@@ -59,17 +59,21 @@ function callback_block_tour_meta($attributes, $content, $block)
             }
             break;
 
-        case 'tour_days':
-            // Add "Days" suffix if not already present
-            if (is_numeric($display_content) && !str_contains($display_content, __('Day', 'mold-tour'))) {
-                $display_content = $display_content;
+        case 'group_tour':
+            // Return "Group Tour" for group tours
+            if ($display_content === 'yes') {
+                $display_content = __('Group Tour', 'mold-tour');
+            } else {
+                $display_content = $fallback;
             }
             break;
 
-        case 'tour_nights':
-            // Add "Nights" suffix if not already present
-            if (is_numeric($display_content) && !str_contains($display_content, __('Night', 'mold-tour'))) {
-                $display_content = $display_content;
+        case 'tailor_tour':
+            // Return "Tailor-Made" for tailor-made tours
+            if ($display_content === 'yes') {
+                $display_content =  __('Tailor-Made Tour', 'mold-tour');
+            } else {
+                $display_content = $fallback;
             }
             break;
 
@@ -95,8 +99,10 @@ function callback_block_tour_meta($attributes, $content, $block)
 
     if ($meta_key == 'tour_grade_img') {
         $output = sprintf(
-            '<img src="%1$s" alt="%2$s" class="%3$s">',
-            esc_attr($display_content)
+             '<img src="%1$s" alt="%2$s" class="%3$s">',
+            esc_url($display_content),     // image URL
+            esc_attr($meta_key),           // alt text
+            'tour-grade-img'               // class
         );
     }
     elseif ($meta_key == 'tour_original_price') {
@@ -105,6 +111,20 @@ function callback_block_tour_meta($attributes, $content, $block)
             $html_tag,
             $display_content
         );
+    }
+    elseif ($meta_key == 'group_tour' || $meta_key == 'tailor_tour') {
+        $tour_type = $meta_key === 'group_tour' ? 'group' : 'tailor';
+        if($display_content) {
+            $output = sprintf(
+            '<%1$s class="tour-type tour-type--%2$s">%3$s</%1$s>',
+            $html_tag,
+            $tour_type,
+            $display_content
+        );
+        }
+        else{
+            $output = '';
+        }
     }
     else {
         // For all tour meta fields (they're all text fields)
