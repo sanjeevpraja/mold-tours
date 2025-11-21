@@ -85,140 +85,156 @@ function mold_set_default_region_content($post_id, $post, $update) {
 
     // Check if content is empty
     if (empty($post->post_content)) {
-        $default_content = '<!-- wp:group {"metadata":{"name":"Main Wrap"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"background","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-white-color has-background-background-color has-text-color has-background has-link-color" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:post-title {"textAlign":"center"} /-->
+        $default_content = '<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"backgroundColor":"background","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-background-background-color has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)"><!-- wp:mold/tab {"tabStyle":"pill","activeTabColor":"#EB8122","tabGap":14,"borderSize":0,"borderRadius":8,"contentStyles":{"fontFamily":"","fontSize":"","textColor":"#FFFFFF","backgroundColor":"#12121200","padding":{"inline":"0px","block":"10px"}}} -->
+<div class="wp-block-mold-tab tab-container tab-style-pill" data-active-tab="0" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#333333;--tab-header-background-color:#e3e7ec;--tab-header-gap:14px;--tab-header-padding:10px 15px;--tab-header-border-radius:8px;--tab-header-border-width:0px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#000000;--tab-header-active-tab-background-color:#EB8122;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#FFFFFF;--tab-content-background-color:#12121200;--tab-content-padding:10px 0px;--tab-content-border-radius:8px;--tab-content-border-width:0px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Information"} -->
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Information" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:paragraph {"placeholder":"Add tab content here..."} -->
+<p class=""></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:group {"layout":{"type":"default"}} -->
+<div class="wp-block-group"><!-- wp:paragraph -->
+<p class="">This is information section</p>
+<!-- /wp:paragraph -->
 
 <!-- wp:spacer {"height":"50px"} -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:group {"metadata":{"name":"Overview"},"layout":{"type":"grid"}} -->
-<div class="wp-block-group"><!-- wp:group {"metadata":{"name":"Overview Location"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"map","iconSize":40,"iconColor":"#eb8122"} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">map</span></div>
+<!-- wp:mold/accordion {"items":[{"title":"Visa","content":"","isOpen":true},{"title":"vaccinations and Health Information for India","content":"","isOpen":true},{"title":"New Digital Arrival Card","content":"","isOpen":true},{"title":"UK Government Travel Advice","content":"","isOpen":true}],"allowMultiple":true,"iconColor":"#EB8122","borderColor":"#54545452","headerStyles":{"fontFamily":"","fontSize":"1rem","textColor":"#FFFFFF","backgroundColor":"#000000","padding":{"inline":"19px","block":"20px"}},"contentStyles":{"fontFamily":"","fontSize":"","textColor":"#FFFFFF","backgroundColor":"#000000","padding":{"inline":"15px","block":"10px"}}} -->
+<div class="wp-block-mold-accordion"><div class="accordion-block" data-allow-multiple="true" data-open-first="true" data-icon-position="right" data-icon-type="plus-minus" style="--item-gap:10px;--icon-color:#EB8122;--icon-size:30px;--border-size:1px;--border-color:#54545452;--border-radius:4px;--header-font-family:inherit;--header-font-size:1rem;--header-text-color:#FFFFFF;--header-background-color:#000000;--header-padding-block:20px;--header-padding-inline:19px;--content-font-family:inherit;--content-font-size:inherit;--content-text-color:#FFFFFF;--content-background-color:#000000;--content-padding-block:10px;--content-padding-inline:15px"><div class="accordion-item is-plus-minus is-open"><div class="accordion-header" data-accordion-trigger="0"><h3>Visa</h3><span class="accordion-icon is-right is-open"></span></div><div class="accordion-content" data-accordion-content="0"><p></p></div></div><div class="accordion-item is-plus-minus is-open"><div class="accordion-header" data-accordion-trigger="1"><h3>vaccinations and Health Information for India</h3><span class="accordion-icon is-right is-open"></span></div><div class="accordion-content" data-accordion-content="1"><p></p></div></div><div class="accordion-item is-plus-minus is-open"><div class="accordion-header" data-accordion-trigger="2"><h3>New Digital Arrival Card</h3><span class="accordion-icon is-right is-open"></span></div><div class="accordion-content" data-accordion-content="2"><p></p></div></div><div class="accordion-item is-plus-minus is-open"><div class="accordion-header" data-accordion-trigger="3"><h3>UK Government Travel Advice</h3><span class="accordion-icon is-right is-open"></span></div><div class="accordion-content" data-accordion-content="3"><p></p></div></div></div></div>
+<!-- /wp:mold/accordion -->
+
+<!-- wp:spacer -->
+<div style="height:100px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
+<p class="has-white-color has-text-color has-link-color"></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p class=""></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
+
+<!-- wp:paragraph {"placeholder":"Add tab content here..."} -->
+<p class=""></p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:mold/tab-item -->
+
+<!-- wp:mold/tab-item {"title":"Tour"} -->
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Tour" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:query {"queryId":0,"query":{"postType":"tour","perPage":10,"order":"desc","orderBy":"date","sticky":"","parents":[],"format":[],"inherit":false,"taxQuery":{"location":[12]}}} -->
+<div class="wp-block-query"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":null}} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}},"border":{"radius":"10px","color":"#3f3f3f","width":"1px"},"dimensions":{"minHeight":"100%"},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"black","textColor":"white"} -->
+<div class="wp-block-group has-border-color has-white-color has-black-background-color has-text-color has-background has-link-color" style="border-color:#3f3f3f;border-width:1px;border-radius:10px;min-height:100%;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:mold/div {"widthType":"manual","heightType":"manual","height":"200","heightUnit":"px","position":"relative","className":"wp-block-mold-div mold-div-block has-grey-100-background-color has-background","backgroundColor":"grey-100"} -->
+<div><div class="wp-block-mold-div mold-div-block  has-grey-100-background-color has-background" style="position:relative;width:100%;height:200px"><!-- wp:post-featured-image {"isLink":true,"width":"100%","height":"200px"} /--></div></div>
+<!-- /wp:mold/div -->
+
+<!-- wp:post-title {"level":5,"isLink":true,"style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}}},"fontSize":"large"} /-->
+
+<!-- wp:group {"style":{"dimensions":{"minHeight":"30px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="min-height:30px"><!-- wp:post-excerpt {"moreText":"...","showMoreOnNewLine":false,"excerptLength":21} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--30)"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"speed","iconSize":30,"padding":0,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:30px;--line-height:30px;--icon-width:30px;--padding:0px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">speed</span></div>
 <!-- /wp:mold/materialicon -->
 
-<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-500"}}}},"textColor":"grey-500"} -->
-<p class="has-grey-500-color has-text-color has-link-color">Location</p>
-<!-- /wp:paragraph -->
+<!-- wp:post-terms {"term":"grade"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"location_on","iconSize":30,"padding":0,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:30px;--line-height:30px;--icon-width:30px;--padding:0px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">location_on</span></div>
+<!-- /wp:mold/materialicon -->
 
 <!-- wp:post-terms {"term":"location"} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"star_rate","iconSize":40,"iconColor":"#eb8122"} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">star_rate</span></div>
-<!-- /wp:mold/materialicon -->
-
-<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-500"}}}},"textColor":"grey-500"} -->
-<p class="has-grey-500-color has-text-color has-link-color">Rating</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:group {"metadata":{"name":"Rating"},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"right"}} -->
-<div class="wp-block-group"><!-- wp:mold/dashicon {"dashicon":"dashicons-star-filled","iconSize":20,"padding":2,"iconColor":"#f7ab55"} -->
-<div class="wp-block-mold-dashicon" style="--icon-size:20px;--line-height:20px;--icon-color:#f7ab55;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2;--padding:2px;--border-radius:0px"><span class="dashicons dashicons-star-filled"></span></div>
-<!-- /wp:mold/dashicon -->
-
-<!-- wp:mold/dashicon {"dashicon":"dashicons-star-filled","iconSize":20,"padding":2,"iconColor":"#f7ab55"} -->
-<div class="wp-block-mold-dashicon" style="--icon-size:20px;--line-height:20px;--icon-color:#f7ab55;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2;--padding:2px;--border-radius:0px"><span class="dashicons dashicons-star-filled"></span></div>
-<!-- /wp:mold/dashicon -->
-
-<!-- wp:mold/dashicon {"dashicon":"dashicons-star-filled","iconSize":20,"padding":2,"iconColor":"#f7ab55"} -->
-<div class="wp-block-mold-dashicon" style="--icon-size:20px;--line-height:20px;--icon-color:#f7ab55;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2;--padding:2px;--border-radius:0px"><span class="dashicons dashicons-star-filled"></span></div>
-<!-- /wp:mold/dashicon -->
-
-<!-- wp:mold/dashicon {"dashicon":"dashicons-star-filled","iconSize":20,"padding":2,"iconColor":"#f7ab55"} -->
-<div class="wp-block-mold-dashicon" style="--icon-size:20px;--line-height:20px;--icon-color:#f7ab55;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2;--padding:2px;--border-radius:0px"><span class="dashicons dashicons-star-filled"></span></div>
-<!-- /wp:mold/dashicon -->
-
-<!-- wp:mold/dashicon {"dashicon":"dashicons-star-filled","iconSize":20,"padding":2,"iconColor":"#f7ab55"} -->
-<div class="wp-block-mold-dashicon" style="--icon-size:20px;--line-height:20px;--icon-color:#f7ab55;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2;--padding:2px;--border-radius:0px"><span class="dashicons dashicons-star-filled"></span></div>
-<!-- /wp:mold/dashicon --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
-<!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"person_pin","iconSize":40,"iconColor":"#eb8122"} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">person_pin</span></div>
-<!-- /wp:mold/materialicon -->
-
-<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-500"}}}},"textColor":"grey-500"} -->
-<p class="has-grey-500-color has-text-color has-link-color">Tour Guide</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"level":4} -->
-<h4 class="wp-block-heading">Tour guide</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
-<!-- wp:group {"metadata":{"categories":["mold"],"patternName":"core/block/659","name":"Overview Transportation"},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"groups","iconSize":40,"iconColor":"#eb8122"} -->
-<div class="wp-block-mold-materialicon" style="--icon-size:40px;--line-height:40px;--icon-width:40px;--padding:10px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">groups</span></div>
-<!-- /wp:mold/materialicon -->
-
-<!-- wp:group {"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group"><!-- wp:paragraph {"style":{"elements":{"link":{"color":{"text":"var:preset|color|grey-500"}}}},"textColor":"grey-500"} -->
-<p class="has-grey-500-color has-text-color has-link-color">Group Size</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:heading {"level":4} -->
-<h4 class="wp-block-heading">6</h4>
-<!-- /wp:heading --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group --></div>
-<!-- /wp:group -->
-
-<!-- wp:group {"metadata":{"name":"content"},"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"background","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-white-color has-background-background-color has-text-color has-background has-link-color"><!-- wp:spacer {"height":"50px"} -->
-<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
-
-<!-- wp:columns {"style":{"spacing":{"blockGap":{"left":"var:preset|spacing|80"}}}} -->
-<div class="wp-block-columns"><!-- wp:column {"width":"66.66%"} -->
-<div class="wp-block-column" style="flex-basis:66.66%"><!-- wp:paragraph -->
-<p class="">Here is a short example paragraph like dummy text for an accommodation description including details on availability and features:
-
-"Our comfortable accommodations are available year-round and feature spacious rooms with modern amenities such as complimentary Wi-Fi, flat-screen TVs, and air conditioning. Guests can enjoy cozy furnishings, 24-hour front desk service, and convenient access to local attractions. Whether you are traveling for business or leisure, our accommodations provide a relaxing and welcoming atmosphere for your stay. Book now to secure your preferred dates and experience exceptional comfort."</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:spacer {"height":"40px"} -->
-<div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
-
-<!-- wp:image {"id":279,"width":"731px","height":"auto","aspectRatio":"1.7777777777777777","scale":"cover","sizeSlug":"full","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
-<figure class="wp-block-image size-full is-resized has-custom-border"><img src="http://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/470227970_999497558878985_3787976228678281517_n.jpg" alt="" class="wp-image-279" style="border-radius:10px;aspect-ratio:1.7777777777777777;object-fit:cover;width:731px;height:auto"/></figure>
-<!-- /wp:image -->
-
-<!-- wp:spacer {"height":"30px"} -->
-<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
-
-<!-- wp:mold/list {"listIcon":"check_circle_outline","iconSize":30,"iconColor":"#aaf300","listItems":[{"text":"List Header","content":"Comfortable accommodation at the confluence of rivers chongwe and zambezi, just outside the lower zambezi n.p.","imageUrl":""},{"text":"List Header","content":"Just nine guest tents, each with an outdoor seating area, as well as two suites with plunge pool","imageUrl":""},{"text":"List Header","content":"Pleasant mess tent with lounge and dining areas, fire-pit, pool","imageUrl":""},{"text":"List Header","content":"Expertly guided game drives, night drives, walking safaris, canoeing safaris, boating safaris, tigerfishing, sleep-outs","imageUrl":""}]} -->
-<div class="wp-mold-list-block" style="--padding:10px;--icon-size:30px;--icon-color:#aaf300;--text-header-color:#333333;--text-description-color:#666666;--list-gap:10px" class="wp-block-mold-list"><ul class="wp-mold-list"><li class="wp-mold-list-li active" data-attr="list-1"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Comfortable accommodation at the confluence of rivers chongwe and zambezi, just outside the lower zambezi n.p.</div></div></li><li class="wp-mold-list-li " data-attr="list-2"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Just nine guest tents, each with an outdoor seating area, as well as two suites with plunge pool</div></div></li><li class="wp-mold-list-li " data-attr="list-3"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Pleasant mess tent with lounge and dining areas, fire-pit, pool</div></div></li><li class="wp-mold-list-li " data-attr="list-4"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Expertly guided game drives, night drives, walking safaris, canoeing safaris, boating safaris, tigerfishing, sleep-outs</div></div></li></ul></div>
-<!-- /wp:mold/list -->
+<!-- wp:mold/tour-meta {"fallback":"Not Available","metaKey":"tour_price","fontSize":"medium","style":{"typography":{"fontWeight":"700","fontStyle":"normal"}}} /-->
 
 <!-- wp:spacer {"height":"20px"} -->
 <div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer --></div>
-<!-- /wp:column -->
+<!-- /wp:spacer -->
 
-<!-- wp:column {"width":"33.33%"} -->
-<div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:html -->
-[contact-form-7 id="392f199" title="Booking Query"]
-<!-- /wp:html --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns -->
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Book Now</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
 
-<!-- wp:spacer {"height":"50px"} -->
-<div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer --></div>
+<!-- wp:query-pagination -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination --></div>
+<!-- /wp:query --></div>
+<!-- /wp:mold/tab-item -->
+
+<!-- wp:mold/tab-item {"title":"Accomodation"} -->
+<div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Accomodation" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:query {"queryId":0,"query":{"postType":"accomodation","perPage":10,"order":"desc","orderBy":"date","sticky":"","parents":[],"format":[],"inherit":false,"taxQuery":{"location":[12]}}} -->
+<div class="wp-block-query"><!-- wp:post-template {"style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"grid","columnCount":3,"minimumColumnWidth":null}} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}},"border":{"radius":"10px","color":"#3f3f3f","width":"1px"},"dimensions":{"minHeight":"100%"},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"black","textColor":"white"} -->
+<div class="wp-block-group has-border-color has-white-color has-black-background-color has-text-color has-background has-link-color" style="border-color:#3f3f3f;border-width:1px;border-radius:10px;min-height:100%;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:mold/div {"widthType":"manual","heightType":"manual","height":"200","heightUnit":"px","position":"relative","className":"wp-block-mold-div mold-div-block has-grey-100-background-color has-background","backgroundColor":"grey-100"} -->
+<div><div class="wp-block-mold-div mold-div-block  has-grey-100-background-color has-background" style="position:relative;width:100%;height:200px"><!-- wp:post-featured-image {"isLink":true,"width":"100%","height":"200px"} /--></div></div>
+<!-- /wp:mold/div -->
+
+<!-- wp:post-title {"level":5,"isLink":true,"style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}}},"fontSize":"large"} /-->
+
+<!-- wp:group {"style":{"dimensions":{"minHeight":"30px"}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="min-height:30px"><!-- wp:post-excerpt {"moreText":"...","showMoreOnNewLine":false,"excerptLength":21} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between"}} -->
+<div class="wp-block-group" style="margin-bottom:var(--wp--preset--spacing--30)"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"speed","iconSize":30,"padding":0,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:30px;--line-height:30px;--icon-width:30px;--padding:0px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">speed</span></div>
+<!-- /wp:mold/materialicon -->
+
+<!-- wp:post-terms {"term":"grade"} /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:mold/materialicon {"materialicon":"location_on","iconSize":30,"padding":0,"iconColor":"#eb8122"} -->
+<div class="wp-block-mold-materialicon" style="--icon-size:30px;--line-height:30px;--icon-width:30px;--padding:0px;--border-radius:0px;--icon-color:#eb8122;--bg-color:transparent;--hover-color:#000000;--hover-bg-color:transparent;--translate-value-x:0px;--translate-value-y:0px;--rotate-value:0deg;--scale-value:1.2"><span class="material-icon material-symbols-outlined">location_on</span></div>
+<!-- /wp:mold/materialicon -->
+
+<!-- wp:post-terms {"term":"location"} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:mold/tour-meta {"fallback":"Not Available","metaKey":"tour_price","fontSize":"medium","style":{"typography":{"fontWeight":"700","fontStyle":"normal"}}} /-->
+
+<!-- wp:spacer {"height":"20px"} -->
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button">Book Now</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-pagination -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-numbers /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination --></div>
+<!-- /wp:query --></div>
+<!-- /wp:mold/tab-item --></div></div>
+<!-- /wp:mold/tab --></div>
 <!-- /wp:group -->';
 
         // Update the post
