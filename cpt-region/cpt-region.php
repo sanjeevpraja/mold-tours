@@ -86,8 +86,8 @@ function mold_set_default_region_content($post_id, $post, $update) {
     // Check if content is empty
     if (empty($post->post_content)) {
         $default_content = '<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"backgroundColor":"background","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-background-background-color has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)"><!-- wp:mold/tab {"tabStyle":"pill","activeTabColor":"#EB8122","tabGap":14,"borderSize":0,"borderRadius":8,"contentStyles":{"fontFamily":"","fontSize":"","textColor":"#FFFFFF","backgroundColor":"#12121200","padding":{"inline":"0px","block":"10px"}}} -->
-<div class="wp-block-mold-tab tab-container tab-style-pill" data-active-tab="0" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#333333;--tab-header-background-color:#e3e7ec;--tab-header-gap:14px;--tab-header-padding:10px 15px;--tab-header-border-radius:8px;--tab-header-border-width:0px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#000000;--tab-header-active-tab-background-color:#EB8122;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#FFFFFF;--tab-content-background-color:#12121200;--tab-content-padding:10px 0px;--tab-content-border-radius:8px;--tab-content-border-width:0px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Information"} -->
+<div class="wp-block-group has-background-background-color has-background" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--40)"><!-- wp:mold/tab {"activeTab":1,"tabStyle":"pill","activeTabColor":"#EB8122","tabGap":14,"borderSize":0,"borderRadius":8,"contentStyles":{"fontFamily":"","fontSize":"","textColor":"#FFFFFF","backgroundColor":"#12121200","padding":{"inline":"0px","block":"10px"}}} -->
+<div class="wp-block-mold-tab tab-container tab-style-pill" data-active-tab="1" style="--tab-header-fontFamily:inherit;--tab-header-fontSize:inherit;--tab-header-textColor:#333333;--tab-header-background-color:#e3e7ec;--tab-header-gap:14px;--tab-header-padding:10px 15px;--tab-header-border-radius:8px;--tab-header-border-width:0px;--tab-header-border-color:transparent;--tab-header-active-tab-text-color:#000000;--tab-header-active-tab-background-color:#EB8122;--tab-header-active-tab-border-width:2px;--tab-content-fontFamily:inherit;--tab-content-fontSize:inherit;--tab-content-textColor:#FFFFFF;--tab-content-background-color:#12121200;--tab-content-padding:10px 0px;--tab-content-border-radius:8px;--tab-content-border-width:0px;--tab-content-border-color:transparent"><nav class="tab-nav" role="tablist" aria-label="Tabs Navigation"></nav><div class="tab-content-wrapper"><!-- wp:mold/tab-item {"title":"Information"} -->
 <div class="wp-block-mold-tab-item tab-content-item undefined" data-tab-title="Information" data-tab-id="tab-undefined" aria-hidden="true" hidden><!-- wp:paragraph {"placeholder":"Add tab content here..."} -->
 <p class=""></p>
 <!-- /wp:paragraph -->
@@ -169,6 +169,12 @@ function mold_set_default_region_content($post_id, $post, $update) {
 <!-- /wp:group -->
 <!-- /wp:post-template -->
 
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"placeholder":"Add text or blocks that will display when a query returns no results."} -->
+<p class="">Not available</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+
 <!-- wp:query-pagination -->
 <!-- wp:query-pagination-previous /-->
 
@@ -223,7 +229,17 @@ function mold_set_default_region_content($post_id, $post, $update) {
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
 <!-- /wp:group -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"placeholder":"Add text or blocks that will display when a query returns no results."} -->
+<p class="">Not available</p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
 <!-- /wp:post-template -->
+
+<!-- wp:paragraph -->
+<p class=""></p>
+<!-- /wp:paragraph -->
 
 <!-- wp:query-pagination -->
 <!-- wp:query-pagination-previous /-->
