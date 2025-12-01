@@ -62,9 +62,9 @@ function save_tour_meta_box_data($post_id)
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     if (get_post_type($post_id) !== 'tour') return;
 
-    // Checkbox fields: save "yes" or "no"
+    // Checkbox fields
     $checkboxes = [
-        'group_tour' => '_group_tour',
+        'group_tour'  => '_group_tour',
         'tailor_tour' => '_tailor_tour',
     ];
 
@@ -75,7 +75,7 @@ function save_tour_meta_box_data($post_id)
 
     // Number fields
     $numbers = [
-        'tour_price' => '_tour_price',
+        'tour_price'          => '_tour_price',
         'tour_original_price' => '_tour_original_price'
     ];
 
@@ -84,7 +84,35 @@ function save_tour_meta_box_data($post_id)
             update_post_meta($post_id, $meta_key, sanitize_text_field($_POST[$field]));
         }
     }
+
+    /*
+     * TAG SYNC — Automatically add/remove tags
+     */
+    $tag_map = [
+        '_group_tour'  => 'Group Tour',
+        '_tailor_tour' => 'Tailored Tour',
+    ];
+
+    $current_tags = wp_get_post_terms($post_id, 'post_tag', ['fields' => 'names']);
+    $new_tags = $current_tags;
+
+    foreach ($tag_map as $meta_key => $tag_name) {
+        $value = get_post_meta($post_id, $meta_key, true);
+
+        if ($value === 'yes') {
+            if (!in_array($tag_name, $new_tags, true)) {
+                $new_tags[] = $tag_name;
+            }
+        } else {
+            if (($key = array_search($tag_name, $new_tags, true)) !== false) {
+                unset($new_tags[$key]);
+            }
+        }
+    }
+
+    wp_set_post_terms($post_id, $new_tags, 'post_tag', false);
 }
+
 
 add_action('save_post', 'save_tour_meta_box_data');
 
