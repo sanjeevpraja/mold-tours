@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP Mold Tours
+Plugin Name: Mold Tours
 Plugin URI: http://moldthemes.com
 Description: Mold Tour Plugin 
 Version: 3.0
