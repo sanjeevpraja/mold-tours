@@ -4,11 +4,12 @@ document.addEventListener("DOMContentLoaded", function() {
   carousels.forEach(el => {
     const speed = parseInt(el.getAttribute('data-attr-speed')) || 600;
     const autoDelay = parseInt(el.getAttribute('data-attr-auto-delay')) || 3000;
-    const itemPerView = parseInt(el.getAttribute('data-attr-item-per-view')) || 1;
+    const itemPerView = parseInt(el.getAttribute('data-attr-slides-per-view')) || 1;
     const pagination = el.getAttribute('data-attr-pagination') === 'true';
     const navigation = el.getAttribute('data-attr-navigation') === 'true';
     const effect = el.getAttribute('data-attr-effect') || 'slide';
-    const gap = parseInt(el.getAttribute('data-attr-gap')) || 10;
+    const gap = parseInt(el.getAttribute('data-attr-slider-gap')) || 0;
+    const height = el.getAttribute('data-attr-slider-height') || '600px';
     const equalHeight = el.getAttribute('data-attr-equal-height') === 'true';
 
     const swiperConfig = {
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
       centeredSlides: true,
       loop: true,
       speed: speed,
+      height: height,
       autoplay: {
         delay: autoDelay,
         disableOnInteraction: false,

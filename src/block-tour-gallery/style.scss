@@ -1,28 +1,13 @@
 /* Frontend styles */
 @use '../styles/_color';
-.swiper-carousel{
-  &.fade-edge{
-    position: relative;
-  background: var(--bg-color);
-    &:before{
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100px;
-      height: 100%;
-      background: linear-gradient(to right, var(--bg-color), transparent);
-      z-index: 999;
+
+.mold-tour-gallery{
+  margin-block: 15px;
+  .swiper-slide {
+    img{
+      border-radius: var(--mold-border-radius);
+      height: var(--mold-height);
     }
-    &:after{
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 100px;
-      height: 100%;
-      background: linear-gradient(to left, var(--bg-color), transparent);
-      z-index: 999;
-    }
+    
   }
 }

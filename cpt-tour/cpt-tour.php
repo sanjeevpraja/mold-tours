@@ -367,5 +367,10 @@ add_action('wp_ajax_tour_toggle_featured', 'tour_toggle_featured');
 
 
 
+register_post_meta('tour', '_tour_gallery', [
+    'show_in_rest' => true,
+    'single'       => true,
+    'type'         => 'string',
+]);
 
 ?>
