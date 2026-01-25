@@ -1,6 +1,6 @@
 (function($){
 	"use strict";
 	$(document).ready(function(){
-		wp.data.dispatch("core/edit-post").removeEditorPanel("taxonomy-panel-grade");
+		wp.data.dispatch( 'core/editor' ).removeEditorPanel( 'taxonomy-panel-grade' );
 	});
 })(jQuery);

@@ -124,7 +124,7 @@ registerBlockType('mold/tour-gallery', {
                             value={borderRadius}
                             min={0}
                             max={100}
-                            step={1}
+                            step={5}
                             onChange={(v) => setAttributes({ borderRadius: v })}
                         />
                         <RangeControl

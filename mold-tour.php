@@ -73,6 +73,27 @@ if (!function_exists('mold_tour_enqueue_styles_scripts_plugin')) {
 	add_action('wp_enqueue_scripts', 'mold_tour_enqueue_styles_scripts_plugin', 200);
 }
 
+/** localize assets*/
+function mold_block_enqueue_assets() {
+    $currency = get_option( 'tour_currency', 'USD' );
+
+    wp_enqueue_script(
+        'mold-block-js',
+        plugin_dir_url(__FILE__) . "build/block-tour-meta/index.js",
+        [ 'wp-blocks', 'wp-element', 'wp-editor' ],
+        '1.0',
+        true
+    );
+
+    wp_localize_script(
+        'mold-block-js',
+        'moldBlockData',
+        [ 'currency' => $currency ]
+    );
+}
+add_action( 'enqueue_block_editor_assets', 'mold_block_enqueue_assets' );
+
+
 
 
 /*gutenberg block*/
@@ -145,7 +166,6 @@ if (file_exists($tour_cpt_file)) {
 	 */
 	require_once 'cpt-tour/taxonomy/class-grade-taxonomy.php';
 	require_once 'cpt-tour/taxonomy/class-location-taxonomy.php';
-    require_once 'cpt-tour/taxonomy/class-accomodation-taxonomy.php';
 
 	/**
 	 * Widget
@@ -166,14 +186,6 @@ if (file_exists($member_cpt_file)) {
 }
 
 
-
-/**
- * CPT Accomodation
- */
-$accomodation_cpt_file = plugin_dir_path(__FILE__) . 'cpt-accomodation/cpt-accomodation.php';
-if (file_exists($accomodation_cpt_file)) {
-	require_once $accomodation_cpt_file;
-}
 
 /**
  * CPT Region

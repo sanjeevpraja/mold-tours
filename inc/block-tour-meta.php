@@ -59,23 +59,6 @@ function callback_block_tour_meta($attributes, $content, $block)
             }
             break;
 
-        case 'group_tour':
-            // Return "Group Tour" for group tours
-            if ($display_content === 'yes') {
-                $display_content = __('Group Tour', 'mold-tour');
-            } else {
-                $display_content = $fallback;
-            }
-            break;
-
-        case 'tailor_tour':
-            // Return "Tailor-Made" for tailor-made tours
-            if ($display_content === 'yes') {
-                $display_content =  __('Tailor-Made Tour', 'mold-tour');
-            } else {
-                $display_content = $fallback;
-            }
-            break;
 
         case 'tour_date':
             // Format date if it's a valid date string
