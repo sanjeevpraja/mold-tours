@@ -25,7 +25,7 @@ const excludeList = [
   'gulpfile.mjs',
   '.zip_temp',
   'dist',
-  'zip.js',
+  'zip.mjs',
   'webpack.config.js',
   '.idea',
 ];
