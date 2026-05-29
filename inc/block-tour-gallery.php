@@ -14,42 +14,96 @@ function callback_block_tour_gallery($attributes, $content, $block)
     $attributes = wp_parse_args(
         $attributes,
         [
-            'speed'        => 1000,
-            'autoDelay'    => 3000,
-            'effect'       => 'slide',
-            'navigation'   => true,
-            'pagination'   => true,
-            'slidesPerView'=> 1,
-            'sliderGap'    => 0,
-            'sliderHeight' => '600',
-            'equalHeight'  => false,
-            'align'        => '',
-            'borderRadius' => 0,
+            'speed'         => 1000,
+            'autoDelay'     => 3000,
+            'effect'        => 'slide',
+            'navigation'    => true,
+            'pagination'    => true,
+            'slidesPerView' => 1,
+            'sliderGap'     => 0,
+            'sliderHeight'  => '600',
+            'equalHeight'   => false,
+            'align'         => '',
+            'borderRadius'  => 0,
+            'displayType'   => 'slider',
+            'columns'       => 3,
+            'columnsMobile' => 1,
+            'bgColor'       => '#f0f0f0',
+            'enableLightbox'=> true,
         ]
     );
 
-    $mold_slider_speed      = absint( $attributes['speed'] );
-    $mold_slider_autoDelay  = absint( $attributes['autoDelay'] );
-    $mold_slider_effect     = esc_attr( $attributes['effect'] );
-    $mold_slider_nav        = (bool) $attributes['navigation'];
-    $mold_slider_pagination= (bool) $attributes['pagination'];
-    $mold_slider_height    = esc_attr( $attributes['sliderHeight'] );
+    $mold_slider_speed       = absint( $attributes['speed'] );
+    $mold_slider_autoDelay   = absint( $attributes['autoDelay'] );
+    $mold_slider_effect      = esc_attr( $attributes['effect'] );
+    $mold_slider_nav         = (bool) $attributes['navigation'];
+    $mold_slider_pagination  = (bool) $attributes['pagination'];
+    $mold_slider_height      = absint( $attributes['sliderHeight'] );
     $mold_slider_equalHeight = (bool) $attributes['equalHeight'];
     $mold_slider_slidesPerView = absint( $attributes['slidesPerView'] );
-    $mold_slider_sliderGap = absint( $attributes['sliderGap'] );
-    $mold_slider_borderRadius = esc_attr( $attributes['borderRadius'] );
+    $mold_slider_sliderGap   = absint( $attributes['sliderGap'] );
+    $mold_border_radius      = absint( $attributes['borderRadius'] );
+    $mold_display_type       = in_array( $attributes['displayType'], ['slider', 'grid'], true ) ? $attributes['displayType'] : 'slider';
+    $mold_columns            = absint( $attributes['columns'] ) ?: 3;
+    $mold_columns_mobile     = absint( $attributes['columnsMobile'] ) ?: 1;
+    $mold_bg_color           = esc_attr( $attributes['bgColor'] );
+    $mold_enable_lightbox    = (bool) $attributes['enableLightbox'];
 
-    $defaults = [
-        'speed'        => 1000,
-        'pagination'   => $mold_slider_pagination ? true : false,
-        'navigation'   => $mold_slider_nav ? true : false,
-        'effect'       => $mold_slider_effect,
-        'slidesPerView' => $mold_slider_slidesPerView,
-        'sliderGap' => $mold_slider_sliderGap
-    ];
-    $attributes = wp_parse_args( $attributes, $defaults );
+    $post_id    = get_the_ID();
+    $gallery_ids = get_post_meta($post_id, '_tour_gallery', true);
 
-    // Now safe to render
+    if (! $gallery_ids) {
+        return '<div class="tour-gallery-placeholder">No tour gallery found.</div>';
+    }
+
+    $ids = array_filter(array_map('absint', explode(',', $gallery_ids)));
+    if (empty($ids)) return '';
+
+    $lightbox_class = $mold_enable_lightbox ? ' has-lightbox' : '';
+    $lightbox_attr  = $mold_enable_lightbox ? ' data-lightbox="true"' : '';
+
+    // ── GRID MODE ─────────────────────────────────────────────────────────────
+    if ( $mold_display_type === 'grid' ) {
+
+        $css_vars = implode(';', [
+            '--mold-border-radius:'   . $mold_border_radius . 'px',
+            '--mold-columns:'         . $mold_columns,
+            '--mold-columns-mobile:'  . $mold_columns_mobile,
+            '--mold-gap:'             . $mold_slider_sliderGap . 'px',
+            '--mold-skeleton-bg:'     . $mold_bg_color,
+        ]);
+
+        $align_class = esc_attr( $attributes['align'] ?? '' );
+
+        $html  = '<div class="mold-tour-gallery-grid align' . $align_class . $lightbox_class . '"'
+               . $lightbox_attr
+               . ' style="' . esc_attr( $css_vars ) . '">';
+
+        foreach ($ids as $id) {
+            $src  = wp_get_attachment_image_src($id, 'large');
+            $full = wp_get_attachment_image_src($id, 'full');
+            $alt  = get_post_meta($id, '_wp_attachment_image_alt', true);
+            if ($src) {
+                $full_url = $full ? esc_url($full[0]) : esc_url($src[0]);
+                $html .= '<div class="mold-gallery-grid-item">';
+                $html .= '<img src="' . esc_url($src[0]) . '"'
+                       . ' data-full="' . $full_url . '"'
+                       . ' alt="' . esc_attr($alt) . '" loading="lazy" />';
+                $html .= '</div>';
+            }
+        }
+
+        $html .= '</div>';
+        return $html;
+    }
+
+    // ── SLIDER MODE ───────────────────────────────────────────────────────────
+    $css_vars = implode(';', [
+        '--mold-border-radius:' . $mold_border_radius . 'px',
+        '--mold-height:'        . $mold_slider_height . 'px',
+        '--mold-skeleton-bg:'   . $mold_bg_color,
+    ]);
+
     $data_attrs = sprintf(
         'data-attr-speed="%d"
          data-attr-auto-delay="%d"
@@ -70,37 +124,36 @@ function callback_block_tour_gallery($attributes, $content, $block)
         $mold_slider_sliderGap,
         $mold_slider_height
     );
-    $style_attrs = [
-        '--mold-border-radius' => esc_attr($mold_slider_borderRadius)."px",
-        '--mold-height' => esc_attr($mold_slider_height)."px"
-    ];
 
-    $post_id = get_the_ID();
-    $gallery_ids = get_post_meta($post_id, '_tour_gallery', true);
+    $align_class = esc_attr( $attributes['align'] ?? '' );
 
-    if (! $gallery_ids) {
-        return '<div class="tour-gallery-placeholder">No tour gallery found.</div>';
-    }
+    $html  = '<div class="mold-tour-gallery swiper align' . $align_class . $lightbox_class . '"'
+           . ' ' . $data_attrs
+           . $lightbox_attr
+           . ' style="' . esc_attr( $css_vars ) . '">';
 
-    $ids = array_filter(array_map('absint', explode(',', $gallery_ids)));
-    if (empty($ids)) return '';
-
-    $html = '<div class="mold-tour-gallery swiper align'. esc_attr( $attributes['align'] ?? '' ).'"' . $data_attrs .' style="'. esc_attr(implode(';', array_map(function($key, $value){ return $key.':'.$value; }, array_keys($style_attrs), $style_attrs))) .'">';
     $html .= '<div class="swiper-wrapper">';
     foreach ($ids as $id) {
-        $src = wp_get_attachment_image_src($id, 'full');
+        $src  = wp_get_attachment_image_src($id, 'full');
+        $alt  = get_post_meta($id, '_wp_attachment_image_alt', true);
         if ($src) {
-            $html .= '<div class="swiper-slide"><img src="' . esc_url($src[0]) . '" alt="" /></div>';
+            $html .= '<div class="swiper-slide">'
+                   . '<img src="' . esc_url($src[0]) . '"'
+                   . ' data-full="' . esc_url($src[0]) . '"'
+                   . ' alt="' . esc_attr($alt) . '"'
+                   . ' loading="lazy" /></div>';
         }
     }
     $html .= '</div>';
-    if($mold_slider_nav){
-        $html .= '<div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>';
+
+    if ($mold_slider_nav) {
+        $html .= '<div class="swiper-button-prev"></div>';
+        $html .= '<div class="swiper-button-next"></div>';
     }
-    if($mold_slider_pagination){
+    if ($mold_slider_pagination) {
         $html .= '<div class="swiper-pagination"></div>';
     }
+
     $html .= '</div>';
 
     return $html;

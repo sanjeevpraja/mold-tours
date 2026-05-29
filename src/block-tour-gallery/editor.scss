@@ -4,13 +4,24 @@
     height: 100%;
     object-fit: cover;
     border-radius: var(--mold-border-radius);
+    background-color: var(--mold-skeleton-bg, #f0f0f0);
   }
 
   &.is-slider {
     height: var(--mold-height);
   }
+
   &.is-grid {
     height: var(--mold-height);
     overflow: hidden;
+  }
+
+  /* Grid layout mode in editor */
+  &.is-grid-layout {
+    .mold-tour-gallery-grid-editor-item {
+      img {
+        border-radius: 0;
+      }
+    }
   }
 }
