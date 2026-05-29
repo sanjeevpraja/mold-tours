@@ -166,6 +166,7 @@ if (file_exists($tour_cpt_file)) {
 	 */
 	require_once 'cpt-tour/taxonomy/class-grade-taxonomy.php';
 	require_once 'cpt-tour/taxonomy/class-location-taxonomy.php';
+	require_once 'cpt-tour/taxonomy/class-accomodation-taxonomy.php';
 
 	/**
 	 * Widget
@@ -185,7 +186,13 @@ if (file_exists($member_cpt_file)) {
 	require_once $member_cpt_file;
 }
 
-
+/**
+ * CPT Accomodation
+ */
+$accomodation_cpt_file = plugin_dir_path(__FILE__) . 'cpt-accomodation/cpt-accomodation.php';
+if (file_exists($accomodation_cpt_file)) {
+	require_once $accomodation_cpt_file;
+}
 
 /**
  * CPT Region
