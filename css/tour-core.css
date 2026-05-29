@@ -1747,13 +1747,15 @@ ul.clean-ul .desc {
 }
 
 /*cost and book*/
-.list-tick ul, .list-cross ul {
+.list-tick ul,
+.list-cross ul {
   list-style: none;
   margin: 0;
   padding: 0;
   line-height: 1.2;
 }
-.list-tick ul li, .list-cross ul li {
+.list-tick ul li,
+.list-cross ul li {
   margin-bottom: 5px;
   display: block;
   clear: both;
@@ -1761,7 +1763,8 @@ ul.clean-ul .desc {
   position: relative;
   padding-left: 30px;
 }
-.list-tick ul li:before, .list-cross ul li:before {
+.list-tick ul li:before,
+.list-cross ul li:before {
   font-family: "iconfont";
   font-size: 20px;
   position: absolute;
@@ -1769,7 +1772,8 @@ ul.clean-ul .desc {
   top: -3px;
   opacity: 0.6;
 }
-.rtl .list-tick ul li:before, .rtl .list-cross ul li:before {
+.rtl .list-tick ul li:before,
+.rtl .list-cross ul li:before {
   float: right;
   margin-left: 5px;
 }

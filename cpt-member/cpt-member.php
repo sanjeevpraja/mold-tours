@@ -1,7 +1,6 @@
 <?php
 /**
  * Custom Post Type: Member
- * Add this code to your theme's functions.php file or create a plugin
  */
  
 

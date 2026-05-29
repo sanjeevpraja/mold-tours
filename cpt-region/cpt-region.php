@@ -66,15 +66,6 @@ add_action('init', 'create_region_post_type', 0);
 
 
 
-
-// Flush rewrite rules on activation (add this to your plugin activation hook or run once)
-function region_flush_rewrite_rules() {
-    create_region_post_type();
-    flush_rewrite_rules();
-}
-register_activation_hook(__FILE__, 'region_flush_rewrite_rules');
-
-
 /****************/
 // Add default content when Region is created
 function mold_set_default_region_content($post_id, $post, $update) {

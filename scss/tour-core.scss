@@ -1,138 +1,135 @@
-$baseurl: '../img';
+$baseurl: "../img";
 
-@use 'variables/_color' as *;
-@use 'variables/_dimension' as *;
-@use 'variables/_typography' as *;
+@use "variables/_color" as *;
+@use "variables/_dimension" as *;
+@use "variables/_typography" as *;
 
-@use 'modules/_owlcarousel';
-@use 'modules/_steps';
-@use 'modules/_grade-widget';
-@use 'modules/_tour-grid';
-@use 'modules/_tour-detail';
-@use 'modules/_tour-image-gallery';
-@use 'modules/_grade-location-archive';
-@use 'modules/_search-bar';
-@use 'modules/_location-carousel';
-@use 'modules/_form';
+@use "modules/_owlcarousel";
+@use "modules/_steps";
+@use "modules/_grade-widget";
+@use "modules/_tour-grid";
+@use "modules/_tour-detail";
+@use "modules/_tour-image-gallery";
+@use "modules/_grade-location-archive";
+@use "modules/_search-bar";
+@use "modules/_location-carousel";
+@use "modules/_form";
 
-.price-table{
-	width: 100%;
-	.mold-variable-product-meta{
-		margin-top: 30px;
-		padding-top: 15px;
-		border-top:  1px dashed #ddd;
-	}
-	tr{
-		td{
-			&:first-child{
-				padding-left: 60px;
-				position: relative;
-				.onsale{
-					position: absolute;
-					left: 5px;
-					top: 2px;
-				}
-			}
-		}
-	}
+.price-table {
+  width: 100%;
+  .mold-variable-product-meta {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px dashed #ddd;
+  }
+  tr {
+    td {
+      &:first-child {
+        padding-left: 60px;
+        position: relative;
+        .onsale {
+          position: absolute;
+          left: 5px;
+          top: 2px;
+        }
+      }
+    }
+  }
 }
 
-.supported-by{
-	text-align: center;
-	.supported-list{
-		list-style: none;
-		padding: 0px;
-		display: table;
-		margin: 30px auto 0;
-		text-align: center;
-		li{
-			display: inline-block;
-			margin: 10px 10px 30px;
-			text-align: center;
-			a{
-				text-decoration: none;
-				display: inline-block;
-			}
-		}
-		&.no-carousel{
-			li{
-				margin: 10px 30px 30px;
-			}
-		}
-	}
+.supported-by {
+  text-align: center;
+  .supported-list {
+    list-style: none;
+    padding: 0px;
+    display: table;
+    margin: 30px auto 0;
+    text-align: center;
+    li {
+      display: inline-block;
+      margin: 10px 10px 30px;
+      text-align: center;
+      a {
+        text-decoration: none;
+        display: inline-block;
+      }
+    }
+    &.no-carousel {
+      li {
+        margin: 10px 30px 30px;
+      }
+    }
+  }
 }
 
-
-.cart-wrap{
-	display: flex;
-	& > div{
-		flex: 1;
-	}
+.cart-wrap {
+  display: flex;
+  & > div {
+    flex: 1;
+  }
 }
 
 /*cost and book*/
-	.list-tick, .list-cross{
-		ul{
-			list-style: none;
-			margin: 0;
-			padding: 0;
-			line-height: 1.2;
-			li{
-				margin-bottom: 5px;
-				display: block;
-				clear: both;
-				min-height: 30px;
-				position: relative;
-				padding-left: 30px;
-				&:before{
-					font-family: "iconfont";
-					font-size: 20px;
-					position: absolute;
-					left: 0;
-					top: -3px;
-					opacity: .6;
-					.rtl &{
-						float: right;
-						margin-left: 5px;
-					}
-				}
-			}
-		}
-	}
-	.list-tick{
-		li{
-			&:before{
-				content: "\f212";
-			}
-		}
-	}
-	.list-cross{
-		li{
-			&:before{
-				content: "\f14d";
-			}
-		}
-	}
+.list-tick,
+.list-cross {
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+    li {
+      margin-bottom: 5px;
+      display: block;
+      clear: both;
+      min-height: 30px;
+      position: relative;
+      padding-left: 30px;
+      &:before {
+        font-family: "iconfont";
+        font-size: 20px;
+        position: absolute;
+        left: 0;
+        top: -3px;
+        opacity: 0.6;
+        .rtl & {
+          float: right;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+.list-tick {
+  li {
+    &:before {
+      content: "\f212";
+    }
+  }
+}
+.list-cross {
+  li {
+    &:before {
+      content: "\f14d";
+    }
+  }
+}
 
 @media screen and (max-width: 1000px) {
-	.cart-wrap{
-		display: block;
-	}
+  .cart-wrap {
+    display: block;
+  }
 }
 
-
-
-.layout-aside{
-	display: flex;
-	gap: 30px;
-	.aside-wrap{
-		flex: 0 0 300px;
-	}
-	.content-wrap{
-		flex: 1;
-		& > p:first-child{
-			margin-top: 0;
-		}
-	}
+.layout-aside {
+  display: flex;
+  gap: 30px;
+  .aside-wrap {
+    flex: 0 0 300px;
+  }
+  .content-wrap {
+    flex: 1;
+    & > p:first-child {
+      margin-top: 0;
+    }
+  }
 }
-

@@ -65,27 +65,19 @@ add_action('init', 'create_accomodation_post_type', 0);
 
 
 
-// Flush rewrite rules on activation (add this to your plugin activation hook or run once)
-function accomodation_flush_rewrite_rules() {
-    create_accomodation_post_type();
-    flush_rewrite_rules();
-}
-register_activation_hook(__FILE__, 'accomodation_flush_rewrite_rules');
-
 
 
 /****************/
 // Add default content when Accomodation is created
-function mold_set_default_accomodation_content($post_id, $post, $update) {
-    // Only for new tour posts
-    if ($update || $post->post_type !== 'accomodation') {
-        return;
+function mold_set_default_accomodation_content($content, $post) {
+    if ($post->post_type !== 'accomodation') {
+        return $content;
     }
 
     // Check if content is empty
-    if (empty($post->post_content)) {
-        $default_content = '<!-- wp:group {"metadata":{"name":"Main Wrap"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"background","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-white-color has-background-background-color has-text-color has-background has-link-color" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:post-title {"textAlign":"center"} /-->
+    if (empty($content)) {
+        $default_content = '<!-- wp:group {"metadata":{"name":"Main Wrap"},"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:post-title {"textAlign":"center"} /-->
 
 <!-- wp:spacer {"height":"50px"} -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
@@ -174,8 +166,8 @@ function mold_set_default_accomodation_content($post_id, $post, $update) {
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"metadata":{"name":"content"},"style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"background","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-white-color has-background-background-color has-text-color has-background has-link-color"><!-- wp:spacer {"height":"50px"} -->
+<!-- wp:group {"metadata":{"name":"content"},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:spacer {"height":"50px"} -->
 <div style="height:50px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
@@ -191,16 +183,8 @@ function mold_set_default_accomodation_content($post_id, $post, $update) {
 <div style="height:40px" aria-hidden="true" class="wp-block-spacer"></div>
 <!-- /wp:spacer -->
 
-<!-- wp:image {"id":279,"width":"731px","height":"auto","aspectRatio":"1.7777777777777777","scale":"cover","sizeSlug":"full","linkDestination":"none","style":{"border":{"radius":"10px"}}} -->
-<figure class="wp-block-image size-full is-resized has-custom-border"><img src="http://natouravoyage.moldthemes.com/wp-content/uploads/2025/10/470227970_999497558878985_3787976228678281517_n.jpg" alt="" class="wp-image-279" style="border-radius:10px;aspect-ratio:1.7777777777777777;object-fit:cover;width:731px;height:auto"/></figure>
-<!-- /wp:image -->
-
-<!-- wp:spacer {"height":"30px"} -->
-<div style="height:30px" aria-hidden="true" class="wp-block-spacer"></div>
-<!-- /wp:spacer -->
-
-<!-- wp:mold/list {"listIcon":"check_circle_outline","iconSize":30,"iconColor":"#aaf300","listItems":[{"text":"List Header","content":"Comfortable accommodation at the confluence of rivers chongwe and zambezi, just outside the lower zambezi n.p.","imageUrl":""},{"text":"List Header","content":"Just nine guest tents, each with an outdoor seating area, as well as two suites with plunge pool","imageUrl":""},{"text":"List Header","content":"Pleasant mess tent with lounge and dining areas, fire-pit, pool","imageUrl":""},{"text":"List Header","content":"Expertly guided game drives, night drives, walking safaris, canoeing safaris, boating safaris, tigerfishing, sleep-outs","imageUrl":""}]} -->
-<div class="wp-mold-list-block" style="--padding:10px;--icon-size:30px;--icon-color:#aaf300;--text-header-color:#333333;--text-description-color:#666666;--list-gap:10px" class="wp-block-mold-list"><ul class="wp-mold-list"><li class="wp-mold-list-li active" data-attr="list-1"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Comfortable accommodation at the confluence of rivers chongwe and zambezi, just outside the lower zambezi n.p.</div></div></li><li class="wp-mold-list-li " data-attr="list-2"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Just nine guest tents, each with an outdoor seating area, as well as two suites with plunge pool</div></div></li><li class="wp-mold-list-li " data-attr="list-3"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Pleasant mess tent with lounge and dining areas, fire-pit, pool</div></div></li><li class="wp-mold-list-li " data-attr="list-4"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Expertly guided game drives, night drives, walking safaris, canoeing safaris, boating safaris, tigerfishing, sleep-outs</div></div></li></ul></div>
+<!-- wp:mold/list {"listIcon":"check_circle_outline","iconSize":30,"iconColor":"#aaf300","listItems":[{"text":"List Header","content":"Comfortable accommodation at the confluence of rivers chongwe and zambezi, just outside the lower zambezi n.p.","imageUrl":""},{"text":"List Header","content":"Just nine guest tents, each with an outdoor seating area, as well as two suites with plunge pool","imageUrl":""},{"text":"List Header","content":"Pleasant mess tent with lounge and dining areas, fire-pit, pool","imageUrl":""},{"text":"List Header","content":"Expertly guided game drives, night drives, walking safaris, canoeing safaris, boating safaris, tigerfishing, sleep-outs","imageUrl":""}],"className":"wp-mold-list-block"} -->
+<div class="mold-blocks-list-block" style="--padding:10px;--icon-size:30px;--icon-color:#aaf300;--text-header-color:#333333;--text-description-color:#666666;--list-gap:10px" class="wp-block-mold-list wp-mold-list-block"><ul class="mold-blocks-list"><li class="mold-blocks-list-li active" data-attr="list-1"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Comfortable accommodation at the confluence of rivers chongwe and zambezi, just outside the lower zambezi n.p.</div></div></li><li class="mold-blocks-list-li " data-attr="list-2"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Just nine guest tents, each with an outdoor seating area, as well as two suites with plunge pool</div></div></li><li class="mold-blocks-list-li " data-attr="list-3"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Pleasant mess tent with lounge and dining areas, fire-pit, pool</div></div></li><li class="mold-blocks-list-li " data-attr="list-4"><span class="list-icon material-symbols-outlined">check_circle_outline</span><div class="list-wrap"><div class="list-wrap">Expertly guided game drives, night drives, walking safaris, canoeing safaris, boating safaris, tigerfishing, sleep-outs</div></div></li></ul></div>
 <!-- /wp:mold/list -->
 
 <!-- wp:spacer {"height":"20px"} -->
@@ -210,7 +194,7 @@ function mold_set_default_accomodation_content($post_id, $post, $update) {
 
 <!-- wp:column {"width":"33.33%"} -->
 <div class="wp-block-column" style="flex-basis:33.33%"><!-- wp:html -->
-[contact-form-7 id="392f199" title="Booking Query"]
+[contact-form-7 id="2b34a93" title="Contact form 1"]
 <!-- /wp:html --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
@@ -220,14 +204,12 @@ function mold_set_default_accomodation_content($post_id, $post, $update) {
 <!-- /wp:spacer --></div>
 <!-- /wp:group -->';
 
-        // Update the post
-        wp_update_post(array(
-            'ID' => $post_id,
-            'post_content' => $default_content
-        ));
+        return $default_content;
     }
+
+    return $content;
 }
-add_action('wp_insert_post', 'mold_set_default_accomodation_content', 10, 3);
+add_filter('default_content', 'mold_set_default_accomodation_content', 10, 2);
 
 
 

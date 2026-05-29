@@ -26,8 +26,8 @@ function wp_mold_tour_is_mold_block_active()
 /**
  * Localization
  */
-if (!function_exists('mold_load_tour_plugin_textdomain')) {
-	function mold_load_tour_plugin_textdomain()
+if (!function_exists('mold_load_tour_plugin_mold')) {
+	function mold_load_tour_plugin_mold()
 	{
 		$domain = 'mold-tour';
 		$locale = apply_filters('plugin_locale', get_locale(), $domain);
@@ -36,7 +36,7 @@ if (!function_exists('mold_load_tour_plugin_textdomain')) {
 		// wp-content/plugins/plugin-name/languages/plugin-name-de_DE.mo
 		load_plugin_textdomain($domain, FALSE, basename(dirname(__FILE__)) . '/languages/');
 	}
-	add_action('plugins_loaded', 'mold_load_tour_plugin_textdomain');
+	add_action('plugins_loaded', 'mold_load_tour_plugin_mold');
 }
 
 /**
@@ -202,6 +202,19 @@ if (file_exists($region_cpt_file)) {
 	require_once $region_cpt_file;
 }
 
+
+function mold_tour_plugin_activation() {
+    //Call every CPT registration function you have
+		create_tour_post_type();
+    create_accomodation_post_type();
+		create_region_post_type();
+		create_member_post_type();
+    
+    //Flush the rewrite rules once for everything
+    flush_rewrite_rules();
+}
+
+register_activation_hook(__FILE__, 'mold_tour_plugin_activation');
 
 /**contact form 7*/
 add_filter('wpcf7_form_tag', function ($tag) {
