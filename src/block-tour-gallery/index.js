@@ -162,110 +162,112 @@ registerBlockType("mold/tour-gallery", {
               onChange={(v) => setAttributes({ borderRadius: v })}
             />
           </PanelBody>
+          <PanelBody
+            title="Slider Settings"
+            initialOpen={true}
+            className={
+              displayType === "slider" ? "panel-block" : "panel-hidden"
+            }>
+            <RangeControl
+              label="Slides Per View"
+              value={slidesPerView}
+              min={1}
+              max={5}
+              step={1}
+              onChange={(v) => setAttributes({ slidesPerView: v })}
+            />
+            <RangeControl
+              label="Slider Gap"
+              value={sliderGap}
+              min={0}
+              max={100}
+              step={5}
+              onChange={(v) => setAttributes({ sliderGap: v })}
+            />
+            <ToggleControl
+              label="Equal Height"
+              checked={equalHeight}
+              onChange={(v) => setAttributes({ equalHeight: v })}
+            />
+            <RangeControl
+              label="Slider Height"
+              value={sliderHeight}
+              min={200}
+              max={1000}
+              step={50}
+              onChange={(v) => setAttributes({ sliderHeight: v })}
+            />
+            <RangeControl
+              label="Transition Speed (ms)"
+              value={speed}
+              min={100}
+              max={5000}
+              step={100}
+              onChange={(v) => setAttributes({ speed: v })}
+            />
 
-          {displayType === "slider" && (
-            <PanelBody title="Slider Settings" initialOpen={true}>
-              <RangeControl
-                label="Slides Per View"
-                value={slidesPerView}
-                min={1}
-                max={5}
-                step={1}
-                onChange={(v) => setAttributes({ slidesPerView: v })}
-              />
-              <RangeControl
-                label="Slider Gap"
-                value={sliderGap}
-                min={0}
-                max={100}
-                step={5}
-                onChange={(v) => setAttributes({ sliderGap: v })}
-              />
-              <ToggleControl
-                label="Equal Height"
-                checked={equalHeight}
-                onChange={(v) => setAttributes({ equalHeight: v })}
-              />
-              <RangeControl
-                label="Slider Height"
-                value={sliderHeight}
-                min={200}
-                max={1000}
-                step={50}
-                onChange={(v) => setAttributes({ sliderHeight: v })}
-              />
-              <RangeControl
-                label="Transition Speed (ms)"
-                value={speed}
-                min={100}
-                max={5000}
-                step={100}
-                onChange={(v) => setAttributes({ speed: v })}
-              />
+            <RangeControl
+              label="Autoplay Delay (ms)"
+              value={autoDelay}
+              min={1000}
+              max={10000}
+              step={500}
+              onChange={(v) => setAttributes({ autoDelay: v })}
+            />
 
-              <RangeControl
-                label="Autoplay Delay (ms)"
-                value={autoDelay}
-                min={1000}
-                max={10000}
-                step={500}
-                onChange={(v) => setAttributes({ autoDelay: v })}
-              />
+            <SelectControl
+              label="Effect"
+              value={effect}
+              options={[
+                { label: "Slide", value: "slide" },
+                { label: "Fade", value: "fade" },
+                { label: "Coverflow", value: "coverflow" },
+                { label: "Creative", value: "creative" },
+              ]}
+              onChange={(v) => setAttributes({ effect: v })}
+            />
 
-              <SelectControl
-                label="Effect"
-                value={effect}
-                options={[
-                  { label: "Slide", value: "slide" },
-                  { label: "Fade", value: "fade" },
-                  { label: "Coverflow", value: "coverflow" },
-                  { label: "Creative", value: "creative" },
-                ]}
-                onChange={(v) => setAttributes({ effect: v })}
-              />
+            <ToggleControl
+              label="Navigation"
+              checked={navigation}
+              onChange={(v) => setAttributes({ navigation: v })}
+            />
 
-              <ToggleControl
-                label="Navigation"
-                checked={navigation}
-                onChange={(v) => setAttributes({ navigation: v })}
-              />
-
-              <ToggleControl
-                label="Pagination"
-                checked={pagination}
-                onChange={(v) => setAttributes({ pagination: v })}
-              />
-            </PanelBody>
-          )}
-
-          {displayType === "grid" && (
-            <PanelBody title="Grid Settings" initialOpen={true}>
-              <RangeControl
-                label="Columns (Desktop / Tablet)"
-                value={columns}
-                min={1}
-                max={6}
-                step={1}
-                onChange={(v) => setAttributes({ columns: v })}
-              />
-              <RangeControl
-                label="Columns (Mobile)"
-                value={columnsMobile}
-                min={1}
-                max={3}
-                step={1}
-                onChange={(v) => setAttributes({ columnsMobile: v })}
-              />
-              <RangeControl
-                label="Grid Gap"
-                value={sliderGap}
-                min={0}
-                max={100}
-                step={5}
-                onChange={(v) => setAttributes({ sliderGap: v })}
-              />
-            </PanelBody>
-          )}
+            <ToggleControl
+              label="Pagination"
+              checked={pagination}
+              onChange={(v) => setAttributes({ pagination: v })}
+            />
+          </PanelBody>
+          <PanelBody
+            title="Grid Settings"
+            initialOpen={true}
+            className={displayType === "grid" ? "panel-block" : "panel-hidden"}>
+            <RangeControl
+              label="Columns (Desktop / Tablet)"
+              value={columns}
+              min={1}
+              max={6}
+              step={1}
+              onChange={(v) => setAttributes({ columns: v })}
+            />
+            <RangeControl
+              label="Columns (Mobile)"
+              value={columnsMobile}
+              min={1}
+              max={3}
+              step={1}
+              onChange={(v) => setAttributes({ columnsMobile: v })}
+            />
+            <RangeControl
+              label="Grid Gap"
+              value={sliderGap}
+              min={0}
+              max={100}
+              step={5}
+              onChange={(v) => setAttributes({ sliderGap: v })}
+            />
+          </PanelBody>
         </InspectorControls>
 
         <div {...blockProps}>
